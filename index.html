@@ -4,90 +4,136 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Str8 Flight Entertainment</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: #ffffff;
-      text-align: center;
+    /* Reset and basic styles */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      line-height: 1.6;
     }
     header {
-      background-color: #1DB954;
+      background: linear-gradient(90deg, #1DB954, #1ed760);
       padding: 20px 0;
+      text-align: center;
     }
     header h1 {
-      margin: 0;
-      font-size: 2.5em;
+      font-size: 2.8em;
+      letter-spacing: 1px;
     }
     main {
-      padding: 20px;
+      max-width: 1200px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
-    .video-container {
-      margin: 20px 0;
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2em;
+      color: #1DB954;
+    }
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .video-card {
+      background-color: #1a1a1a;
+      padding: 15px;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
     iframe {
-      width: 90%;
-      max-width: 560px;
-      height: 315px;
-      border: none;
+      width: 100%;
+      height: 200px;
+      border-radius: 8px;
+    }
+    .video-title {
+      margin-top: 12px;
+      font-weight: 700;
+      font-size: 1.1em;
+      text-align: center;
+      color: #fff;
     }
     footer {
-      background-color: #1DB954;
-      padding: 10px 0;
-      margin-top: 40px;
+      background: #1DB954;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 50px;
+      font-size: 0.9em;
+    }
+    @media (min-width: 768px) {
+      iframe {
+        height: 250px;
+      }
+    }
+    @media (min-width: 1024px) {
+      iframe {
+        height: 300px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Str8Flight Entertainment</h1>
-  </header>
 
-  <main>
-    <h2>Featured Music Videos</h2>
+<header>
+  <h1>Str8 Flight Entertainment</h1>
+</header>
 
-    <div class="video-container">
-      <iframe src="https://youtu.be/0QwKo-mssxc?si=O0-4CVWBXOaqgXoA" allowfullscreen></iframe>
-      <p>Perry da Artist - Bad Freak</p>
+<main>
+  <h2>Featured Music Videos</h2>
+  <div class="videos">
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/0QwKo-mssxc" allowfullscreen></iframe>
+      <div class="video-title">Perry da Artist - Bad Freak</div>
     </div>
 
-    <div class="video-container">
-      <iframe src="https://youtu.be/pInxfriRH_w?si=Hzp0kR9PZF_Fah6C" allowfullscreen></iframe>
-      <p>Mr. Program Rise-in-Glory (Str8 Flight Entertainment) Prod.by Denton</p>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/pInxfriRH_w" allowfullscreen></iframe>
+      <div class="video-title">Mr. Program - Rise-in-Glory (Prod. by Denton)</div>
     </div>
 
-    <div class="video-container">
-      <iframe src="https://youtu.be/cXzqzTYxbsQ?si=Vxy8tATs18JPZvfh" allowfullscreen></iframe>
-      <p>Denton - Furious (Str8 Flight Entertainment)(RAW)</p>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ" allowfullscreen></iframe>
+      <div class="video-title">Denton - Furious (RAW)</div>
     </div>
 
-    <div class="video-container">
-      <iframe src="https://youtu.be/8E9zA7Bq1js?si=_A87vSal4dvzb-y7" allowfullscreen></iframe>
-      <p>Quarantine - Cleon x Denton - 2020 (Str8 Flight Entertainment)</p>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/8E9zA7Bq1js" allowfullscreen></iframe>
+      <div class="video-title">Quarantine - Cleon x Denton - 2020</div>
     </div>
 
-    <div class="video-container">
-      <iframe src="https://youtu.be/QdFS99yYcDE?si=Oj0DM-24WBgceZp0" allowfullscreen></iframe>
-      <p>Denton - Wiser (Str8 Flight Ent.)</p>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/QdFS99yYcDE" allowfullscreen></iframe>
+      <div class="video-title">Denton - Wiser</div>
     </div>
 
-    <div class="video-container">
-      <iframe src="https://youtu.be/pmSFR_ohjJk?si=zdIEkICH9K2OxZe_" allowfullscreen></iframe>
-      <p>Denton - PARRAT (Str8 Flight Ent.)</p>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/pmSFR_ohjJk" allowfullscreen></iframe>
+      <div class="video-title">Denton - PARRAT</div>
     </div>
 
-    <div class="video-container">
-      <iframe src="https://youtu.be/WTW5qQPIgX0?si=Ons2mxz104f73JSb" allowfullscreen></iframe>
-      <p>Cocono Bwai - Wielo Wielo</p>
+    <div class="video-card">
+      <iframe src="https://www.youtube.com/embed/WTW5qQPIgX0" allowfullscreen></iframe>
+      <div class="video-title">Cocono Bwai - Wielo Wielo</div>
     </div>
+  </div>
+</main>
 
-    <!-- Add more videos by copying the block above -->
-  </main>
+<footer>
+  &copy; 2025 Str8 Flight Entertainment
+</footer>
 
-  <footer>
-    <p>&copy; 2025 Str8 Flight Entertainment</p>
-  </footer>
 </body>
 </html>
