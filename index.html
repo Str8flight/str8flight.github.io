@@ -4,169 +4,159 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Str8 Flight Entertainment | Belize Music & Culture</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: 'Roboto', sans-serif; 
-      background-color: #0d0d0d; 
-      color: #fff; 
-      line-height: 1.6; 
-    }
-    a { text-decoration: none; color: #FFA500; }
-    a:hover { color: #FF8C00; }
 
-    /* Header */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d0d0d;
+      color: #fff;
+      line-height: 1.7;
+    }
+
     header {
       position: relative;
       background: linear-gradient(135deg, #FF8C00, #FFA500);
-      height: 280px;
+      height: 260px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       overflow: hidden;
-      border-bottom: 3px solid #FF8C00;
     }
+
     header::after {
       content: "";
       position: absolute;
       inset: 0;
       background: url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
-      opacity: 0.2;
+      opacity: 0.3;
       z-index: 0;
-      filter: blur(2px);
-    }
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3.5em;
-      color: #fff;
-      text-shadow: 0 0 10px #FFA500, 0 0 20px #FF8C00;
-      z-index: 1;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 1.3em;
-      color: #fff;
-      z-index: 1;
-      max-width: 700px;
-      text-shadow: 0 0 6px #FFA500;
     }
 
-    /* Navigation */
+    header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3em;
+      z-index: 1;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      z-index: 1;
+      max-width: 700px;
+    }
+
     nav {
       text-align: center;
       margin: 30px 0;
     }
+
     nav a {
       color: #FFA500;
-      margin: 0 20px;
+      margin: 0 15px;
+      text-decoration: none;
       font-weight: 700;
-      font-size: 1.1em;
-      transition: all 0.3s ease;
-      position: relative;
     }
-    nav a::after {
-      content: '';
-      display: block;
-      height: 3px;
-      width: 0%;
-      background: #FF8C00;
-      transition: 0.3s;
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      border-radius: 2px;
-    }
-    nav a:hover::after { width: 100%; }
-    nav a:hover { color: #FF8C00; }
 
-    /* Main layout */
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     main {
       max-width: 1200px;
-      margin: 50px auto;
+      margin: 40px auto;
       padding: 0 20px;
+    }
+
+    /* Two-column layout for About & Contact */
+    .top-sections {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 30px;
+      margin-bottom: 50px;
     }
 
-    /* About & Contact sections */
+    @media (max-width: 900px) {
+      .top-sections {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .section-card {
       background: #1a1a1a;
-      padding: 25px;
-      border-radius: 16px;
-      border: 1px solid #FF8C00;
-      box-shadow: 0 0 15px rgba(255,140,0,0.3);
-      font-size: 1.05em;
+      padding: 30px;
+      border-radius: 14px;
+      color: #e0e0e0;
+      line-height: 1.6;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.5);
     }
+
     .section-card h2 {
       color: #FFA500;
       margin-bottom: 20px;
-      text-shadow: 0 0 6px #FF8C00;
     }
-    .section-card p, .section-card li {
-      margin-bottom: 15px;
-      color: #e0e0e0;
-    }
-    .section-card ul { list-style: none; padding-left: 0; }
 
-    /* Video grid below sections */
+    h2.videos-title {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 2em;
+      color: #FFA500;
+    }
+
     .videos {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 25px;
-      margin-top: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
     }
+
     .video-card {
-      background: rgba(255, 140, 0, 0.05);
-      border: 1px solid #FF8C00;
-      border-radius: 16px;
-      padding: 12px;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 0 12px rgba(255,140,0,0.4);
+      background-color: #1a1a1a;
+      padding: 15px;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .video-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 0 20px rgba(255,140,0,0.7);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
+
     iframe {
       width: 100%;
-      height: 230px;
-      border-radius: 12px;
-      border: none;
+      height: 220px;
+      border-radius: 8px;
     }
+
     .video-title {
       margin-top: 12px;
       font-weight: 700;
-      font-size: 1.1em;
-      color: #FFA500;
+      font-size: 1.05em;
       text-align: center;
-      text-shadow: 0 0 6px #FF8C00;
     }
 
-    /* Footer */
     footer {
       background: #0d0d0d;
       color: #FFA500;
       text-align: center;
-      padding: 30px 10px;
-      font-size: 1em;
-      line-height: 1.6;
+      padding: 25px 10px;
+      font-size: 0.9em;
+      line-height: 1.5;
       width: 100%;
-      border-top: 3px solid #FF8C00;
-      box-shadow: 0 -3px 12px rgba(255,140,0,0.4);
-      margin-top: 50px;
+      box-shadow: 0 -3px 8px rgba(0,0,0,0.4);
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      main { grid-template-columns: 1fr; }
-      iframe { height: 260px; }
+    footer a {
+      color: #FFA500;
+      text-decoration: underline;
     }
-    @media (min-width: 1024px) { iframe { height: 320px; } }
+
+    @media (min-width: 768px) { iframe { height: 260px; } }
+    @media (min-width: 1024px) { iframe { height: 300px; } }
 
   </style>
 </head>
@@ -183,31 +173,33 @@
 </nav>
 
 <main>
-  <!-- About Section -->
-  <section class="section-card">
-    <h2>About Str8 Flight Entertainment</h2>
-    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team is dedicated to promoting authentic music and Caribbean culture, providing artists with a professional space to share their work with a global audience.</p>
-    <p>The Barrow brothers are actively involved in music production, recording, and creative direction, ensuring that each project reflects originality, quality, and the real journey behind independent music creation.</p>
-    <p>Through Str8 Flight Entertainment, the Barrow brothers aim to elevate Belizean and Caribbean artists by combining creativity, discipline, and modern digital platforms. The brand’s vision includes expanding into artist features, educational content, and cultural insights that inspire the next generation of creatives.</p>
-  </section>
+  <div class="top-sections">
+    <!-- About Section -->
+    <section class="section-card">
+      <h2>About Str8 Flight Entertainment</h2>
+      <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team is dedicated to promoting authentic music and Caribbean culture, providing artists with a professional space to share their work with a global audience.</p>
+      <p>The Barrow brothers are actively involved in music production, recording, and creative direction, ensuring that each project reflects originality, quality, and the real journey behind independent music creation.</p>
+      <p>Through Str8 Flight Entertainment, the Barrow brothers aim to elevate Belizean and Caribbean artists by combining creativity, discipline, and modern digital platforms. The brand’s vision includes expanding into artist features, educational content, and cultural insights that inspire the next generation of creatives.</p>
+    </section>
 
-  <!-- Contact Section -->
-  <section class="section-card">
-    <h2>Contact</h2>
-    <ul>
-      <li>Email: <a href="mailto:str8flightentertainment@gmail.com">str8flightentertainment@gmail.com</a></li>
-      <li>Phone: +501 615-0094</li>
-      <li>Follow us on social media:
-        <ul>
-          <li><a href="https://www.instagram.com/str8flightentertainment/?hl=en">Instagram</a></li>
-          <li><a href="https://www.facebook.com/Str8flightentertainment/">Facebook</a></li>
-          <li><a href="https://www.youtube.com/@str8flightentertainment">YouTube</a></li>
-        </ul>
-      </li>
-    </ul>
-  </section>
+    <!-- Contact Section -->
+    <section class="section-card">
+      <h2>Contact</h2>
+      <p>If you have questions, suggestions, or business inquiries, reach out to us:</p>
+      <ul>
+        <li>Email: <a href="mailto:str8flightentertainment@gmail.com">str8flightentertainment@gmail.com</a></li>
+        <li>Phone: +501 615-0094</li>
+        <li>Follow us on social media:
+          <a href="https://www.instagram.com/str8flightentertainment/?hl=en">Instagram</a>,
+          <a href="https://www.facebook.com/Str8flightentertainment/">Facebook</a>,
+          <a href="https://www.youtube.com/@str8flightentertainment">YouTube</a>
+          <a href="https://music.apple.com/us/album/party-riddim-2020/1527887305">Apple Music</a>
+        </li>
+      </ul>
+    </section>
+  </div>
 
-  <!-- Featured Videos -->
+  <h2 class="videos-title">Featured Music Videos</h2>
   <div class="videos">
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/0QwKo-mssxc" allowfullscreen></iframe>
@@ -242,7 +234,8 @@
 </main>
 
 <footer>
-  &copy; 2025 Str8 Flight Entertainment • Belize
+  &copy; 2025 Str8 Flight Entertainment • Belize<br>
+  Contact: str8flightentertainment@gmail.com | Telephone: +501 615-0094
 </footer>
 
 </body>
