@@ -147,8 +147,8 @@ body {
   box-shadow: 0 0 25px #b36b00, 0 0 40px #8a4c00;
 }
 
-.left, .right { flex: 0 0 250px; }
-.center { flex: 2; } /* make center column wider */
+.left, .right { flex: 1; }
+.center { flex: 3; } /* wider center column for videos */
 
 .column h2 {
   color: #b36b00;
@@ -171,13 +171,10 @@ h2.videos-title {
 /* VIDEOS */
 .videos {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 45px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
   margin-bottom: 60px;
 }
-
-@media (min-width: 600px) { .videos { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 900px) { .videos { grid-template-columns: repeat(3, 1fr); } }
 
 .video-card {
   background-color: #1a1a1a;
@@ -224,7 +221,7 @@ footer a { color: #b36b00; text-decoration: underline; }
 /* ================= RESPONSIVE ================= */
 @media (max-width: 1024px) {
   .page-container { flex-direction: column; }
-  .left, .right { flex: 1; }
+  .left, .center, .right { flex: 1; }
 }
 
 @media (max-width: 768px) {
@@ -234,7 +231,6 @@ footer a { color: #b36b00; text-decoration: underline; }
     padding: 20px;
   }
   .hero-content h1 { font-size: 2.4em; }
-  .videos { gap: 30px; }
   iframe { height: 220px; }
 }
 </style>
@@ -315,7 +311,8 @@ footer a { color: #b36b00; text-decoration: underline; }
         Follow us:
         <a href="https://www.instagram.com/str8flightentertainment/?hl=en">Instagram</a>,
         <a href="https://www.facebook.com/Str8flightentertainment/">Facebook</a>,
-        <a href="https://www.youtube.com/@str8flightentertainment">YouTube</a>
+        <a href="https://www.youtube.com/@str8flightentertainment">YouTube</a>,
+        <a href="https://music.apple.com/us/album/party-riddim-2020/1527887305">Apple Music</a>
       </li>
     </ul>
   </div>
