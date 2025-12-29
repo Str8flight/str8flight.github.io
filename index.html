@@ -20,7 +20,7 @@ body {
 .hero-header {
   position: relative;
   background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
-  overflow: visible; /* changed from hidden to visible for club hands */
+  overflow: visible; /* fix: show elements like club hands */
   padding-bottom: 100px;
 }
 
@@ -69,11 +69,11 @@ body {
   text-shadow: 0 0 6px rgba(179,107,0,0.8);
 }
 
-/* Club hands graphic in header */
+/* Club hands graphic */
 .club-hands {
   position: absolute;
   right: 40px;
-  top: 20px;
+  top: 10px;
   height: 60px;
   width: auto;
   z-index: 3;
@@ -126,7 +126,7 @@ body {
 /* ================= PAGE CONTENT ================= */
 .page-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Push left/right outward */
   gap: 40px;
   max-width: 1400px;
   margin: 40px auto;
@@ -150,7 +150,7 @@ body {
 
 /* Flex ratios: center wider, sides smaller */
 .left, .right { flex: 1; min-width: 220px; }
-.center { flex: 2.5; min-width: 500px; }
+.center { flex: 3; min-width: 600px; }
 
 .column h2 {
   color: #b36b00;
@@ -262,7 +262,7 @@ footer a { color: #b36b00; text-decoration: underline; }
     </div>
   </nav>
 
-  <!-- Club hands in header -->
+  <!-- Club hands inside header -->
   <img src="club-hands.png" alt="Club Hands" class="club-hands">
 
   <div class="hero-content">
