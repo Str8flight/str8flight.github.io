@@ -6,6 +6,7 @@
 <title>Str8 Flight Entertainment | Belize Music & Culture</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <style>
+/* ================= GLOBAL ================= */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -68,14 +69,14 @@ body {
   text-shadow: 0 0 6px rgba(179,107,0,0.8);
 }
 
-/* Club hands graphic at top */
+/* Club hands graphic */
 .club-hands {
   position: absolute;
-  right: 20px;
-  top: 0;
+  right: 40px;
+  top: 20px;
   height: 60px;
   width: auto;
-  z-index: 2;
+  z-index: 3;
 }
 
 /* Nav links */
@@ -125,8 +126,8 @@ body {
 /* ================= PAGE CONTENT ================= */
 .page-container {
   display: flex;
-  justify-content: center;
-  gap: 60px;
+  justify-content: space-between; /* Push left/right outward */
+  gap: 40px;
   max-width: 1400px;
   margin: 40px auto;
   padding: 0 20px;
@@ -147,8 +148,9 @@ body {
   box-shadow: 0 0 25px #b36b00, 0 0 40px #8a4c00;
 }
 
-.left, .right { flex: 1; }
-.center { flex: 3; } /* wider center column for videos */
+/* Flex ratios: center wider, sides smaller */
+.left, .right { flex: 1; min-width: 220px; }
+.center { flex: 2.5; min-width: 500px; }
 
 .column h2 {
   color: #b36b00;
@@ -171,7 +173,7 @@ h2.videos-title {
 /* VIDEOS */
 .videos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr); /* 2 videos per row */
   gap: 30px;
   margin-bottom: 60px;
 }
@@ -222,6 +224,7 @@ footer a { color: #b36b00; text-decoration: underline; }
 @media (max-width: 1024px) {
   .page-container { flex-direction: column; }
   .left, .center, .right { flex: 1; }
+  .videos { grid-template-columns: 1fr; } /* stack 1 video per row on tablets */
 }
 
 @media (max-width: 768px) {
@@ -232,6 +235,14 @@ footer a { color: #b36b00; text-decoration: underline; }
   }
   .hero-content h1 { font-size: 2.4em; }
   iframe { height: 220px; }
+
+  .club-hands {
+    right: 20px;
+    top: 15px;
+    height: 50px;
+  }
+
+  .videos { grid-template-columns: 1fr; } /* 1 video per row on mobile */
 }
 </style>
 </head>
@@ -244,13 +255,15 @@ footer a { color: #b36b00; text-decoration: underline; }
       <img src="str8flight-logo.png" alt="Str8 Flight Logo" class="logo-img">
       <div class="logo-text">STR8 FLIGHT</div>
       <img src="belize-flag.png" alt="Belize Flag" class="flag-img">
-      <img src="club-hands.png" alt="Club Hands" class="club-hands">
     </div>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="privacy.html">Privacy Policy</a>
     </div>
   </nav>
+
+  <!-- Club hands fixed outside navbar -->
+  <img src="club-hands.png" alt="Club Hands" class="club-hands">
 
   <div class="hero-content">
     <h1>Str8 Flight Entertainment</h1>
