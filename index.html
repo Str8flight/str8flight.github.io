@@ -8,23 +8,66 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Roboto', sans-serif; background-color: #0d0d0d; color: #fff; line-height: 1.7; }
-    header { position: relative; background: linear-gradient(135deg, #1DB954, #1ed760); height: 260px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; }
-    header::after { content: ""; position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat; opacity: 0.3; z-index: 0; }
+    
+    header { 
+      position: relative; 
+      background: linear-gradient(135deg, #1DB954, #1ed760); 
+      height: 260px; 
+      display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
+      overflow: hidden; 
+    }
+    header::after { 
+      content: ""; 
+      position: absolute; 
+      inset: 0; 
+      background: url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat; 
+      opacity: 0.3; z-index: 0; 
+    }
     header h1 { font-family: 'Montserrat', sans-serif; font-size: 3em; z-index: 1; margin-bottom: 10px; letter-spacing: 2px; }
     header p { font-size: 1.2em; z-index: 1; max-width: 700px; }
+
     nav { text-align: center; margin: 30px 0; }
     nav a { color: #1DB954; margin: 0 15px; text-decoration: none; font-weight: 700; }
     nav a:hover { text-decoration: underline; }
+
     main { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
     h2 { text-align: center; margin-bottom: 25px; font-size: 2em; color: #1DB954; }
+
     .videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
     .video-card { background-color: #1a1a1a; padding: 15px; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .video-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
     iframe { width: 100%; height: 220px; border-radius: 8px; }
     .video-title { margin-top: 12px; font-weight: 700; font-size: 1.05em; text-align: center; }
+
     .content-section { background: #1a1a1a; padding: 30px; border-radius: 14px; margin-bottom: 60px; }
     .content-section p { margin-bottom: 18px; color: #e0e0e0; }
+
     footer { background: #1DB954; text-align: center; padding: 18px 10px; font-size: 0.9em; color: #000; margin-top: 50px; }
+
+    /* Contact Bulletin */
+    .contact-bulletin {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: rgba(29, 185, 84, 0.9);
+      color: #000;
+      padding: 8px 12px;
+      font-weight: 600;
+      font-size: 0.9em;
+      border-radius: 6px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+      z-index: 1000;
+    }
+
+    @media (max-width: 480px) {
+      .contact-bulletin {
+        font-size: 0.8em;
+        padding: 6px 10px;
+        bottom: 15px;
+        left: 15px;
+      }
+      iframe { height: 200px; }
+    }
     @media (min-width: 768px) { iframe { height: 260px; } }
     @media (min-width: 1024px) { iframe { height: 300px; } }
   </style>
@@ -88,30 +131,11 @@
   </section>
 </main>
 
-  <!-- Floating Contact Button -->
-<a href="contact.html" class="contact-float">Contact</a>
+<!-- Contact Bulletin -->
+<div class="contact-bulletin">
+  Contact: str8flightentertainment@gmail.com | +501 615-0094
+</div>
 
-<style>
-  .contact-float {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: #1DB954;
-    color: #000;
-    padding: 12px 18px;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    z-index: 1000;
-  }
-
-  .contact-float:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-  }
-</style>
 <footer>
   &copy; 2025 Str8 Flight Entertainment • Belize
 </footer>
