@@ -48,10 +48,13 @@ body {
   border-bottom: 1px solid rgba(255,165,0,0.2);
 }
 
-.logo {
+.navbar-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
+}
+
+.logo-text {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.6rem;
   letter-spacing: 2px;
@@ -62,15 +65,12 @@ body {
   text-shadow: 0 0 10px rgba(255,165,0,0.8);
 }
 
-.logo img {
+.logo-img, .flag-img {
   height: 40px;
+  width: auto;
 }
 
-.belize-logo {
-  border-radius: 5px;
-  height: 32px;
-}
-
+/* Nav links */
 .nav-links {
   display: flex;
   gap: 30px;
@@ -118,7 +118,7 @@ body {
 .page-container {
   display: flex;
   justify-content: center;
-  gap: 50px; /* increased spacing between left and right columns */
+  gap: 50px; /* increased gap for left/right columns */
   max-width: 1300px;
   margin: 40px auto;
   padding: 0 20px;
@@ -154,6 +154,10 @@ h2.videos-title {
   font-size: 2em;
   color: #FFA500;
   text-shadow: 0 0 15px #FFA500;
+}
+
+.column p {
+  margin-bottom: 20px; /* space between paragraphs */
 }
 
 .videos {
@@ -233,10 +237,10 @@ footer a { color: #FFA500; text-decoration: underline; }
 <header class="hero-header">
 
   <nav class="navbar">
-    <div class="logo">
-      <span>STR8 FLIGHT</span>
-      <img src="str8flight-logo.png" alt="Str8 Flight Logo" class="site-logo">
-      <img src="belize-flag.png" alt="Belize Flag" class="belize-logo">
+    <div class="navbar-left">
+      <img src="str8flight-logo.png" alt="Str8 Flight Logo" class="logo-img">
+      <div class="logo-text">STR8 FLIGHT</div>
+      <img src="belize-flag.png" alt="Belize Flag" class="flag-img">
     </div>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -263,42 +267,34 @@ footer a { color: #FFA500; text-decoration: underline; }
   <div class="column center">
     <h2 class="videos-title">Featured Music Videos</h2>
     <div class="videos">
-
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/0QwKo-mssxc" allowfullscreen></iframe>
         <div class="video-title">Perry da Artist - Bad Freak</div>
       </div>
-
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/pInxfriRH_w" allowfullscreen></iframe>
         <div class="video-title">Mr. Program - Rise-in-Glory (Prod. by Denton)</div>
       </div>
-
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ" allowfullscreen></iframe>
         <div class="video-title">Denton - Furious (RAW)</div>
       </div>
-
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/8E9zA7Bq1js" allowfullscreen></iframe>
         <div class="video-title">Quarantine - Cleon x Denton - 2020</div>
       </div>
-
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/QdFS99yYcDE" allowfullscreen></iframe>
         <div class="video-title">Denton - Wiser</div>
       </div>
-
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/pmSFR_ohjJk" allowfullscreen></iframe>
         <div class="video-title">Denton - PARRAT</div>
       </div>
-
       <div class="video-card">
         <iframe src="https://www.youtube.com/embed/WTW5qQPIgX0" allowfullscreen></iframe>
         <div class="video-title">Cocono Bwai - Wielo Wielo</div>
       </div>
-
     </div>
   </div>
 
