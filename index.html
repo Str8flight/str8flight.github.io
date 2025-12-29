@@ -7,11 +7,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Roboto', sans-serif; background-color: #0d0d0d; color: #fff; line-height: 1.7; }
-    
+    body { font-family: 'Roboto', sans-serif; background-color: #0a0a0a; color: #fff; line-height: 1.7; }
+
     header { 
       position: relative; 
-      background: linear-gradient(135deg, #1DB954, #1ed760); 
+      background: #0a0a0a; 
       height: 260px; 
       display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
       overflow: hidden; 
@@ -21,36 +21,36 @@
       position: absolute; 
       inset: 0; 
       background: url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat; 
-      opacity: 0.3; z-index: 0; 
+      opacity: 0.2; z-index: 0; 
     }
-    header h1 { font-family: 'Montserrat', sans-serif; font-size: 3em; z-index: 1; margin-bottom: 10px; letter-spacing: 2px; }
-    header p { font-size: 1.2em; z-index: 1; max-width: 700px; }
+    header h1 { font-family: 'Montserrat', sans-serif; font-size: 3em; z-index: 1; margin-bottom: 10px; letter-spacing: 2px; color: #FF6600; }
+    header p { font-size: 1.2em; z-index: 1; max-width: 700px; color: #fff; }
 
     nav { text-align: center; margin: 30px 0; }
-    nav a { color: #1DB954; margin: 0 15px; text-decoration: none; font-weight: 700; }
+    nav a { color: #FF6600; margin: 0 15px; text-decoration: none; font-weight: 700; }
     nav a:hover { text-decoration: underline; }
 
     main { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
-    h2 { text-align: center; margin-bottom: 25px; font-size: 2em; color: #1DB954; }
+    h2 { text-align: center; margin-bottom: 25px; font-size: 2em; color: #FF6600; }
 
     .videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px; }
-    .video-card { background-color: #1a1a1a; padding: 15px; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .video-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-    iframe { width: 100%; height: 220px; border-radius: 8px; }
-    .video-title { margin-top: 12px; font-weight: 700; font-size: 1.05em; text-align: center; }
+    .video-card { background-color: #0a0a0a; padding: 15px; border-radius: 12px; border: 1px solid #FF6600; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .video-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(255,102,0,0.5); }
+    iframe { width: 100%; height: 220px; border-radius: 8px; border: 1px solid #FF6600; }
+    .video-title { margin-top: 12px; font-weight: 700; font-size: 1.05em; text-align: center; color: #FF6600; }
 
-    .content-section { background: #1a1a1a; padding: 30px; border-radius: 14px; margin-bottom: 60px; }
+    .content-section { background: #0a0a0a; padding: 30px; border-radius: 14px; margin-bottom: 60px; border: 1px solid #FF6600; }
     .content-section p { margin-bottom: 18px; color: #e0e0e0; }
 
-    footer { background: #1DB954; text-align: center; padding: 18px 10px; font-size: 0.9em; color: #000; margin-top: 50px; }
+    footer { background: #0a0a0a; text-align: center; padding: 18px 10px; font-size: 0.9em; color: #FF6600; border-top: 2px solid #FF6600; margin-top: 50px; }
 
     /* Contact Bulletin */
     .contact-bulletin {
       position: fixed;
       bottom: 20px;
       left: 20px;
-      background-color: rgba(29, 185, 84, 0.9);
-      color: #000;
+      background-color: #FF6600;
+      color: #0a0a0a;
       padding: 8px 12px;
       font-weight: 600;
       font-size: 0.9em;
@@ -91,32 +91,26 @@
       <iframe src="https://www.youtube.com/embed/0QwKo-mssxc" allowfullscreen></iframe>
       <div class="video-title">Perry da Artist - Bad Freak</div>
     </div>
-
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/pInxfriRH_w" allowfullscreen></iframe>
       <div class="video-title">Mr. Program - Rise-in-Glory (Prod. by Denton)</div>
     </div>
-
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ" allowfullscreen></iframe>
       <div class="video-title">Denton - Furious (RAW)</div>
     </div>
-
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/8E9zA7Bq1js" allowfullscreen></iframe>
       <div class="video-title">Quarantine - Cleon x Denton - 2020</div>
     </div>
-
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/QdFS99yYcDE" allowfullscreen></iframe>
       <div class="video-title">Denton - Wiser</div>
     </div>
-
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/pmSFR_ohjJk" allowfullscreen></iframe>
       <div class="video-title">Denton - PARRAT</div>
     </div>
-
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/WTW5qQPIgX0" allowfullscreen></iframe>
       <div class="video-title">Cocono Bwai - Wielo Wielo</div>
@@ -131,13 +125,11 @@
   </section>
 </main>
 
-<!-- Contact Bulletin -->
-<div class="contact-bulletin">
-  Contact: str8flightentertainment@gmail.com | +501 615-0094
-</div>
-
 <footer>
   &copy; 2025 Str8 Flight Entertainment • Belize
+  <div class="contact-bulletin">
+    Contact: str8flightentertainment@gmail.com | +501 615-0094
+  </div>
 </footer>
 
 </body>
