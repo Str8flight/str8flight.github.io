@@ -16,43 +16,27 @@
     }
 
     header {
-      position: relative;
-      background: linear-gradient(135deg, #FF8C00, #FFA500);
-      height: 260px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: center;
-      overflow: hidden;
-    }
-
-    header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
-      opacity: 0.3;
-      z-index: 0;
+      background: linear-gradient(135deg, #FF8C00, #FFA500);
+      padding: 50px 20px;
     }
 
     header h1 {
       font-family: 'Montserrat', sans-serif;
       font-size: 3em;
-      z-index: 1;
       margin-bottom: 10px;
       letter-spacing: 2px;
     }
 
     header p {
       font-size: 1.2em;
-      z-index: 1;
       max-width: 700px;
+      margin: 0 auto;
     }
 
     nav {
       text-align: center;
-      margin: 30px 0;
+      margin: 20px 0;
     }
 
     nav a {
@@ -66,38 +50,32 @@
       text-decoration: underline;
     }
 
-    main {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    /* Two-column layout for About & Contact */
-    .top-sections {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      margin-bottom: 50px;
-    }
-
-    @media (max-width: 900px) {
-      .top-sections {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .section-card {
+    /* Side sections */
+    .side-section {
+      position: fixed;
+      top: 150px; /* below header */
+      width: 250px;
       background: #1a1a1a;
-      padding: 30px;
-      border-radius: 14px;
+      padding: 20px;
+      border-radius: 12px;
       color: #e0e0e0;
-      line-height: 1.6;
       box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+      max-height: calc(100vh - 180px);
+      overflow-y: auto;
     }
 
-    .section-card h2 {
+    .about-section { left: 20px; }
+    .contact-section { right: 20px; }
+
+    .side-section h2 {
       color: #FFA500;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
     h2.videos-title {
@@ -109,9 +87,21 @@
 
     .videos {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: 1fr;
       gap: 30px;
       margin-bottom: 60px;
+    }
+
+    @media (min-width: 600px) {
+      .videos {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .videos {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     .video-card {
@@ -148,6 +138,7 @@
       line-height: 1.5;
       width: 100%;
       box-shadow: 0 -3px 8px rgba(0,0,0,0.4);
+      margin-top: 50px;
     }
 
     footer a {
@@ -155,8 +146,11 @@
       text-decoration: underline;
     }
 
-    @media (min-width: 768px) { iframe { height: 260px; } }
-    @media (min-width: 1024px) { iframe { height: 300px; } }
+    /* Responsive: hide side sections on small screens */
+    @media (max-width: 900px) {
+      .side-section { position: static; width: 100%; margin-bottom: 30px; max-height: none; }
+      main { padding: 0; }
+    }
 
   </style>
 </head>
@@ -172,33 +166,28 @@
   <a href="privacy.html">Privacy Policy</a>
 </nav>
 
+<!-- About left -->
+<div class="side-section about-section">
+  <h2>About</h2>
+  <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team promotes authentic music and Caribbean culture.</p>
+  <p>The Barrow brothers are actively involved in music production, recording, and creative direction, ensuring originality and quality.</p>
+</div>
+
+<!-- Contact right -->
+<div class="side-section contact-section">
+  <h2>Contact</h2>
+  <ul>
+    <li>Email: <a href="mailto:str8flightentertainment@gmail.com">str8flightentertainment@gmail.com</a></li>
+    <li>Phone: +501 615-0094</li>
+    <li>Follow us on social media:
+      <a href="https://www.instagram.com/str8flightentertainment/?hl=en">Instagram</a>,
+      <a href="https://www.facebook.com/Str8flightentertainment/">Facebook</a>,
+      <a href="https://www.youtube.com/@str8flightentertainment">YouTube</a>
+    </li>
+  </ul>
+</div>
+
 <main>
-  <div class="top-sections">
-    <!-- About Section -->
-    <section class="section-card">
-      <h2>About Str8 Flight Entertainment</h2>
-      <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team is dedicated to promoting authentic music and Caribbean culture, providing artists with a professional space to share their work with a global audience.</p>
-      <p>The Barrow brothers are actively involved in music production, recording, and creative direction, ensuring that each project reflects originality, quality, and the real journey behind independent music creation.</p>
-      <p>Through Str8 Flight Entertainment, the Barrow brothers aim to elevate Belizean and Caribbean artists by combining creativity, discipline, and modern digital platforms. The brand’s vision includes expanding into artist features, educational content, and cultural insights that inspire the next generation of creatives.</p>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section-card">
-      <h2>Contact</h2>
-      <p>If you have questions, suggestions, or business inquiries, reach out to us:</p>
-      <ul>
-        <li>Email: <a href="mailto:str8flightentertainment@gmail.com">str8flightentertainment@gmail.com</a></li>
-        <li>Phone: +501 615-0094</li>
-        <li>Follow us on social media:
-          <a href="https://www.instagram.com/str8flightentertainment/?hl=en">Instagram</a>,
-          <a href="https://www.facebook.com/Str8flightentertainment/">Facebook</a>,
-          <a href="https://www.youtube.com/@str8flightentertainment">YouTube</a>
-          <a href="https://music.apple.com/us/album/party-riddim-2020/1527887305">Apple Music</a>
-        </li>
-      </ul>
-    </section>
-  </div>
-
   <h2 class="videos-title">Featured Music Videos</h2>
   <div class="videos">
     <div class="video-card">
@@ -230,12 +219,10 @@
       <div class="video-title">Cocono Bwai - Wielo Wielo</div>
     </div>
   </div>
-
 </main>
 
 <footer>
-  &copy; 2025 Str8 Flight Entertainment • Belize<br>
-  Contact: str8flightentertainment@gmail.com | Telephone: +501 615-0094
+  &copy; 2025 Str8 Flight Entertainment • Belize
 </footer>
 
 </body>
