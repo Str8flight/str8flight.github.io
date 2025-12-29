@@ -7,41 +7,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: 'Roboto', sans-serif; 
-      background-color: #0d0d0d; /* midnight black */ 
-      color: #FFA500; /* orange text */ 
-      line-height: 1.7; 
-    }
+    body { font-family: 'Roboto', sans-serif; background-color: #0d0d0d; color: #fff; line-height: 1.7; }
 
     header { 
       position: relative; 
-      background: linear-gradient(135deg, #FFA500, #ff8c00); 
+      background: linear-gradient(135deg, #FF8C00, #FFA500); /* orange header gradient */ 
       height: 260px; 
-      display: flex; flex-direction: column; 
+      display: flex; 
+      flex-direction: column; 
       justify-content: center; 
       align-items: center; 
       text-align: center; 
       overflow: hidden; 
     }
-
     header::after { 
       content: ""; 
       position: absolute; 
       inset: 0; 
       background: url('https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat; 
-      opacity: 0.2; 
+      opacity: 0.3; 
       z-index: 0; 
     }
-
-    header h1 { 
-      font-family: 'Montserrat', sans-serif; 
-      font-size: 3em; 
-      z-index: 1; 
-      margin-bottom: 10px; 
-      letter-spacing: 2px; 
-    }
-
+    header h1 { font-family: 'Montserrat', sans-serif; font-size: 3em; z-index: 1; margin-bottom: 10px; letter-spacing: 2px; }
     header p { font-size: 1.2em; z-index: 1; max-width: 700px; }
 
     nav { text-align: center; margin: 30px 0; }
@@ -55,24 +42,24 @@
     .video-card { background-color: #1a1a1a; padding: 15px; border-radius: 12px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .video-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
     iframe { width: 100%; height: 220px; border-radius: 8px; }
-    .video-title { margin-top: 12px; font-weight: 700; font-size: 1.05em; text-align: center; color: #FFA500; }
+    .video-title { margin-top: 12px; font-weight: 700; font-size: 1.05em; text-align: center; }
 
     .content-section { background: #1a1a1a; padding: 30px; border-radius: 14px; margin-bottom: 60px; }
-    .content-section p { margin-bottom: 18px; color: #FFA500; }
+    .content-section p { margin-bottom: 18px; color: #e0e0e0; }
 
     footer {
-      background-color: #0d0d0d; 
-      color: #FFA500; 
-      text-align: center; 
-      padding: 20px 10px; 
-      font-size: 0.9em; 
+      background: #0d0d0d; /* midnight black */
+      color: #FFA500; /* orange text */
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 0.9em;
       line-height: 1.5;
+      width: 100%;
+      box-shadow: 0 -3px 8px rgba(0,0,0,0.4);
     }
 
     @media (min-width: 768px) { iframe { height: 260px; } }
     @media (min-width: 1024px) { iframe { height: 300px; } }
-
-    @media (max-width: 480px) { footer { font-size: 0.85em; padding: 15px 5px; } }
   </style>
 </head>
 <body>
@@ -94,32 +81,26 @@
       <iframe src="https://www.youtube.com/embed/0QwKo-mssxc" allowfullscreen></iframe>
       <div class="video-title">Perry da Artist - Bad Freak</div>
     </div>
-
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/pInxfriRH_w" allowfullscreen></iframe>
       <div class="video-title">Mr. Program - Rise-in-Glory (Prod. by Denton)</div>
     </div>
-
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ" allowfullscreen></iframe>
       <div class="video-title">Denton - Furious (RAW)</div>
     </div>
-
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/8E9zA7Bq1js" allowfullscreen></iframe>
       <div class="video-title">Quarantine - Cleon x Denton - 2020</div>
     </div>
-
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/QdFS99yYcDE" allowfullscreen></iframe>
       <div class="video-title">Denton - Wiser</div>
     </div>
-
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/pmSFR_ohjJk" allowfullscreen></iframe>
       <div class="video-title">Denton - PARRAT</div>
     </div>
-
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/WTW5qQPIgX0" allowfullscreen></iframe>
       <div class="video-title">Cocono Bwai - Wielo Wielo</div>
