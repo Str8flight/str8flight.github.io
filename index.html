@@ -16,13 +16,13 @@ body {
   overflow-x: hidden;
 }
 
-/* ================= HEADER ================= */
+/* ================= HERO HEADER ================= */
 .hero-header {
   position: relative;
   background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
-  padding: 120px 20px 60px;
+  padding: 150px 20px 80px;
   text-align: center;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .hero-header::before {
@@ -33,6 +33,12 @@ body {
     radial-gradient(circle at top right, rgba(179,107,0,0.25), transparent 45%),
     radial-gradient(circle at bottom left, rgba(138,76,0,0.15), transparent 45%);
   z-index: 0;
+  opacity: 0;
+  animation: fadeInBg 1.5s forwards;
+}
+
+@keyframes fadeInBg {
+  to { opacity: 1; }
 }
 
 /* NAVBAR */
@@ -52,10 +58,7 @@ body {
   gap: 10px;
 }
 
-.logo-img, .flag-img {
-  height: 40px;
-  width: auto;
-}
+.logo-img, .flag-img { height: 40px; width: auto; }
 
 .logo-text {
   font-family: 'Montserrat', sans-serif;
@@ -66,18 +69,11 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 6px rgba(179,107,0,0.8);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInUp 1s forwards 0.5s;
 }
 
-/* Club Hands */
-.club-hands {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  height: 60px;
-  z-index: 3;
-}
-
-/* Nav links centered under logo */
 .nav-links {
   display: flex;
   gap: 25px;
@@ -90,19 +86,23 @@ body {
   font-weight: 700;
   text-decoration: none;
   text-shadow: 0 0 4px #b36b00;
-  transition: 0.3s;
-}
-.nav-links a:hover {
-  color: #ff9c3b;
-  text-shadow: 0 0 10px #ff9c3b, 0 0 20px #b36b00;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInUp 1s forwards;
 }
 
-/* HERO TEXT */
+.nav-links a:nth-child(1) { animation-delay: 0.7s; }
+.nav-links a:nth-child(2) { animation-delay: 0.9s; }
+.nav-links a:nth-child(3) { animation-delay: 1.1s; }
+
 .hero-content {
   position: relative;
   z-index: 2;
   max-width: 900px;
   margin: auto;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards 1.3s;
 }
 
 .hero-content h1 {
@@ -113,10 +113,7 @@ body {
   text-shadow: 0 0 8px #b36b00, 0 0 15px #8a4c00;
 }
 
-.hero-content p {
-  font-size: 1.2em;
-  text-shadow: 0 0 4px #fff;
-}
+.hero-content p { font-size: 1.2em; text-shadow: 0 0 4px #fff; }
 
 /* ================= PAGE CONTENT ================= */
 .page-container {
@@ -137,7 +134,11 @@ body {
   line-height: 1.7;
   box-shadow: 0 0 15px rgba(179,107,0,0.5), 0 0 30px rgba(138,76,0,0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
 }
+
+.column.show { opacity: 1; transform: translateY(0); }
 
 .column:hover {
   transform: translateY(-5px);
@@ -148,22 +149,9 @@ body {
 .left, .right { flex: 1; min-width: 250px; }
 .center { flex: 2.5; min-width: 550px; }
 
-.column h2 {
-  color: #b36b00;
-  margin-bottom: 15px;
-  text-shadow: 0 0 8px #b36b00;
-}
-
-h2.videos-title {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 2em;
-  text-shadow: 0 0 10px #b36b00;
-}
-
-.column p {
-  margin-bottom: 22px;
-}
+.column h2 { color: #b36b00; margin-bottom: 15px; text-shadow: 0 0 8px #b36b00; }
+h2.videos-title { text-align: center; margin-bottom: 25px; font-size: 2em; text-shadow: 0 0 10px #b36b00; }
+.column p { margin-bottom: 22px; }
 
 /* VIDEOS */
 .videos {
@@ -186,20 +174,8 @@ h2.videos-title {
   box-shadow: 0 0 25px #b36b00, 0 0 40px #8a4c00;
 }
 
-iframe {
-  width: 100%;
-  height: 270px;
-  border-radius: 14px;
-  border: none;
-}
-
-.video-title {
-  margin-top: 12px;
-  font-weight: 700;
-  font-size: 1.05em;
-  text-align: center;
-  text-shadow: 0 0 4px #b36b00;
-}
+iframe { width: 100%; height: 270px; border-radius: 14px; border: none; }
+.video-title { margin-top: 12px; font-weight: 700; font-size: 1.05em; text-align: center; text-shadow: 0 0 4px #b36b00; }
 
 /* FOOTER */
 footer {
@@ -210,6 +186,11 @@ footer {
   font-size: 0.9em;
   box-shadow: 0 -3px 8px rgba(179,107,0,0.3);
   text-shadow: 0 0 4px #b36b00;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* RESPONSIVE */
@@ -223,17 +204,13 @@ footer {
   .hero-header { padding: 80px 20px 40px; }
   .hero-content h1 { font-size: 2.4em; }
   iframe { height: 220px; }
-
-  /* Remove blur effect that blocks mobile */
   .hero-header::before { display: none; }
-  .club-hands { height: 50px; top: 15px; right: 15px; }
 }
 </style>
 </head>
 <body>
 
 <header class="hero-header">
-
   <nav class="navbar">
     <div class="navbar-left">
       <img src="str8flight-logo.png" alt="Str8 Flight Logo" class="logo-img">
@@ -247,18 +224,13 @@ footer {
     </div>
   </nav>
 
-  <!-- Club hands -->
-  <img src="club-hands.png" alt="Club Hands" class="club-hands">
-
   <div class="hero-content">
     <h1>Str8 Flight Entertainment</h1>
     <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
   </div>
-
 </header>
 
 <div class="page-container">
-
   <div class="column left" id="about">
     <h2>About</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team promotes authentic music and Caribbean culture while giving a platform to emerging artists.</p>
@@ -284,18 +256,6 @@ footer {
         <iframe src="https://www.youtube.com/embed/8E9zA7Bq1js" allowfullscreen></iframe>
         <div class="video-title">Quarantine - Cleon x Denton - 2020</div>
       </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/QdFS99yYcDE" allowfullscreen></iframe>
-        <div class="video-title">Denton - Wiser</div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/pmSFR_ohjJk" allowfullscreen></iframe>
-        <div class="video-title">Denton - PARRAT</div>
-      </div>
-      <div class="video-card">
-        <iframe src="https://www.youtube.com/embed/WTW5qQPIgX0" allowfullscreen></iframe>
-        <div class="video-title">Cocono Bwai - Wielo Wielo</div>
-      </div>
     </div>
   </div>
 
@@ -304,8 +264,7 @@ footer {
     <ul>
       <li>Email: <a href="mailto:str8flightentertainment@gmail.com">str8flightentertainment@gmail.com</a></li>
       <li>Phone: +501 615-0094</li>
-      <li>
-        Follow us:
+      <li>Follow us:
         <a href="https://www.instagram.com/str8flightentertainment/?hl=en">Instagram</a>,
         <a href="https://www.facebook.com/Str8flightentertainment/">Facebook</a>,
         <a href="https://www.youtube.com/@str8flightentertainment">YouTube</a>,
@@ -313,12 +272,23 @@ footer {
       </li>
     </ul>
   </div>
-
 </div>
 
 <footer>
   &copy; 2025 Str8 Flight Entertainment • Belize
 </footer>
 
+<script>
+// Animate columns when they appear in viewport
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{ threshold: 0.2 });
+
+document.querySelectorAll('.column').forEach(col => observer.observe(col));
+</script>
 </body>
 </html>
