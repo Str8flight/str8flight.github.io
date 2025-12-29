@@ -13,7 +13,8 @@
       color: #fff; 
       line-height: 1.6; 
     }
-    a { text-decoration: none; }
+    a { text-decoration: none; color: #FFA500; }
+    a:hover { color: #FF8C00; }
 
     /* Header */
     header {
@@ -87,12 +88,12 @@
       margin: 50px auto;
       padding: 0 20px;
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 1fr 1fr;
       gap: 30px;
     }
 
-    /* About section on left */
-    .content-section {
+    /* About & Contact sections */
+    .section-card {
       background: #1a1a1a;
       padding: 25px;
       border-radius: 16px;
@@ -100,21 +101,23 @@
       box-shadow: 0 0 15px rgba(255,140,0,0.3);
       font-size: 1.05em;
     }
-    .content-section h2 {
+    .section-card h2 {
       color: #FFA500;
       margin-bottom: 20px;
       text-shadow: 0 0 6px #FF8C00;
     }
-    .content-section p {
+    .section-card p, .section-card li {
       margin-bottom: 15px;
       color: #e0e0e0;
     }
+    .section-card ul { list-style: none; padding-left: 0; }
 
-    /* Video grid */
+    /* Video grid below sections */
     .videos {
       display: grid;
       grid-template-columns: 1fr;
       gap: 25px;
+      margin-top: 40px;
     }
     .video-card {
       background: rgba(255, 140, 0, 0.05);
@@ -180,15 +183,31 @@
 </nav>
 
 <main>
-  <!-- About on left -->
-  <section class="content-section">
+  <!-- About Section -->
+  <section class="section-card">
     <h2>About Str8 Flight Entertainment</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team is dedicated to promoting authentic music and Caribbean culture, providing artists with a professional space to share their work with a global audience.</p>
     <p>The Barrow brothers are actively involved in music production, recording, and creative direction, ensuring that each project reflects originality, quality, and the real journey behind independent music creation.</p>
     <p>Through Str8 Flight Entertainment, the Barrow brothers aim to elevate Belizean and Caribbean artists by combining creativity, discipline, and modern digital platforms. The brand’s vision includes expanding into artist features, educational content, and cultural insights that inspire the next generation of creatives.</p>
   </section>
 
-  <!-- Videos on right -->
+  <!-- Contact Section -->
+  <section class="section-card">
+    <h2>Contact</h2>
+    <ul>
+      <li>Email: <a href="mailto:str8flightentertainment@gmail.com">str8flightentertainment@gmail.com</a></li>
+      <li>Phone: +501 615-0094</li>
+      <li>Follow us on social media:
+        <ul>
+          <li><a href="https://www.instagram.com/str8flightentertainment/?hl=en">Instagram</a></li>
+          <li><a href="https://www.facebook.com/Str8flightentertainment/">Facebook</a></li>
+          <li><a href="https://www.youtube.com/@str8flightentertainment">YouTube</a></li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Featured Videos -->
   <div class="videos">
     <div class="video-card">
       <iframe src="https://www.youtube.com/embed/0QwKo-mssxc" allowfullscreen></iframe>
@@ -219,11 +238,11 @@
       <div class="video-title">Cocono Bwai - Wielo Wielo</div>
     </div>
   </div>
+
 </main>
 
 <footer>
-  &copy; 2025 Str8 Flight Entertainment • Belize<br>
-  Contact: str8flightentertainment@gmail.com | Telephone: +501 615-0094
+  &copy; 2025 Str8 Flight Entertainment • Belize
 </footer>
 
 </body>
