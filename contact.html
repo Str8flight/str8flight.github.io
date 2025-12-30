@@ -6,193 +6,35 @@
 <title>Contact Us | Str8 Flight Entertainment</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <style>
-/* ================= GLOBAL ================= */
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #0b0b0b;
-  color:#fff;
-  line-height:1.7;
-  overflow-x:hidden;
-}
-a { text-decoration:none; }
-h2 { font-family:'Montserrat', sans-serif; }
-
-/* ================= NAVBAR ================= */
-.navbar {
-  position: fixed;
-  top:0;
-  width:100%;
-  z-index:100;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 40px;
-  background:rgba(0,0,0,0.7);
-  backdrop-filter:blur(5px);
-}
-.navbar-left {
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-.logo-img, .flag-img {
-  height:40px;
-  width:auto;
-}
-.logo-text {
-  font-family:'Montserrat',sans-serif;
-  font-size:1.6rem;
-  font-weight:700;
-  background:linear-gradient(90deg,#b36b00,#8a4c00);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 6px rgba(179,107,0,0.8);
-}
-.nav-links {
-  display:flex;
-  gap:25px;
-}
-.nav-links a {
-  color:#b36b00;
-  font-weight:700;
-  transition:0.3s;
-}
-.nav-links a:hover { color:#ff9c3b; }
-
-/* ================= HERO ================= */
-.hero-header {
-  position:relative;
-  height:60vh;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-}
-.hero-header h1 {
-  font-family:'Montserrat',sans-serif;
-  font-size:3em;
-  background:linear-gradient(90deg,#b36b00,#8a4c00);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 10px #b36b00;
-  animation:fadeInDown 1.2s ease forwards;
-}
-.hero-header p {
-  margin-top:15px;
-  font-size:1.2em;
-  opacity:0;
-  animation:fadeInUp 1.5s ease forwards;
-  animation-delay:0.3s;
-}
-@keyframes fadeInDown { 0% { opacity:0; transform:translateY(-30px);} 100% { opacity:1; transform:translateY(0);} }
-@keyframes fadeInUp { 0% { opacity:0; transform:translateY(30px);} 100% { opacity:1; transform:translateY(0);} }
-
-/* ================= PARTICLES ================= */
-.particles {
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  z-index:0;
-  overflow:hidden;
-}
-.particles div {
-  position:absolute;
-  width:6px; height:6px;
-  background:#b36b00;
-  border-radius:50%;
-  opacity:0.6;
-  animation:moveParticles 10s linear infinite;
-}
-@keyframes moveParticles {
-  0% { transform:translateY(0) translateX(0); opacity:0.6; }
-  50% { opacity:1; }
-  100% { transform:translateY(-1200px) translateX(400px); opacity:0.2; }
-}
-
-/* ================= CONTACT FORM ================= */
-.contact-form-container {
-  max-width:700px;
-  margin:40px auto;
-  background:#1a1a1a;
-  padding:30px;
-  border-radius:16px;
-  box-shadow:0 0 25px #b36b00;
-  opacity:0;
-  transform:translateY(30px);
-  transition:1s ease;
-}
-.contact-form-container.visible { opacity:1; transform:translateY(0); }
-.contact-form-container h2 {
-  text-align:center;
-  margin-bottom:25px;
-  color:#b36b00;
-  text-shadow:0 0 8px #b36b00;
-}
-.contact-form-container form {
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-}
-.contact-form-container input,
-.contact-form-container textarea {
-  padding:12px;
-  border-radius:10px;
-  border:none;
-  font-size:1em;
-  width:100%;
-}
-.contact-form-container button {
-  padding:12px;
-  border-radius:10px;
-  border:none;
-  background:#b36b00;
-  color:#fff;
-  font-weight:700;
-  cursor:pointer;
-  transition:0.3s;
-}
+body { font-family:'Roboto',sans-serif; background:#0b0b0b; color:#fff; margin:0; padding:0; line-height:1.7; }
+.navbar { display:flex; justify-content:space-between; align-items:center; gap:20px; padding:20px 40px; background:rgba(0,0,0,0.7); backdrop-filter:blur(5px); position:sticky; top:0; z-index:100; }
+.navbar-left { display:flex; align-items:center; gap:10px; }
+.logo-img,.flag-img { height:40px; width:auto; }
+.logo-text { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.6rem; background:linear-gradient(90deg,#b36b00,#8a4c00); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 6px rgba(179,107,0,0.8);}
+.nav-links a { color:#b36b00; font-weight:700; text-decoration:none; text-shadow:0 0 4px #b36b00; transition:0.3s; margin-left:15px;}
+.nav-links a:hover { color:#ff9c3b; text-shadow:0 0 10px #ff9c3b,0 0 20px #b36b00;}
+.hero-header { text-align:center; padding:120px 20px 60px; background:linear-gradient(135deg,#0b0b0b,#1a1a1a);}
+.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; color:#b36b00; margin-bottom:10px; text-shadow:0 0 8px #b36b00; animation:fadeInDown 1s ease forwards; }
+.hero-header p { font-size:1.2em; color:#fff; opacity:0; animation:fadeInUp 1s ease forwards; animation-delay:0.3s;}
+@keyframes fadeInDown { 0% {opacity:0; transform:translateY(-30px);} 100% {opacity:1; transform:translateY(0);} }
+@keyframes fadeInUp { 0% {opacity:0; transform:translateY(30px);} 100% {opacity:1; transform:translateY(0);} }
+.contact-form-container { max-width:700px; margin:40px auto; background:#1a1a1a; padding:30px; border-radius:16px; box-shadow:0 0 20px #b36b00; }
+.contact-form-container h2 { text-align:center; margin-bottom:25px; color:#b36b00; text-shadow:0 0 8px #b36b00; }
+.contact-form-container form { display:flex; flex-direction:column; gap:20px; }
+.contact-form-container input, .contact-form-container textarea { padding:12px; border-radius:10px; border:none; font-size:1em; width:100%; background:#0b0b0b; color:#fff;}
+.contact-form-container button { padding:12px; border-radius:10px; border:none; background:#b36b00; color:#fff; font-weight:700; cursor:pointer; transition:0.3s; }
 .contact-form-container button:hover { background:#ff9c3b; }
-
-/* ================= SOCIAL LINKS ================= */
-.social-links {
-  text-align:center;
-  margin-top:40px;
-}
+.social-links { text-align:center; margin-top:40px; }
 .social-links h3 { margin-bottom:15px; color:#b36b00; }
-.social-links a {
-  margin:0 15px;
-  color:#b36b00;
-  font-weight:700;
-  transition:0.3s;
-}
+.social-links a { margin:0 15px; color:#b36b00; text-decoration:none; font-weight:700; transition:0.3s; }
 .social-links a:hover { color:#ff9c3b; }
-
-/* ================= FOOTER ================= */
-footer {
-  background:#0b0b0b;
-  color:#b36b00;
-  text-align:center;
-  padding:25px 10px;
-  font-size:0.9em;
-  box-shadow:0 -3px 8px rgba(179,107,0,0.3);
-  text-shadow:0 0 4px #b36b00;
-}
-
-/* ================= RESPONSIVE ================= */
-@media(max-width:1024px) {
-  .navbar { flex-direction:column; gap:10px; }
-}
-@media(max-width:768px) {
-  .hero-header h1 { font-size:2.4em; }
-}
+footer { text-align:center; padding:20px; background:#0b0b0b; color:#b36b00; margin-top:50px; }
+@media(max-width:1024px){ .navbar{flex-direction:column; gap:15px;} .contact-form-container{padding:20px;} }
+@media(max-width:768px){ .hero-header h1{font-size:2.4em;} }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="navbar-left">
     <img src="str8flight-logo.png" alt="Str8 Flight Logo" class="logo-img">
@@ -203,65 +45,5 @@ footer {
     <a href="index.html">Home</a>
     <a href="index.html#about">About</a>
     <a href="index.html#videos">Videos</a>
-    <a href="contact.html">Contact</a>
-  </div>
-</div>
-</nav>
-
-<!-- HERO -->
-<header class="hero-header">
-  <div class="particles" id="particles"></div>
-  <h1>Contact Us</h1>
-  <p>Get in touch with Str8 Flight Entertainment</p>
-</header>
-
-<!-- CONTACT FORM -->
-<div class="contact-form-container" id="contactForm">
-  <h2>Get in Touch</h2>
-  <form action="https://formspree.io/f/b0dd08cede75446a922d2a3c42bf75dd" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="_replyto" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-
-  <div class="social-links">
-    <h3>Follow Us</h3>
-    <a href="https://www.instagram.com/str8flightentertainment/?hl=en" target="_blank">Instagram</a>
-    <a href="https://www.facebook.com/Str8flightentertainment/" target="_blank">Facebook</a>
-    <a href="https://www.youtube.com/@str8flightentertainment" target="_blank">YouTube</a>
-    <a href="https://music.apple.com/us/album/party-riddim-2020/1527887305" target="_blank">Apple Music</a>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  &copy; 2025 Str8 Flight Entertainment • Belize
-</footer>
-
-<script>
-// Particle animation
-const particleContainer = document.getElementById('particles');
-for(let i=0;i<60;i++){
-  const div=document.createElement('div');
-  div.style.left=Math.random()*100+'%';
-  div.style.top=Math.random()*100+'%';
-  div.style.width=2+Math.random()*4+'px';
-  div.style.height=2+Math.random()*4+'px';
-  div.style.animationDuration=5+Math.random()*10+'s';
-  particleContainer.appendChild(div);
-}
-
-// Scroll reveal for contact form
-const contactForm = document.getElementById('contactForm');
-const revealForm = () => {
-  const boxTop = contactForm.getBoundingClientRect().top;
-  const triggerBottom = window.innerHeight * 0.85;
-  if(boxTop < triggerBottom) contactForm.classList.add('visible');
-};
-window.addEventListener('scroll', revealForm);
-revealForm();
-</script>
-
-</body>
-</html>
+    <a href="contacts.html">Contact</a>
+  </
