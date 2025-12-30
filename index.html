@@ -6,7 +6,7 @@
 <title>Str8 Flight Entertainment | Belize Music & Culture</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
-<!-- Google AdSense Script -->
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393"
         crossorigin="anonymous"></script>
 
@@ -34,9 +34,10 @@ h2 { font-family:'Montserrat', sans-serif; }
 }
 .hero-header h1 {
   font-family:'Montserrat',sans-serif; font-size:3em;
-  background:linear-gradient(90deg,#b36b00,#8a4c00);
+  background:linear-gradient(90deg,#b36b00,#ff9c3b);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  text-shadow:0 0 10px #b36b00; animation:fadeInDown 1.2s ease forwards;
+  text-shadow:0 0 15px #b36b00,0 0 30px #ff9c3b;
+  animation:fadeInDown 1.2s ease forwards;
 }
 .hero-header p {
   margin-top:15px; font-size:1.2em; opacity:0;
@@ -51,7 +52,7 @@ h2 { font-family:'Montserrat', sans-serif; }
 }
 .particles div {
   position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:0.6;
-  animation:moveParticles 10s linear infinite;
+  animation:moveParticles 12s linear infinite;
 }
 @keyframes moveParticles {
   0%{transform:translateY(0) translateX(0);opacity:0.6;}
@@ -62,7 +63,8 @@ h2 { font-family:'Montserrat', sans-serif; }
 /* ================= PAGE CONTENT ================= */
 .page-container {
   display:flex; justify-content:space-between; gap:40px;
-  max-width:1400px; margin:50px auto 100px; padding:0 20px; flex-wrap:wrap;
+  max-width:1400px; margin:50px auto 100px;
+  padding:0 20px; flex-wrap:wrap;
 }
 .column {
   background:#1a1a1a; padding:30px; border-radius:16px; color:#e0e0e0; line-height:1.7;
@@ -70,10 +72,10 @@ h2 { font-family:'Montserrat', sans-serif; }
   transition:transform 0.3s ease, box-shadow 0.3s ease; opacity:0; transform:translateY(30px);
 }
 .column.visible { opacity:1; transform:translateY(0); transition:1s ease; }
-.column:hover { transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #8a4c00; }
+.column:hover { transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #ff9c3b; }
 .left, .right { flex:1; min-width:250px; } .center { flex:2.5; min-width:550px; }
 .column h2 { color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00; }
-h2.videos-title, h2.services-title { text-align:center; margin-bottom:25px; font-size:2em; text-shadow:0 0 10px #b36b00; }
+h2.videos-title { text-align:center; margin-bottom:25px; font-size:2em; text-shadow:0 0 10px #b36b00; }
 .column p { margin-bottom:22px; }
 
 /* ================= VIDEOS ================= */
@@ -82,33 +84,9 @@ h2.videos-title, h2.services-title { text-align:center; margin-bottom:25px; font
   background:#1a1a1a; padding:20px; border-radius:16px; box-shadow:0 0 15px #b36b00;
   transition:transform 0.3s ease, box-shadow 0.3s ease;
 }
-.video-card:hover { transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #8a4c00; }
+.video-card:hover { transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #ff9c3b; }
 iframe { width:100%; height:270px; border-radius:14px; border:none; }
 .video-title { margin-top:12px; font-weight:700; font-size:1.05em; text-align:center; text-shadow:0 0 4px #b36b00; }
-
-/* ================= SERVICES PREVIEW ================= */
-.services-preview {
-  max-width:1200px;
-  margin:50px auto 100px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
-  padding:0 20px;
-}
-.service-card {
-  background:#1a1a1a;
-  padding:30px 20px;
-  border-radius:16px;
-  text-align:center;
-  box-shadow:0 0 15px rgba(179,107,0,0.5),0 0 30px rgba(138,76,0,0.3);
-  transition:transform 0.3s ease, box-shadow 0.3s ease;
-  opacity:0;
-  transform:translateY(30px);
-}
-.service-card.visible { opacity:1; transform:translateY(0); transition:1s ease; }
-.service-card:hover { transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #8a4c00; }
-.service-card h3 { margin-bottom:15px; color:#b36b00; font-size:1.2em; text-shadow:0 0 5px #b36b00; }
-.service-card p { color:#e0e0e0; font-size:0.95em; }
 
 /* ================= FOOTER ================= */
 footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; }
@@ -116,6 +94,7 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
 /* ================= RESPONSIVE ================= */
 @media(max-width:1024px){ .page-container{flex-direction:column;} .left,.center,.right{flex:1;min-width:auto;} .videos{grid-template-columns:1fr;} }
 @media(max-width:768px){ .hero-header h1{font-size:2.4em;} iframe{height:220px;} }
+
 </style>
 </head>
 <body>
@@ -124,25 +103,28 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
 <nav class="navbar">
   <a href="#about">About</a>
   <a href="#videos">Videos</a>
-  <a href="contact.html">Contact</a>
   <a href="services.html">Services</a>
+  <a href="contact.html">Contact</a>
 </nav>
 
 <!-- HERO -->
 <header class="hero-header">
   <div class="particles" id="particles"></div>
+  <img src="https://str8flight.github.io/str8flight-logo.png" alt="Str8 Flight Logo" style="width:120px; margin-bottom:20px;">
   <h1>Str8 Flight Entertainment</h1>
   <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
 </header>
 
 <!-- PAGE CONTENT -->
 <div class="page-container">
+
   <!-- ABOUT -->
   <div class="column left" id="about">
     <h2>About</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team is committed to promoting authentic music and Caribbean culture while giving a platform to emerging artists and creators.</p>
     <p>The Barrow brothers are actively involved in music production, recording, creative direction, and artist development. They work tirelessly to maintain originality, quality, and cultural relevance in every project.</p>
     <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations, aiming to inspire and nurture Belizean talent while connecting it to a global audience.</p>
+    <img src="https://str8flight.github.io/belize-flag.png" alt="Belize Flag" style="width:100px; margin-top:15px;">
   </div>
 
   <!-- VIDEOS -->
@@ -166,17 +148,10 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
     <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
-</div>
 
-<!-- SERVICES PREVIEW -->
-<section class="services-preview">
-  <h2 class="services-title">Our Services</h2>
-  <div class="service-card"><h3>Dub Plate</h3><p>Custom dubplates for DJs and exclusive tracks.</p></div>
-  <div class="service-card"><h3>Mixing & Mastering</h3><p>Professional audio mixing and mastering.</p></div>
-  <div class="service-card"><h3>Studio Recording</h3><p>High-quality recording sessions for vocals and instruments.</p></div>
-  <div class="service-card"><h3>Music Production</h3><p>Beats, instrumentals, and full song production.</p></div>
-</section>
+  </div>
+
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -196,14 +171,9 @@ for(let i=0;i<60;i++){
   particleContainer.appendChild(div);
 }
 
-// Reveal on scroll
-const elements=document.querySelectorAll('.column, .video-card, .service-card');
-const revealOnScroll=()=>{ 
-  const trigger=window.innerHeight*0.85; 
-  elements.forEach(el=>{
-    if(el.getBoundingClientRect().top<trigger) el.classList.add('visible');
-  });
-}
+// Scroll reveal
+const columns=document.querySelectorAll('.column');
+const revealOnScroll=()=>{ const triggerBottom=window.innerHeight*0.85; columns.forEach(column=>{ const boxTop=column.getBoundingClientRect().top; if(boxTop<triggerBottom) column.classList.add('visible');});}
 window.addEventListener('scroll',revealOnScroll); revealOnScroll();
 </script>
 
