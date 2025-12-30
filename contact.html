@@ -6,194 +6,152 @@
 <title>Contact Us | Str8 Flight Entertainment</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <style>
-/* ================= GLOBAL ================= */
-* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #0b0b0b;
   color: #fff;
   line-height: 1.7;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-/* NAVBAR */
 .navbar {
-  position: relative;
-  z-index: 2;
   display: flex;
   justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
+  gap: 30px;
+  background: rgba(0,0,0,0.7);
   padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-.logo-img, .flag-img { height: 40px; width: auto; }
-
-.logo-text {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1.8rem;
-  letter-spacing: 2px;
-  font-weight: 700;
-  background: linear-gradient(90deg, #b36b00, #8a4c00);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 6px rgba(179,107,0,0.8);
-}
-
-.nav-links {
-  display: flex;
-  gap: 25px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.nav-links a {
+.navbar a {
   color: #b36b00;
-  font-weight: 700;
   text-decoration: none;
-  text-shadow: 0 0 4px #b36b00;
+  font-weight: 700;
   transition: 0.3s;
 }
-.nav-links a:hover {
+.navbar a:hover {
   color: #ff9c3b;
-  text-shadow: 0 0 10px #ff9c3b, 0 0 20px #b36b00;
 }
 
-/* HERO SECTION */
 .hero-header {
-  position: relative;
-  background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
-  padding: 120px 20px 60px;
   text-align: center;
+  padding: 120px 20px 60px;
+  background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
-  margin: auto;
-}
-
-.hero-content h1 {
+.hero-header h1 {
   font-family: 'Montserrat', sans-serif;
   font-size: 3em;
-  margin-bottom: 15px;
-  letter-spacing: 2px;
-  text-shadow: 0 0 8px #b36b00, 0 0 15px #8a4c00;
-}
-
-.hero-content p {
-  font-size: 1.2em;
-  text-shadow: 0 0 4px #fff;
-}
-
-/* ================= CONTACT FORM ================= */
-.contact-container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 20px;
-  background: #1a1a1a;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(179,107,0,0.5), 0 0 40px rgba(138,76,0,0.3);
-}
-
-.contact-container h2 {
-  text-align: center;
   color: #b36b00;
-  margin-bottom: 25px;
-  text-shadow: 0 0 8px #b36b00;
-  font-size: 2em;
+  margin-bottom: 10px;
 }
 
-.contact-container form {
+.hero-header p {
+  font-size: 1.2em;
+  color: #fff;
+}
+
+.contact-form-container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #b36b00;
+}
+
+.contact-form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #b36b00;
+  text-shadow: 0 0 8px #b36b00;
+}
+
+.contact-form-container form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.contact-container input,
-.contact-container textarea {
-  padding: 12px 15px;
-  border-radius: 8px;
+.contact-form-container input,
+.contact-form-container textarea {
+  padding: 12px;
+  border-radius: 10px;
   border: none;
   font-size: 1em;
-  background-color: #0b0b0b;
-  color: #fff;
-  box-shadow: 0 0 6px #b36b00 inset;
+  width: 100%;
 }
 
-.contact-container textarea {
-  resize: vertical;
-  min-height: 150px;
-}
-
-.contact-container button {
-  padding: 15px;
+.contact-form-container button {
+  padding: 12px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
-  font-size: 1.1em;
-  font-weight: 700;
-  background: linear-gradient(90deg, #b36b00, #8a4c00);
+  background: #b36b00;
   color: #fff;
+  font-weight: 700;
   cursor: pointer;
-  text-shadow: 0 0 4px #fff;
   transition: 0.3s;
 }
-
-.contact-container button:hover {
-  background: linear-gradient(90deg, #ff9c3b, #b36b00);
-  transform: translateY(-2px);
-  box-shadow: 0 0 15px #ff9c3b, 0 0 25px #b36b00;
+.contact-form-container button:hover {
+  background: #ff9c3b;
 }
 
-/* FOOTER */
+.social-links {
+  text-align: center;
+  margin-top: 40px;
+}
+.social-links a {
+  margin: 0 15px;
+  color: #b36b00;
+  text-decoration: none;
+  font-weight: 700;
+}
+.social-links a:hover {
+  color: #ff9c3b;
+}
+
 footer {
+  text-align: center;
+  padding: 20px;
   background: #0b0b0b;
   color: #b36b00;
-  text-align: center;
-  padding: 25px 10px;
-  font-size: 0.9em;
-  box-shadow: 0 -3px 8px rgba(179,107,0,0.3);
-  text-shadow: 0 0 4px #b36b00;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .hero-content h1 { font-size: 2.4em; }
+  margin-top: 50px;
 }
 </style>
 </head>
 <body>
 
-<header class="hero-header">
-  <nav class="navbar">
-    <div class="navbar-left">
-      <img src="str8flight-logo.png" alt="Logo" class="logo-img">
-      <div class="logo-text">STR8 FLIGHT</div>
-      <img src="belize-flag.png" alt="Flag" class="flag-img">
-    </div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#videos">Videos</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </nav>
+<nav class="navbar">
+  <a href="index.html">Home</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#videos">Videos</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
-  <div class="hero-content">
-    <h1>Contact Us</h1>
-    <p>Have questions or want to collaborate? Reach out to us below.</p>
-  </div>
+<header class="hero-header">
+  <h1>Contact Us</h1>
+  <p>Get in touch with Str8 Flight Entertainment</p>
 </header>
 
-<div class="contact-container">
+<div class="contact-form-container">
   <h2>Get in Touch</h2>
-  <form action="mailto:str8flightentertainment@gmail.com" method="post" enctype="text/plain">
+  <form action="https://formspree.io/f/b0dd08cede75446a922d2a3c42bf75dd" method="POST">
     <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="text" name="subject" placeholder="Subject" required>
-    <textarea name="message" placeholder="Your Message" required></textarea>
+    <input type="email" name="_replyto" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
     <button type="submit">Send Message</button>
   </form>
+
+  <div class="social-links">
+    <h3>Follow us</h3>
+    <a href="https://www.instagram.com/str8flightentertainment/?hl=en" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/Str8flightentertainment/" target="_blank">Facebook</a>
+    <a href="https://www.youtube.com/@str8flightentertainment" target="_blank">YouTube</a>
+    <a href="https://music.apple.com/us/album/party-riddim-2020/1527887305" target="_blank">Apple Music</a>
+  </div>
 </div>
 
 <footer>
