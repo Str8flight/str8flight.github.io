@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Str8 Flight Entertainment | Belize Music & Culture</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-
-<!-- Google AdSense -->
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Google AdSense Script -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393"
         crossorigin="anonymous"></script>
 
@@ -20,11 +21,31 @@ h2 { font-family:'Montserrat', sans-serif; }
 /* ================= NAVBAR ================= */
 .navbar {
   position: fixed; top:0; width:100%; z-index:100;
-  display:flex; justify-content:center; gap:30px;
-  padding:15px 0; background:rgba(0,0,0,0.7); backdrop-filter:blur(5px);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px 20px; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
 }
-.navbar a { color:#b36b00; font-weight:700; transition:0.3s; }
-.navbar a:hover { color:#ff9c3b; }
+.navbar .logo { display:flex; align-items:center; gap:10px; }
+.navbar .logo img { width:50px; height:auto; }
+.menu-toggle {
+  display: none; flex-direction: column; cursor: pointer;
+}
+.menu-toggle span { background:#b36b00; height:3px; width:25px; margin:4px 0; transition:0.3s; }
+.nav-list { list-style:none; display:flex; gap:25px; }
+.nav-list li a { color:#b36b00; font-weight:700; transition:0.3s; }
+.nav-list li a:hover { color:#ff9c3b; }
+
+/* MOBILE NAV */
+@media(max-width:768px){
+  .menu-toggle { display:flex; }
+  .nav-list {
+    position:absolute; top:65px; right:0; width:200px; background:#1a1a1a;
+    flex-direction: column; gap:0; overflow:hidden; max-height:0; transition:max-height 0.3s ease-in;
+    border-radius:0 0 10px 10px;
+  }
+  .nav-list.active { max-height:500px; }
+  .nav-list li { border-bottom:1px solid #b36b00; }
+  .nav-list li a { padding:12px 20px; display:block; }
+}
 
 /* ================= HERO ================= */
 .hero-header {
@@ -34,10 +55,9 @@ h2 { font-family:'Montserrat', sans-serif; }
 }
 .hero-header h1 {
   font-family:'Montserrat',sans-serif; font-size:3em;
-  background:linear-gradient(90deg,#b36b00,#ff9c3b);
+  background:linear-gradient(90deg,#b36b00,#8a4c00);
   -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  text-shadow:0 0 15px #b36b00,0 0 30px #ff9c3b;
-  animation:fadeInDown 1.2s ease forwards;
+  text-shadow:0 0 10px #b36b00; animation:fadeInDown 1.2s ease forwards;
 }
 .hero-header p {
   margin-top:15px; font-size:1.2em; opacity:0;
@@ -47,24 +67,14 @@ h2 { font-family:'Montserrat', sans-serif; }
 @keyframes fadeInUp {0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
 
 /* ================= PARTICLES ================= */
-.particles {
-  position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden;
-}
-.particles div {
-  position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:0.6;
-  animation:moveParticles 12s linear infinite;
-}
-@keyframes moveParticles {
-  0%{transform:translateY(0) translateX(0);opacity:0.6;}
-  50%{opacity:1;}
-  100%{transform:translateY(-1200px) translateX(400px);opacity:0.2;}
-}
+.particles { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden; }
+.particles div { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:0.6; animation:moveParticles 10s linear infinite; }
+@keyframes moveParticles {0%{transform:translateY(0) translateX(0);opacity:0.6;} 50%{opacity:1;} 100%{transform:translateY(-1200px) translateX(400px);opacity:0.2;}}
 
 /* ================= PAGE CONTENT ================= */
 .page-container {
   display:flex; justify-content:space-between; gap:40px;
-  max-width:1400px; margin:50px auto 100px;
-  padding:0 20px; flex-wrap:wrap;
+  max-width:1400px; margin:50px auto 100px; padding:0 20px; flex-wrap:wrap;
 }
 .column {
   background:#1a1a1a; padding:30px; border-radius:16px; color:#e0e0e0; line-height:1.7;
@@ -72,7 +82,7 @@ h2 { font-family:'Montserrat', sans-serif; }
   transition:transform 0.3s ease, box-shadow 0.3s ease; opacity:0; transform:translateY(30px);
 }
 .column.visible { opacity:1; transform:translateY(0); transition:1s ease; }
-.column:hover { transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #ff9c3b; }
+.column:hover { transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #8a4c00; }
 .left, .right { flex:1; min-width:250px; } .center { flex:2.5; min-width:550px; }
 .column h2 { color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00; }
 h2.videos-title { text-align:center; margin-bottom:25px; font-size:2em; text-shadow:0 0 10px #b36b00; }
@@ -84,7 +94,7 @@ h2.videos-title { text-align:center; margin-bottom:25px; font-size:2em; text-sha
   background:#1a1a1a; padding:20px; border-radius:16px; box-shadow:0 0 15px #b36b00;
   transition:transform 0.3s ease, box-shadow 0.3s ease;
 }
-.video-card:hover { transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #ff9c3b; }
+.video-card:hover { transform:translateY(-5px); box-shadow:0 0 25px #b36b00,0 0 40px #8a4c00; }
 iframe { width:100%; height:270px; border-radius:14px; border:none; }
 .video-title { margin-top:12px; font-weight:700; font-size:1.05em; text-align:center; text-shadow:0 0 4px #b36b00; }
 
@@ -94,25 +104,31 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
 /* ================= RESPONSIVE ================= */
 @media(max-width:1024px){ .page-container{flex-direction:column;} .left,.center,.right{flex:1;min-width:auto;} .videos{grid-template-columns:1fr;} }
 @media(max-width:768px){ .hero-header h1{font-size:2.4em;} iframe{height:220px;} }
-
 </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <a href="index.html">Home</a>
-  <a href="index.html#about">About</a>
-  <a href="index.html#videos">Videos</a>
-  <a href="services.html">Services</a>
-  <a href="contact.html">Contact</a>
-  <a href="privacy.html">Privacy</a> <!-- Properly closed -->
+  <div class="logo"><img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo"><span>Str8 Flight</span></div>
+  <div class="menu-toggle" id="mobile-menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <ul class="nav-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#videos">Videos</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
 <header class="hero-header">
   <div class="particles" id="particles"></div>
-  <img src="https://str8flight.github.io/str8flight-logo.png" alt="Str8 Flight Logo" style="width:120px; margin-bottom:20px;">
   <h1>Str8 Flight Entertainment</h1>
   <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
 </header>
@@ -126,7 +142,6 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team is committed to promoting authentic music and Caribbean culture while giving a platform to emerging artists and creators.</p>
     <p>The Barrow brothers are actively involved in music production, recording, creative direction, and artist development. They work tirelessly to maintain originality, quality, and cultural relevance in every project.</p>
     <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations, aiming to inspire and nurture Belizean talent while connecting it to a global audience.</p>
-    <img src="https://str8flight.github.io/belize-flag.png" alt="Belize Flag" style="width:100px; margin-top:15px;">
   </div>
 
   <!-- VIDEOS -->
@@ -149,7 +164,9 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
          data-ad-slot="1902622418"
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
 
   </div>
 
@@ -161,6 +178,11 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
 </footer>
 
 <script>
+// Hamburger menu toggle
+const mobileMenu = document.getElementById('mobile-menu');
+const navList = document.querySelector('.nav-list');
+mobileMenu.addEventListener('click', () => { navList.classList.toggle('active'); });
+
 // Particle animation
 const particleContainer = document.getElementById('particles');
 for(let i=0;i<60;i++){
@@ -173,7 +195,7 @@ for(let i=0;i<60;i++){
   particleContainer.appendChild(div);
 }
 
-// Scroll reveal
+// Reveal on scroll
 const columns=document.querySelectorAll('.column');
 const revealOnScroll=()=>{ const triggerBottom=window.innerHeight*0.85; columns.forEach(column=>{ const boxTop=column.getBoundingClientRect().top; if(boxTop<triggerBottom) column.classList.add('visible');});}
 window.addEventListener('scroll',revealOnScroll); revealOnScroll();
