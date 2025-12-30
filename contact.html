@@ -8,68 +8,45 @@
 <style>
 body { font-family:'Roboto',sans-serif; background:#0b0b0b; color:#fff; margin:0; padding:0; line-height:1.7; overflow-x:hidden; }
 
-/* =============== NAVBAR =============== */
+/* NAVBAR */
 .navbar { display:flex; justify-content:center; gap:30px; background:rgba(0,0,0,0.7); padding:20px; position:sticky; top:0; z-index:100; }
 .navbar a { color:#b36b00; text-decoration:none; font-weight:700; transition:0.3s; }
 .navbar a:hover { color:#ff9c3b; }
 
-/* =============== HERO =============== */
-.hero-header {
-  text-align:center; padding:120px 20px 60px;
-  background:linear-gradient(135deg,#0b0b0b,#1a1a1a);
-  position:relative; overflow:hidden;
-}
-.hero-header h1 {
-  font-family:'Montserrat',sans-serif; font-size:3em; color:#b36b00; margin-bottom:10px;
-  opacity:0; animation:fadeInDown 1.2s forwards;
-}
-.hero-header p {
-  font-size:1.2em; color:#fff; opacity:0;
-  animation:fadeInUp 1.5s forwards; animation-delay:0.3s;
-}
-@keyframes fadeInDown {0%{opacity:0;transform:translateY(-30px);}100%{opacity:1;transform:translateY(0);}}
-@keyframes fadeInUp {0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
+/* HERO */
+.hero-header { text-align:center; padding:120px 20px 60px; background:linear-gradient(135deg,#0b0b0b,#1a1a1a); position:relative; overflow:hidden; }
+.hero-header img.logo { width:160px; margin-bottom:20px; }
+.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; color:#b36b00; margin-bottom:10px; opacity:0; animation:fadeInDown 1.2s forwards; }
+.hero-header p { font-size:1.2em; color:#fff; opacity:0; animation:fadeInUp 1.5s forwards; animation-delay:0.3s; }
+@keyframes fadeInDown {0%{opacity:0;transform:translateY(-30px);}100%{opacity:1;transform:translateY(0);} }
+@keyframes fadeInUp {0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);} }
 
-/* =============== PARTICLES =============== */
-.particles {
-  position:absolute; top:0; left:0; width:100%; height:100%; z-index:-1; overflow:hidden;
-}
-.particles div {
-  position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:0.6;
-  animation:moveParticles 10s linear infinite;
-}
-@keyframes moveParticles {
-  0%{transform:translateY(0) translateX(0);opacity:0.6;}
-  50%{opacity:1;}
-  100%{transform:translateY(-1200px) translateX(400px);opacity:0.2;}
-}
+/* PARTICLES */
+.particles { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden; }
+.particles div { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:0.6; animation:moveParticles 10s linear infinite; }
+@keyframes moveParticles {0%{transform:translateY(0) translateX(0);opacity:0.6;}50%{opacity:1;}100%{transform:translateY(-1200px) translateX(400px);opacity:0.2;}}
 
-/* =============== CONTACT FORM =============== */
-.contact-form-container {
-  max-width:700px; margin:40px auto; background:#1a1a1a; padding:30px; border-radius:16px;
-  box-shadow:0 0 20px #b36b00; opacity:0; transform:translateY(30px); transition:1s ease;
-  position:relative; z-index:1;
-}
+/* CONTACT FORM */
+.contact-form-container { max-width:700px; margin:40px auto; background:#1a1a1a; padding:30px; border-radius:16px; box-shadow:0 0 20px #b36b00; opacity:0; transform:translateY(30px); transition:1s ease; }
 .contact-form-container.visible { opacity:1; transform:translateY(0); }
 .contact-form-container h2 { text-align:center; margin-bottom:25px; color:#b36b00; text-shadow:0 0 8px #b36b00; }
 .contact-form-container form { display:flex; flex-direction:column; gap:20px; }
 .contact-form-container input, .contact-form-container textarea { padding:12px; border-radius:10px; border:none; font-size:1em; width:100%; }
 .contact-form-container button { padding:12px; border-radius:10px; border:none; background:#b36b00; color:#fff; font-weight:700; cursor:pointer; transition:0.3s; }
 .contact-form-container button:hover { background:#ff9c3b; }
-.contact-form-container img { display:block; margin:0 auto 20px; width:150px; border-radius:10px; }
 
-/* =============== SOCIAL LINKS =============== */
-.social-links { text-align:center; margin-top:40px; opacity:0; transform:translateY(30px); transition:1s ease; position:relative; z-index:1; }
+/* SOCIAL LINKS */
+.social-links { text-align:center; margin-top:40px; opacity:0; transform:translateY(30px); transition:1s ease; }
 .social-links.visible { opacity:1; transform:translateY(0); }
 .social-links h3 { margin-bottom:15px; color:#b36b00; }
 .social-links a { margin:0 15px; color:#b36b00; font-weight:700; text-decoration:none; transition:0.3s; }
 .social-links a:hover { color:#ff9c3b; }
 
-/* =============== FOOTER =============== */
+/* FOOTER */
 footer { text-align:center; padding:20px; background:#0b0b0b; color:#b36b00; margin-top:50px; }
 
-/* =============== RESPONSIVE =============== */
-@media(max-width:768px){ .hero-header h1{font-size:2.4em;} }
+/* RESPONSIVE */
+@media(max-width:768px){ .hero-header h1{font-size:2.4em;} img.logo{width:140px;} }
 </style>
 </head>
 <body>
@@ -85,13 +62,13 @@ footer { text-align:center; padding:20px; background:#0b0b0b; color:#b36b00; mar
 <!-- HERO -->
 <header class="hero-header">
   <div class="particles" id="particles"></div>
+  <img src="./str8flight-logo.png" alt="Str8 Flight Logo" class="logo">
   <h1>Contact Us</h1>
   <p>Get in touch with Str8 Flight Entertainment</p>
 </header>
 
 <!-- CONTACT FORM -->
 <div class="contact-form-container" id="form-container">
-  <img src="-logo.png" alt="Logo">
   <h2>Get in Touch</h2>
   <form action="https://formspree.io/f/b0dd08cede75446a922d2a3c42bf75dd" method="POST">
     <input type="text" name="name" placeholder="Your Name" required>
@@ -110,33 +87,4 @@ footer { text-align:center; padding:20px; background:#0b0b0b; color:#b36b00; mar
 </div>
 
 <footer>
-  &copy; 2025 Str8 Flight Entertainment • Belize
-</footer>
-
-<script>
-// Particle animation
-const particleContainer = document.getElementById('particles');
-for(let i=0;i<60;i++){
-  const div=document.createElement('div');
-  div.style.left=Math.random()*100+'%';
-  div.style.top=Math.random()*100+'%';
-  div.style.width=2+Math.random()*4+'px';
-  div.style.height=2+Math.random()*4+'px';
-  div.style.animationDuration=5+Math.random()*10+'s';
-  particleContainer.appendChild(div);
-}
-
-// Scroll reveal animation
-const formContainer = document.getElementById('form-container');
-const socialContainer = document.getElementById('social-container');
-const reveal = () => {
-  const trigger = window.innerHeight * 0.85;
-  if(formContainer.getBoundingClientRect().top < trigger) formContainer.classList.add('visible');
-  if(socialContainer.getBoundingClientRect().top < trigger) socialContainer.classList.add('visible');
-};
-window.addEventListener('scroll', reveal);
-window.addEventListener('load', reveal);
-</script>
-
-</body>
-</html>
+  &copy; 202
