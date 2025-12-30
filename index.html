@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Str8 Flight Entertainment | Contact</title>
+<title>Str8 Flight Entertainment | Belize Music & Culture</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <style>
 /* ================= GLOBAL ================= */
@@ -22,8 +22,20 @@ body {
   background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
   padding: 120px 20px 60px;
   text-align: center;
+  overflow: visible;
 }
 
+.hero-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(179,107,0,0.25), transparent 45%),
+    radial-gradient(circle at bottom left, rgba(138,76,0,0.15), transparent 45%);
+  z-index: 0;
+}
+
+/* NAVBAR */
 .navbar {
   position: relative;
   z-index: 2;
@@ -34,13 +46,9 @@ body {
   padding: 20px;
 }
 
-.navbar-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.logo-img {
+  height: 40px;
 }
-
-.logo-img, .flag-img { height: 40px; width: auto; }
 
 .logo-text {
   font-family: 'Montserrat', sans-serif;
@@ -67,11 +75,13 @@ body {
   text-shadow: 0 0 4px #b36b00;
   transition: 0.3s;
 }
+
 .nav-links a:hover {
   color: #ff9c3b;
   text-shadow: 0 0 10px #ff9c3b, 0 0 20px #b36b00;
 }
 
+/* HERO TEXT */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -118,6 +128,7 @@ body {
   box-shadow: 0 0 25px #b36b00, 0 0 40px #8a4c00;
 }
 
+/* Column widths */
 .left, .right { flex: 1; min-width: 250px; }
 .center { flex: 2.5; min-width: 550px; }
 
@@ -129,7 +140,7 @@ body {
 
 h2.videos-title {
   text-align: center;
-  margin: 25px 0;
+  margin-bottom: 25px;
   font-size: 2em;
   text-shadow: 0 0 10px #b36b00;
 }
@@ -138,46 +149,12 @@ h2.videos-title {
   margin-bottom: 22px;
 }
 
-/* ================= CONTACT FORM ================= */
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 30px;
-}
-
-.contact-form input, 
-.contact-form textarea {
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  outline: none;
-  font-size: 1em;
-  background-color: #0b0b0b;
-  color: #fff;
-  box-shadow: 0 0 10px rgba(179,107,0,0.4);
-}
-
-.contact-form button {
-  padding: 12px;
-  font-size: 1em;
-  font-weight: 700;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #b36b00, #8a4c00);
-  color: #fff;
-  cursor: pointer;
-  transition: 0.3s;
-}
-.contact-form button:hover {
-  background: linear-gradient(90deg, #ff9c3b, #b36b00);
-}
-
-/* ================= VIDEOS ================= */
+/* VIDEOS */
 .videos {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
+  margin-bottom: 60px;
 }
 
 .video-card {
@@ -208,7 +185,7 @@ iframe {
   text-shadow: 0 0 4px #b36b00;
 }
 
-/* ================= FOOTER ================= */
+/* FOOTER */
 footer {
   background: #0b0b0b;
   color: #b36b00;
@@ -219,7 +196,7 @@ footer {
   text-shadow: 0 0 4px #b36b00;
 }
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
 @media (max-width: 1024px) {
   .page-container { flex-direction: column; }
   .left, .center, .right { flex: 1; min-width: auto; }
@@ -236,29 +213,28 @@ footer {
 <body>
 
 <header class="hero-header">
+
   <nav class="navbar">
     <div class="navbar-left">
-      <img src="str8flight-logo.png" alt="Logo" class="logo-img">
+      <img src="str8flight-logo.png" alt="Str8 Flight Logo" class="logo-img">
       <div class="logo-text">STR8 FLIGHT</div>
-      <img src="belize-flag.png" alt="Flag" class="flag-img">
     </div>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#videos">Videos</a>
-      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="#videos">Videos</a>
+      <a href="contact.html">Contact</a>
     </div>
   </nav>
 
   <div class="hero-content">
-    <h1>Contact Str8 Flight Entertainment</h1>
-    <p>Have questions, collaboration ideas, or want to reach out? Use the form below!</p>
+    <h1>Str8 Flight Entertainment</h1>
+    <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
   </div>
+
 </header>
 
 <div class="page-container">
 
-  <!-- LEFT COLUMN: About -->
   <div class="column left" id="about">
     <h2>About</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team is committed to promoting authentic music and Caribbean culture while giving a platform to emerging artists and creators.</p>
@@ -266,16 +242,7 @@ footer {
     <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations, aiming to inspire and nurture Belizean talent while connecting it to a global audience.</p>
   </div>
 
-  <!-- CENTER COLUMN: Contact Form + Videos -->
-  <div class="column center" id="contact">
-    <h2>Send a Message</h2>
-    <form class="contact-form">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="6" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-
+  <div class="column center" id="videos">
     <h2 class="videos-title">Featured Music Videos</h2>
     <div class="videos">
       <div class="video-card">
@@ -309,7 +276,6 @@ footer {
     </div>
   </div>
 
-  <!-- RIGHT COLUMN: Contact Info -->
   <div class="column right">
     <h2>Contact Info</h2>
     <ul>
