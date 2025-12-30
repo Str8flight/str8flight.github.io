@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Str8 Flight Entertainment | Belize Music & Culture</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+<!-- Google AdSense Script -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393"
+        crossorigin="anonymous"></script>
+
 <style>
-/* =============== GLOBAL =============== */
+/* ================= GLOBAL ================= */
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Roboto', sans-serif; background:#0b0b0b; color:#fff; line-height:1.7; overflow-x:hidden; }
 a { text-decoration:none; }
 h2 { font-family:'Montserrat', sans-serif; }
 
-/* =============== NAVBAR =============== */
+/* ================= NAVBAR ================= */
 .navbar {
   position: fixed; top:0; width:100%; z-index:100;
   display:flex; justify-content:center; gap:30px;
@@ -21,7 +26,7 @@ h2 { font-family:'Montserrat', sans-serif; }
 .navbar a { color:#b36b00; font-weight:700; transition:0.3s; }
 .navbar a:hover { color:#ff9c3b; }
 
-/* =============== HERO =============== */
+/* ================= HERO ================= */
 .hero-header {
   position:relative; height:100vh; text-align:center;
   display:flex; flex-direction:column; justify-content:center; align-items:center;
@@ -40,7 +45,7 @@ h2 { font-family:'Montserrat', sans-serif; }
 @keyframes fadeInDown {0%{opacity:0;transform:translateY(-30px);}100%{opacity:1;transform:translateY(0);}}
 @keyframes fadeInUp {0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
 
-/* =============== PARTICLES =============== */
+/* ================= PARTICLES ================= */
 .particles {
   position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden;
 }
@@ -54,7 +59,7 @@ h2 { font-family:'Montserrat', sans-serif; }
   100%{transform:translateY(-1200px) translateX(400px);opacity:0.2;}
 }
 
-/* =============== PAGE CONTENT =============== */
+/* ================= PAGE CONTENT ================= */
 .page-container {
   display:flex; justify-content:space-between; gap:40px;
   max-width:1400px; margin:50px auto 100px; padding:0 20px; flex-wrap:wrap;
@@ -71,7 +76,7 @@ h2 { font-family:'Montserrat', sans-serif; }
 h2.videos-title { text-align:center; margin-bottom:25px; font-size:2em; text-shadow:0 0 10px #b36b00; }
 .column p { margin-bottom:22px; }
 
-/* =============== VIDEOS =============== */
+/* ================= VIDEOS ================= */
 .videos { display:grid; grid-template-columns:repeat(2,1fr); gap:30px; margin-bottom:60px; }
 .video-card {
   background:#1a1a1a; padding:20px; border-radius:16px; box-shadow:0 0 15px #b36b00;
@@ -81,12 +86,13 @@ h2.videos-title { text-align:center; margin-bottom:25px; font-size:2em; text-sha
 iframe { width:100%; height:270px; border-radius:14px; border:none; }
 .video-title { margin-top:12px; font-weight:700; font-size:1.05em; text-align:center; text-shadow:0 0 4px #b36b00; }
 
-/* =============== FOOTER =============== */
-footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; }
-
-/* =============== RESPONSIVE =============== */
+/* ================= RESPONSIVE ================= */
 @media(max-width:1024px){ .page-container{flex-direction:column;} .left,.center,.right{flex:1;min-width:auto;} .videos{grid-template-columns:1fr;} }
 @media(max-width:768px){ .hero-header h1{font-size:2.4em;} iframe{height:220px;} }
+
+/* ================= FOOTER ================= */
+footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; }
+
 </style>
 </head>
 <body>
@@ -107,6 +113,8 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
 
 <!-- PAGE CONTENT -->
 <div class="page-container">
+
+  <!-- ABOUT -->
   <div class="column left" id="about">
     <h2>About</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team is committed to promoting authentic music and Caribbean culture while giving a platform to emerging artists and creators.</p>
@@ -114,6 +122,7 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
     <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations, aiming to inspire and nurture Belizean talent while connecting it to a global audience.</p>
   </div>
 
+  <!-- VIDEOS -->
   <div class="column center" id="videos">
     <h2 class="videos-title">Featured Music Videos</h2>
     <div class="videos">
@@ -125,9 +134,23 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pmSFR_ohjJk" allowfullscreen></iframe><div class="video-title">Denton - PARRAT</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0" allowfullscreen></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
     </div>
+
+    <!-- GOOGLE ADSENSE -->
+    <ins class="adsbygoogle"
+         style="display:block; margin:30px auto;"
+         data-ad-client="ca-pub-1435942574271393"
+         data-ad-slot="1902622418"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
   </div>
+
 </div>
 
+<!-- FOOTER -->
 <footer>
   &copy; 2025 Str8 Flight Entertainment • Belize
 </footer>
