@@ -19,23 +19,53 @@ body {
 /* ================ NAVBAR ================ */
 .navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   gap: 30px;
   background: rgba(0,0,0,0.7);
-  padding: 20px;
+  padding: 20px 40px;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-.navbar a {
-  color: #b36b00;
-  text-decoration: none;
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img, .flag-img {
+  height: 40px;
+  width: auto;
+}
+
+.logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.6rem;
   font-weight: 700;
+  background: linear-gradient(90deg, #b36b00, #8a4c00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 6px rgba(179,107,0,0.8);
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #b36b00;
+  font-weight: 700;
+  text-decoration: none;
+  text-shadow: 0 0 4px #b36b00;
   transition: 0.3s;
 }
-.navbar a:hover {
+
+.nav-links a:hover {
   color: #ff9c3b;
+  text-shadow: 0 0 10px #ff9c3b, 0 0 20px #b36b00;
 }
 
 /* ================ HEADER ================ */
@@ -141,10 +171,17 @@ footer {
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <a href="index.html">Home</a>
-  <a href="index.html#about">About</a>
-  <a href="index.html#videos">Videos</a>
-  <a href="contact.html">Contact</a>
+  <div class="navbar-left">
+    <img src="str8flight-logo.png" alt="Str8 Flight Logo" class="logo-img">
+    <div class="logo-text">STR8 FLIGHT</div>
+    <img src="belize-flag.png" alt="Belize Flag" class="flag-img">
+  </div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#videos">Videos</a>
+    <a href="contact.html">Contact</a>
+  </div>
 </nav>
 
 <!-- HEADER -->
