@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Str8 Flight Entertainment | Belize Music & Culture</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
@@ -11,6 +12,7 @@
 <style>
 /* ================= GLOBAL ================= */
 * { margin:0; padding:0; box-sizing:border-box; }
+
 body {
   font-family:'Roboto',sans-serif;
   background:#0b0b0b;
@@ -18,59 +20,71 @@ body {
   line-height:1.7;
   overflow-x:hidden;
 }
-a { text-decoration:none; }
+
+a { text-decoration:none; color:#b36b00; }
 
 /* ================= NAVBAR ================= */
 .navbar {
-  position: fixed;
+  position:fixed;
   top:0;
   width:100%;
-  z-index:100;
+  z-index:1000;
   display:flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(6px);
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 24px;
+  background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(179,107,0,0.3);
 }
 
-.navbar .logo {
+.logo {
   display:flex;
   align-items:center;
   gap:10px;
 }
 
-.navbar .logo img {
-  width:50px;
+.logo img { height:42px; }
+
+.logo span {
+  font-family:'Montserrat',sans-serif;
+  font-size:1.4em;
+  letter-spacing:2px;
+  background:linear-gradient(90deg,#b36b00,#8a4c00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
+
+.flag { height:28px; }
 
 .menu-toggle {
   display:none;
-  flex-direction: column;
+  flex-direction:column;
   cursor:pointer;
 }
 
 .menu-toggle span {
-  background:#b36b00;
+  width:26px;
   height:3px;
-  width:25px;
+  background:#b36b00;
   margin:4px 0;
 }
 
 .nav-list {
   list-style:none;
   display:flex;
-  gap:25px;
+  gap:28px;
 }
 
 .nav-list a {
-  color:#b36b00;
   font-weight:700;
+  text-shadow:0 0 4px #b36b00;
   transition:.3s;
 }
 
 .nav-list a:hover {
   color:#ff9c3b;
+  text-shadow:0 0 10px #ff9c3b;
 }
 
 /* MOBILE NAV */
@@ -79,67 +93,69 @@ a { text-decoration:none; }
 
   .nav-list {
     position:absolute;
-    top:65px;
-    right:0;
+    top:70px;
+    right:20px;
     width:220px;
     background:#1a1a1a;
-    flex-direction: column;
+    flex-direction:column;
     max-height:0;
     overflow:hidden;
+    border-radius:12px;
     transition:max-height .3s ease;
-    border-radius:0 0 12px 12px;
+    box-shadow:0 0 25px rgba(179,107,0,.5);
   }
 
-  .nav-list.active {
-    max-height:500px;
-  }
+  .nav-list.active { max-height:500px; }
 
-  .nav-list li {
-    border-bottom:1px solid #b36b00;
-  }
+  .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
 
   .nav-list a {
-    padding:14px 20px;
     display:block;
+    padding:14px 20px;
   }
 }
 
 /* ================= HERO ================= */
 .hero-header {
+  padding:140px 20px 90px;
   text-align:center;
-  padding:130px 20px 80px;
-  background:linear-gradient(135deg,#0b0b0b,#1a1a1a);
   position:relative;
   overflow:hidden;
+  background:linear-gradient(135deg,#0b0b0b,#1a1a1a);
+}
+
+.hero-header::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at top right, rgba(179,107,0,.25), transparent 45%),
+    radial-gradient(circle at bottom left, rgba(138,76,0,.2), transparent 45%);
+  z-index:0;
 }
 
 .hero-header h1 {
   font-family:'Montserrat',sans-serif;
   font-size:3em;
-  color:#b36b00;
-  margin-bottom:10px;
-  animation:fadeInDown 1.2s forwards;
+  margin-bottom:12px;
+  text-shadow:0 0 12px #b36b00;
+  position:relative;
+  z-index:2;
 }
 
 .hero-header p {
   font-size:1.2em;
-  animation:fadeInUp 1.4s forwards;
+  max-width:750px;
+  margin:auto;
+  position:relative;
+  z-index:2;
 }
 
-@keyframes fadeInDown {
-  from {opacity:0; transform:translateY(-30px);}
-  to {opacity:1; transform:translateY(0);}
-}
-@keyframes fadeInUp {
-  from {opacity:0; transform:translateY(30px);}
-  to {opacity:1; transform:translateY(0);}
-}
-
-/* ================= PARTICLES (BACK AGAIN) ================= */
+/* PARTICLES */
 .particles {
   position:absolute;
   inset:0;
-  z-index:0;
+  z-index:1;
   overflow:hidden;
 }
 
@@ -158,26 +174,48 @@ a { text-decoration:none; }
   to { transform:translateY(-1200px); opacity:0; }
 }
 
-/* ================= VIDEOS ================= */
-.section-title {
-  text-align:center;
-  font-size:2.2em;
-  margin:40px 0 20px;
-  color:#b36b00;
-  text-shadow:0 0 10px #b36b00;
+/* ================= PAGE LAYOUT ================= */
+.page-container {
+  max-width:1400px;
+  margin:60px auto;
+  padding:0 20px;
+  display:flex;
+  gap:50px;
 }
 
+.column {
+  background:#1a1a1a;
+  padding:32px;
+  border-radius:18px;
+  box-shadow:0 0 20px rgba(179,107,0,.4);
+  transition:.3s;
+}
+
+.column:hover {
+  transform:translateY(-6px);
+  box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00;
+}
+
+.left { flex:1; }
+.center { flex:3; }
+
+.column h2 {
+  margin-bottom:16px;
+  color:#b36b00;
+  text-shadow:0 0 8px #b36b00;
+}
+
+.column p { margin-bottom:18px; }
+
+/* ================= VIDEOS ================= */
 .videos {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:30px;
-  padding:40px 20px;
-  max-width:1200px;
-  margin:auto;
 }
 
 .video-card {
-  background:#1a1a1a;
+  background:#0f0f0f;
   padding:20px;
   border-radius:16px;
   box-shadow:0 0 15px #b36b00;
@@ -185,34 +223,39 @@ a { text-decoration:none; }
 }
 
 .video-card:hover {
-  transform:translateY(-6px);
-  box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00;
+  transform:translateY(-5px);
+  box-shadow:0 0 30px #b36b00,0 0 45px #8a4c00;
 }
 
 iframe {
   width:100%;
   height:260px;
-  border-radius:14px;
   border:none;
+  border-radius:14px;
 }
 
 .video-title {
   margin-top:12px;
-  text-align:center;
   font-weight:700;
-  text-shadow:0 0 5px #b36b00;
+  text-align:center;
+  text-shadow:0 0 4px #b36b00;
 }
 
 /* ================= FOOTER ================= */
 footer {
   text-align:center;
-  padding:25px;
+  padding:30px 10px;
   background:#0b0b0b;
   color:#b36b00;
-  margin-top:60px;
+  margin-top:70px;
+  box-shadow:0 -3px 10px rgba(179,107,0,.3);
 }
 
 /* RESPONSIVE */
+@media(max-width:1024px){
+  .page-container { flex-direction:column; }
+}
+
 @media(max-width:768px){
   .hero-header h1 { font-size:2.4em; }
   iframe { height:200px; }
@@ -225,16 +268,18 @@ footer {
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
-    <img src="https://str8flight.github.io/str8flight-logo.png">
-    <span>Str8 Flight</span>
+    <img src="str8flight-logo.png">
+    <span>STR8 FLIGHT</span>
+    <img src="belize-flag.png" class="flag">
   </div>
 
-  <div class="menu-toggle" id="mobile-menu">
+  <div class="menu-toggle" id="menu">
     <span></span><span></span><span></span>
   </div>
 
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#videos">Videos</a></li>
     <li><a href="services.html">Services</a></li>
     <li><a href="contact.html">Contact</a></li>
@@ -250,32 +295,64 @@ footer {
   <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
 </header>
 
-<!-- FEATURED VIDEOS -->
-<h2 class="section-title">Featured Music Videos</h2>
+<!-- CONTENT -->
+<div class="page-container">
 
-<section class="videos" id="videos">
-  <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc" allowfullscreen></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
-  <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w" allowfullscreen></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
-  <div class="video-card"><iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ" allowfullscreen></iframe><div class="video-title">Denton - Furious (RAW)</div></div>
-  <div class="video-card"><iframe src="https://www.youtube.com/embed/8E9zA7Bq1js" allowfullscreen></iframe><div class="video-title">Quarantine - Cleon x Denton</div></div>
-  <div class="video-card"><iframe src="https://www.youtube.com/embed/QdFS99yYcDE" allowfullscreen></iframe><div class="video-title">Denton - Wiser</div></div>
-  <div class="video-card"><iframe src="https://www.youtube.com/embed/pmSFR_ohjJk" allowfullscreen></iframe><div class="video-title">Denton - PARRAT</div></div>
-  <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0" allowfullscreen></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
-</section>
+  <!-- ABOUT -->
+  <div class="column left" id="about">
+    <h2>About</h2>
+
+    <p>
+      Str8 Flight Entertainment is a Belize-based music and media platform founded by
+      <strong>Denton Barrow</strong> along with his brothers
+      <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.
+      The team is committed to promoting authentic music and Caribbean culture while
+      giving a platform to emerging artists and creators.
+    </p>
+
+    <p>
+      The Barrow brothers are actively involved in music production, recording,
+      creative direction, and artist development. They work tirelessly to maintain
+      originality, quality, and cultural relevance in every project.
+    </p>
+
+    <p>
+      Str8 Flight Entertainment also engages with local communities through events,
+      workshops, and collaborations, aiming to inspire and nurture Belizean talent
+      while connecting it to a global audience.
+    </p>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="column center" id="videos">
+    <h2>Featured Music Videos</h2>
+
+    <div class="videos">
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc" allowfullscreen></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w" allowfullscreen></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ" allowfullscreen></iframe><div class="video-title">Denton - Furious (RAW)</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/8E9zA7Bq1js" allowfullscreen></iframe><div class="video-title">Quarantine - Cleon x Denton</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/QdFS99yYcDE" allowfullscreen></iframe><div class="video-title">Denton - Wiser</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/pmSFR_ohjJk" allowfullscreen></iframe><div class="video-title">Denton - PARRAT</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0" allowfullscreen></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
+    </div>
+  </div>
+
+</div>
 
 <footer>
   &copy; 2025 Str8 Flight Entertainment • Belize
 </footer>
 
 <script>
-/* Mobile menu */
-const mobileMenu = document.getElementById('mobile-menu');
-const navList = document.querySelector('.nav-list');
-mobileMenu.onclick = () => navList.classList.toggle('active');
+/* mobile menu */
+document.getElementById('menu').onclick=()=>{
+  document.querySelector('.nav-list').classList.toggle('active');
+};
 
-/* Particles */
-const particles = document.getElementById('particles');
-for(let i=0;i<60;i++){
+/* particles */
+const particles=document.getElementById('particles');
+for(let i=0;i<70;i++){
   const p=document.createElement('span');
   p.style.left=Math.random()*100+'%';
   p.style.animationDuration=(6+Math.random()*8)+'s';
