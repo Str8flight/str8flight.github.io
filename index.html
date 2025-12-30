@@ -8,8 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
 <style>
-/* GLOBAL */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
   font-family:'Roboto',sans-serif;
   background:#0b0b0b;
@@ -19,114 +19,252 @@ body {
 
 /* NAV */
 .navbar {
-  position:fixed; top:0; width:100%; z-index:1000;
-  display:flex; justify-content:space-between; align-items:center;
-  padding:15px 24px; background:rgba(0,0,0,0.8); backdrop-filter:blur(8px);
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 24px;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(8px);
 }
-.logo { display:flex; align-items:center; gap:10px; }
+
+.logo {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
 .logo img { height:42px; }
+
 .logo span {
-  font-family:'Montserrat',sans-serif; font-size:1.4em;
-  background:linear-gradient(90deg,#b36b00,#8a4c00);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  font-family:'Montserrat',sans-serif;
+  font-size:1.4em;
+  background:linear-gradient(90deg,#b36b00,#ff9c3b);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
-.flag { height:28px; }
-.menu-toggle { display:none; flex-direction:column; cursor:pointer; }
-.menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; }
-.nav-list { list-style:none; display:flex; gap:24px; }
+
+.flag { height:26px; }
+
+.menu-toggle {
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+}
+
+.menu-toggle span {
+  width:26px;
+  height:3px;
+  background:#b36b00;
+  margin:4px 0;
+}
+
+.nav-list {
+  list-style:none;
+  display:flex;
+  gap:24px;
+}
+
 .nav-list a {
-  color:#b36b00; font-weight:700; text-shadow:0 0 4px #b36b00;
+  color:#b36b00;
+  font-weight:700;
+  text-shadow:0 0 6px #b36b00;
   transition:.3s;
 }
-.nav-list a:hover { color:#ff9c3b; text-shadow:0 0 10px #ff9c3b; }
+
+.nav-list a:hover {
+  color:#ff9c3b;
+  text-shadow:0 0 12px #ff9c3b;
+}
 
 /* MOBILE NAV */
 @media(max-width:768px){
   .menu-toggle { display:flex; }
+
   .nav-list {
-    position:absolute; top:60px; right:18px; width:220px; background:#1a1a1a;
-    flex-direction:column; max-height:0; overflow:hidden; transition:max-height .3s ease;
-    border-radius:0 0 10px 10px; box-shadow:0 0 25px rgba(179,107,0,.5);
+    position:absolute;
+    top:65px;
+    right:20px;
+    width:220px;
+    background:#111;
+    flex-direction:column;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+    border-radius:0 0 12px 12px;
+    box-shadow:0 0 30px rgba(179,107,0,.6);
   }
+
   .nav-list.active { max-height:500px; }
+
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
-  .nav-list a { padding:12px 20px; display:block; }
+
+  .nav-list a {
+    padding:14px 20px;
+    display:block;
+  }
 }
 
 /* HERO */
 .hero-header {
-  text-align:center; padding:140px 20px 80px;
-  background:linear-gradient(135deg,#0b0b0b,#1a1a1a);
-  position:relative; overflow:hidden;
+  position:relative;
+  padding:150px 20px 90px;
+  text-align:center;
+  background:linear-gradient(135deg,#0b0b0b,#161616);
+  overflow:hidden;
 }
-.hero-header h1 {
-  font-family:'Montserrat',sans-serif; font-size:3em;
-  margin-bottom:10px; text-shadow:0 0 12px #b36b00;
-}
-.hero-header p { font-size:1.2em; }
 
-/* PARTICLES (ORANGE DOTS) */
+/* IMPORTANT FIX */
+.hero-content {
+  position:relative;
+  z-index:3;
+}
+
+.hero-header h1 {
+  font-family:'Montserrat',sans-serif;
+  font-size:3em;
+  margin-bottom:10px;
+  text-shadow:0 0 14px #b36b00;
+  animation:fadeDown 1.2s ease forwards;
+}
+
+.hero-header p {
+  font-size:1.2em;
+  animation:fadeUp 1.4s ease forwards;
+}
+
+/* PARTICLES */
 .particles {
-  position:absolute; inset:0; z-index:0; overflow:hidden;
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
 }
+
 .particles span {
-  position:absolute; width:6px; height:6px;
-  background:#b36b00; border-radius:50%;
-  opacity:.6; animation:floatUp linear infinite;
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:#b36b00;
+  border-radius:50%;
+  opacity:.7;
+  animation:floatUp linear infinite;
+  filter:drop-shadow(0 0 6px #b36b00);
 }
+
 @keyframes floatUp {
-  from { transform:translateY(0) translateX(0); opacity:.6; }
-  to { transform:translateY(-1400px) translateX(50px); opacity:0; }
+  from {
+    transform:translateY(100vh);
+    opacity:.8;
+  }
+  to {
+    transform:translateY(-120vh);
+    opacity:0;
+  }
+}
+
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(-30px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(30px); }
+  to { opacity:1; transform:translateY(0); }
 }
 
 /* PAGE LAYOUT */
 .page-container {
-  max-width:1400px; margin:60px auto; padding:0 20px;
-  display:flex; gap:50px;
+  max-width:1400px;
+  margin:70px auto;
+  padding:0 20px;
+  display:flex;
+  gap:50px;
 }
-.column { background:#1a1a1a; padding:30px; border-radius:16px;
-  box-shadow:0 0 20px rgba(179,107,0,.4);
+
+.column {
+  background:#141414;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 0 25px rgba(179,107,0,.4);
 }
-.column:hover { box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00; }
+
+.column:hover {
+  box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00;
+}
+
 .left { flex:1; }
 .center { flex:3; }
-.column h2 { margin-bottom:14px; color:#b36b00; text-shadow:0 0 8px #b36b00; }
-.column p { margin-bottom:16px; }
+
+.column h2 {
+  color:#b36b00;
+  margin-bottom:15px;
+  text-shadow:0 0 8px #b36b00;
+}
+
+.column p { margin-bottom:15px; }
 
 /* VIDEOS */
 .section-title {
-  text-align:center; font-size:2.2em; margin:40px 0;
-  color:#b36b00; text-shadow:0 0 10px #b36b00;
+  text-align:center;
+  font-size:2.2em;
+  margin-bottom:30px;
+  color:#b36b00;
+  text-shadow:0 0 10px #b36b00;
 }
+
 .videos {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
   gap:30px;
 }
+
 .video-card {
-  background:#0f0f0f; padding:18px; border-radius:14px;
-  box-shadow:0 0 15px #b36b00;
+  background:#0f0f0f;
+  padding:18px;
+  border-radius:16px;
+  box-shadow:0 0 18px #b36b00;
+  transition:.3s;
 }
+
 .video-card:hover {
-  box-shadow:0 0 28px #b36b00,0 0 45px #8a4c00;
+  box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00;
 }
+
 iframe {
-  width:100%; height:260px; border:none; border-radius:12px;
+  width:100%;
+  height:260px;
+  border:none;
+  border-radius:12px;
 }
+
 .video-title {
-  margin-top:10px; font-weight:700; text-align:center;
-  text-shadow:0 0 4px #b36b00;
+  margin-top:10px;
+  text-align:center;
+  font-weight:700;
+  text-shadow:0 0 5px #b36b00;
 }
 
 /* FOOTER */
 footer {
-  text-align:center; padding:30px 10px;
-  background:#0b0b0b; color:#b36b00; margin-top:60px;
-  text-shadow:0 0 4px #b36b00;
+  text-align:center;
+  padding:30px;
+  color:#b36b00;
+  background:#0b0b0b;
+  margin-top:70px;
 }
 
 /* RESPONSIVE */
-@media(max-width:1024px){ .page-container { flex-direction:column; }}
-@media(max-width:768px){ iframe { height:200px; } }
+@media(max-width:1024px){
+  .page-container { flex-direction:column; }
+}
+
+@media(max-width:768px){
+  iframe { height:200px; }
+}
 </style>
 </head>
 
@@ -138,43 +276,49 @@ footer {
     <span>STR8 FLIGHT</span>
     <img src="belize-flag.png" class="flag">
   </div>
-  <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
+
+  <div class="menu-toggle" id="menuBtn">
+    <span></span><span></span><span></span>
+  </div>
+
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#videos">Videos</a></li>
     <li><a href="services.html">Services</a></li>
     <li><a href="contact.html">Contact</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
   </ul>
 </nav>
 
 <header class="hero-header">
   <div class="particles" id="particles"></div>
 
-  <h1>Str8 Flight Entertainment</h1>
-  <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
+  <div class="hero-content">
+    <h1>Str8 Flight Entertainment</h1>
+    <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
+  </div>
 </header>
 
 <div class="page-container">
 
   <div class="column left" id="about">
     <h2>About</h2>
-    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>. The team is committed to promoting authentic music and Caribbean culture while giving a platform to emerging artists and creators.</p>
-    <p>The Barrow brothers are actively involved in music production, recording, creative direction, and artist development. They work tirelessly to maintain originality, quality, and cultural relevance in every project.</p>
-    <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations, aiming to inspire and nurture Belizean talent while connecting it to a global audience.</p>
+    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
+    <p>The Barrow brothers are actively involved in music production, recording, creative direction, and artist development.</p>
+    <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations.</p>
   </div>
 
   <div class="column center">
     <h2 class="section-title">Featured Music Videos</h2>
-    <div class="videos">
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc" allowfullscreen></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w" allowfullscreen></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ" allowfullscreen></iframe><div class="video-title">Denton - Furious (RAW)</div></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/8E9zA7Bq1js" allowfullscreen></iframe><div class="video-title">Quarantine - Cleon x Denton</div></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/QdFS99yYcDE" allowfullscreen></iframe><div class="video-title">Denton - Wiser</div></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/pmSFR_ohjJk" allowfullscreen></iframe><div class="video-title">Denton - PARRAT</div></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0" allowfullscreen></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
+
+    <div class="videos" id="videos">
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc"></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w"></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ"></iframe><div class="video-title">Denton - Furious (RAW)</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/8E9zA7Bq1js"></iframe><div class="video-title">Quarantine - Cleon x Denton</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/QdFS99yYcDE"></iframe><div class="video-title">Denton - Wiser</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/pmSFR_ohjJk"></iframe><div class="video-title">Denton - PARRAT</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0"></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
     </div>
   </div>
 
@@ -185,19 +329,19 @@ footer {
 </footer>
 
 <script>
-// mobile menu
+/* mobile nav */
 document.getElementById('menuBtn').onclick = () => {
   document.querySelector('.nav-list').classList.toggle('active');
 };
 
-// particles animation
-const particlesEl = document.getElementById('particles');
-for(let i=0;i<60;i++){
-  const p = document.createElement('span');
-  p.style.left = Math.random()*100+'%';
-  p.style.animationDuration = (6 + Math.random()*8)+'s';
-  p.style.animationDelay = Math.random()*5+'s';
-  particlesEl.appendChild(p);
+/* particles */
+const particles = document.getElementById('particles');
+for(let i=0;i<70;i++){
+  const dot = document.createElement('span');
+  dot.style.left = Math.random()*100+'%';
+  dot.style.animationDuration = (6 + Math.random()*10)+'s';
+  dot.style.animationDelay = Math.random()*5+'s';
+  particles.appendChild(dot);
 }
 </script>
 
