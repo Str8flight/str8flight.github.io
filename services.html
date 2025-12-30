@@ -4,142 +4,217 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services | Str8 Flight Entertainment</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ================= GLOBAL ================= */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Roboto',sans-serif; background:#0b0b0b; color:#fff; line-height:1.7; overflow-x:hidden; }
-a { text-decoration:none; }
-
-/* ================= NAVBAR ================= */
-.navbar {
-  position: fixed; top:0; width:100%; z-index:100;
-  display:flex; justify-content: space-between; align-items: center;
-  padding: 15px 20px; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Roboto',sans-serif;
+  background:#0b0b0b;
+  color:#fff;
+  line-height:1.7;
+  overflow-x:hidden;
 }
-.navbar .logo { display:flex; align-items:center; gap:10px; }
-.navbar .logo img { width:50px; height:auto; }
-.menu-toggle { display:none; flex-direction: column; cursor:pointer; }
-.menu-toggle span { background:#b36b00; height:3px; width:25px; margin:4px 0; transition:0.3s; }
-.nav-list { list-style:none; display:flex; gap:25px; }
-.nav-list li a { color:#b36b00; font-weight:700; transition:0.3s; }
-.nav-list li a:hover { color:#ff9c3b; }
+h1,h2,h3{font-family:'Montserrat',sans-serif}
+a{text-decoration:none}
 
-/* MOBILE NAV */
+/* ================= NAV ================= */
+.navbar{
+  position:fixed;top:0;width:100%;z-index:1000;
+  background:rgba(0,0,0,.8);
+  backdrop-filter:blur(6px);
+}
+.nav-inner{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
+}
+.brand{color:#b36b00;font-weight:700;letter-spacing:1px}
+.nav-links{
+  display:flex;
+  gap:25px;
+}
+.nav-links a{
+  color:#b36b00;
+  font-weight:700;
+  transition:.3s;
+}
+.nav-links a:hover{color:#ff9c3b}
+
+.menu-btn{
+  display:none;
+  font-size:26px;
+  color:#b36b00;
+  cursor:pointer;
+}
+
+/* MOBILE DROPDOWN */
 @media(max-width:768px){
-  .menu-toggle { display:flex; }
-  .nav-list {
-    position:absolute; top:65px; right:0; width:220px; background:#1a1a1a;
-    flex-direction: column; gap:0; overflow:hidden; max-height:0; transition:max-height 0.3s ease-in;
-    border-radius:0 0 10px 10px;
+  .menu-btn{display:block}
+  .nav-links{
+    position:absolute;
+    top:65px;
+    left:0;
+    width:100%;
+    background:#0b0b0b;
+    flex-direction:column;
+    display:none;
+    padding:20px 0;
   }
-  .nav-list.active { max-height:500px; }
-  .nav-list li { border-bottom:1px solid #b36b00; }
-  .nav-list li a { padding:12px 20px; display:block; }
+  .nav-links.active{display:flex}
+  .nav-links a{padding:10px 0}
 }
 
 /* ================= HERO ================= */
-.hero-header {
-  text-align:center; padding:100px 20px 50px;
+.hero{
+  height:60vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
   background:linear-gradient(135deg,#0b0b0b,#1a1a1a);
-  position:relative; overflow:hidden;
+  margin-top:70px;
 }
-.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; color:#b36b00; margin-bottom:10px; opacity:0; animation:fadeInDown 1.2s forwards; }
-.hero-header p { font-size:1.2em; color:#fff; opacity:0; animation:fadeInUp 1.5s forwards; animation-delay:0.3s; }
-@keyframes fadeInDown {0%{opacity:0;transform:translateY(-30px);}100%{opacity:1;transform:translateY(0);}}
-@keyframes fadeInUp {0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
+.hero h1{
+  font-size:3em;
+  background:linear-gradient(90deg,#b36b00,#ff9c3b);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero p{
+  max-width:700px;
+  margin-top:15px;
+  color:#ddd;
+}
 
-/* ================= PARTICLES ================= */
-.particles { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden; }
-.particles div { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:0.6; animation:moveParticles 12s linear infinite; }
-@keyframes moveParticles { 0%{transform:translateY(0) translateX(0);opacity:0.6;} 50%{opacity:1;} 100%{transform:translateY(-1200px) translateX(400px);opacity:0.2;} }
-
-/* ================= SERVICES CARDS ================= */
-.services-container {
-  max-width:1200px; margin:50px auto; display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; padding:0 20px;
+/* ================= SERVICES ================= */
+.services-container{
+  max-width:1200px;
+  margin:60px auto;
+  padding:0 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
 }
-.service-card {
-  background:#1a1a1a; padding:30px; border-radius:16px;
-  box-shadow:0 0 15px rgba(179,107,0,0.5),0 0 30px rgba(138,76,0,0.3);
-  text-align:center; transition:transform 0.3s ease, box-shadow 0.3s ease;
-  opacity:0; transform:translateY(30px);
+.service-card{
+  background:#1a1a1a;
+  padding:30px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 0 20px rgba(179,107,0,.4);
+  transition:.3s;
 }
-.service-card.visible { opacity:1; transform:translateY(0); transition:1s ease; }
-.service-card:hover { transform:translateY(-10px); box-shadow:0 0 25px #b36b00,0 0 50px #ff9c3b; }
-.service-card h3 { color:#b36b00; margin-bottom:15px; font-size:1.5em; text-shadow:0 0 10px #b36b00; }
-.service-card p { color:#e0e0e0; line-height:1.6; }
+.service-card:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 30px #b36b00;
+}
+.service-card h3{
+  color:#b36b00;
+  margin-bottom:15px;
+}
+.service-card p{color:#e0e0e0}
 
 /* ================= FOOTER ================= */
-footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; }
-
-/* ================= RESPONSIVE ================= */
-@media(max-width:768px){ .hero-header h1{font-size:2.4em;} }
+footer{
+  text-align:center;
+  padding:25px;
+  color:#b36b00;
+  background:#0b0b0b;
+  margin-top:60px;
+}
 </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav class="navbar">
-  <div class="logo"><img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo"><span>Str8 Flight</span></div>
-  <div class="menu-toggle" id="mobile-menu"><span></span><span></span><span></span></div>
-  <ul class="nav-list">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#about">About</a></li>
-    <li><a href="index.html#videos">Videos</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
-  </ul>
+  <div class="nav-inner">
+    <div class="brand">STR8 FLIGHT</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#videos">Videos</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy</a>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
-<header class="hero-header">
-  <div class="particles" id="particles"></div>
-  <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo" style="width:120px; margin-bottom:20px;">
+<section class="hero">
   <h1>Our Services</h1>
-  <p>Professional music production and recording services</p>
-</header>
+  <p>Professional music and audio services designed to elevate your sound</p>
+</section>
 
-<!-- SERVICES CARDS -->
-<div class="services-container">
+<!-- SERVICES -->
+<section class="services-container">
   <div class="service-card">
-    <h3>Dub Plate</h3>
-    <p>Custom dub plates for artists, DJs, and events. High-quality recordings with unique vocal drops and professional sound mastering.</p>
+    <h3>Music Production & Beat Making</h3>
+    <p>Original instrumentals and full-track production tailored to your style.</p>
   </div>
+
+  <div class="service-card">
+    <h3>Vocal Recording & Editing</h3>
+    <p>High-quality recording, tuning, and vocal layering.</p>
+  </div>
+
+  <div class="service-card">
+    <h3>Songwriting & Arrangement</h3>
+    <p>Lyrics, melodies, hooks, and full song structure development.</p>
+  </div>
+
   <div class="service-card">
     <h3>Mixing & Mastering</h3>
-    <p>Polish your tracks with professional mixing and mastering. We ensure your music sounds clear, balanced, and ready for release across all platforms.</p>
+    <p>Industry-standard mixing and mastering for streaming platforms.</p>
   </div>
+
   <div class="service-card">
-    <h3>Studio Recording</h3>
-    <p>Access to a full-featured recording studio with experienced engineers. Capture vocals and instruments with top-quality equipment for your projects.</p>
+    <h3>Live Session Recording</h3>
+    <p>Professional capture of live bands and instrument sessions.</p>
   </div>
-</div>
+
+  <div class="service-card">
+    <h3>Artist Development & Coaching</h3>
+    <p>Guidance on branding, performance, and music career growth.</p>
+  </div>
+
+  <div class="service-card">
+    <h3>Promotional Content Creation</h3>
+    <p>Music teasers, reels, and content optimized for social media.</p>
+  </div>
+
+  <div class="service-card">
+    <h3>Custom Dubplates</h3>
+    <p>Exclusive dubplates for DJs, sound systems, and events.</p>
+  </div>
+
+  <div class="service-card">
+    <h3>Podcast & Voiceover Recording</h3>
+    <p>Clean, professional audio recording for spoken content.</p>
+  </div>
+
+  <div class="service-card">
+    <h3>Remote Collaboration</h3>
+    <p>Online recording and production collaboration worldwide.</p>
+  </div>
+</section>
 
 <footer>
-  &copy; 2025 Str8 Flight Entertainment • Belize
+  © 2025 Str8 Flight Entertainment • Belize
 </footer>
 
 <script>
-// Hamburger toggle
-const mobileMenu=document.getElementById('mobile-menu');
-const navList=document.querySelector('.nav-list');
-mobileMenu.addEventListener('click',()=>{navList.classList.toggle('active');});
-
-// Particles
-const particleContainer=document.getElementById('particles');
-for(let i=0;i<60;i++){const div=document.createElement('div');div.style.left=Math.random()*100+'%';div.style.top=Math.random()*100+'%';div.style.width=2+Math.random()*4+'px';div.style.height=2+Math.random()*4+'px';div.style.animationDuration=5+Math.random()*10+'s';particleContainer.appendChild(div);}
-
-// Reveal scroll
-const cards=document.querySelectorAll('.service-card');
-const revealCards = () => {
-  const trigger=window.innerHeight*0.85;
-  cards.forEach(card=>{if(card.getBoundingClientRect().top<trigger) card.classList.add('visible');});
-};
-window.addEventListener('scroll',revealCards); revealCards();
+function toggleMenu(){
+  document.getElementById("navLinks").classList.toggle("active");
+}
 </script>
 
 </body>
