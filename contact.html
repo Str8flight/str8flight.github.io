@@ -4,31 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact Us | Str8 Flight Entertainment</title>
-
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-
-<!-- Google AdSense (Auto Ads) -->
-<script async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393"
-  crossorigin="anonymous"></script>
-
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
+/* ================ GLOBAL ================ */
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #0b0b0b;
   color: #fff;
+  margin: 0;
+  padding: 0;
   line-height: 1.7;
 }
 
-/* NAV */
+/* ================ NAVBAR ================ */
 .navbar {
   display: flex;
   justify-content: center;
   gap: 30px;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.7);
   padding: 20px;
   position: sticky;
   top: 0;
@@ -39,13 +32,16 @@ body {
   color: #b36b00;
   text-decoration: none;
   font-weight: 700;
+  transition: 0.3s;
 }
-.navbar a:hover { color: #ff9c3b; }
+.navbar a:hover {
+  color: #ff9c3b;
+}
 
-/* HERO */
+/* ================ HEADER ================ */
 .hero-header {
   text-align: center;
-  padding: 110px 20px 60px;
+  padding: 120px 20px 60px;
   background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
 }
 
@@ -53,137 +49,97 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 3em;
   color: #b36b00;
+  margin-bottom: 10px;
 }
 
 .hero-header p {
   font-size: 1.2em;
-  margin-top: 10px;
+  color: #fff;
 }
 
-/* FORM */
+/* ================ CONTACT FORM ================ */
 .contact-form-container {
-  max-width: 720px;
-  margin: 50px auto;
+  max-width: 700px;
+  margin: 40px auto;
   background: #1a1a1a;
-  padding: 35px;
-  border-radius: 18px;
-  box-shadow: 0 0 30px rgba(179,107,0,0.6);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px #b36b00;
 }
 
 .contact-form-container h2 {
   text-align: center;
   margin-bottom: 25px;
   color: #b36b00;
+  text-shadow: 0 0 8px #b36b00;
 }
 
-form {
+.contact-form-container form {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
-input, textarea {
-  padding: 14px;
-  border-radius: 12px;
+.contact-form-container input,
+.contact-form-container textarea {
+  padding: 12px;
+  border-radius: 10px;
   border: none;
   font-size: 1em;
+  width: 100%;
 }
 
-button {
-  padding: 14px;
-  border-radius: 12px;
+.contact-form-container button {
+  padding: 12px;
+  border-radius: 10px;
   border: none;
   background: #b36b00;
   color: #fff;
   font-weight: 700;
   cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-button.loading {
-  pointer-events: none;
-  background: #555;
-}
-button.loading::after {
-  content: "";
-  width: 22px;
-  height: 22px;
-  border: 3px solid #fff;
-  border-top-color: transparent;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: spin 1s linear infinite;
+  transition: 0.3s;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg) translate(-50%, -50%); }
+.contact-form-container button:hover {
+  background: #ff9c3b;
 }
 
-/* SUCCESS */
-.success-message {
-  display: none;
+/* ================ SOCIAL LINKS ================ */
+.social-links {
   text-align: center;
-  margin-top: 25px;
-  color: #00ff9c;
-  font-weight: 700;
-  animation: fadeIn 1s ease forwards;
+  margin-top: 40px;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* SOCIAL PREVIEW */
-.social-preview {
-  margin-top: 60px;
-  text-align: center;
-}
-
-.social-preview h3 {
-  margin-bottom: 25px;
+.social-links h3 {
+  margin-bottom: 15px;
   color: #b36b00;
 }
 
-.social-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 25px;
-}
-
-.social-card {
-  background: #111;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 0 15px rgba(179,107,0,0.4);
-  transition: transform 0.3s;
-}
-
-.social-card:hover { transform: translateY(-6px); }
-
-.social-card a {
+.social-links a {
+  margin: 0 15px;
   color: #b36b00;
   text-decoration: none;
   font-weight: 700;
-  font-size: 1.1em;
+  transition: 0.3s;
 }
 
-/* FOOTER */
+.social-links a:hover {
+  color: #ff9c3b;
+}
+
+/* ================ FOOTER ================ */
 footer {
   text-align: center;
-  padding: 25px;
-  margin-top: 70px;
+  padding: 20px;
   background: #0b0b0b;
   color: #b36b00;
+  margin-top: 50px;
 }
 </style>
 </head>
-
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <a href="index.html">Home</a>
   <a href="index.html#about">About</a>
@@ -191,59 +147,35 @@ footer {
   <a href="contact.html">Contact</a>
 </nav>
 
+<!-- HEADER -->
 <header class="hero-header">
   <h1>Contact Us</h1>
   <p>Get in touch with Str8 Flight Entertainment</p>
 </header>
 
+<!-- CONTACT FORM -->
 <div class="contact-form-container">
   <h2>Get in Touch</h2>
-
-  <form id="contactForm"
-    action="https://formspree.io/f/b0dd08cede75446a922d2a3c42bf75dd"
-    method="POST">
-
+  <form action="https://formspree.io/f/b0dd08cede75446a922d2a3c42bf75dd" method="POST">
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="_replyto" placeholder="Your Email" required>
     <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
-
-    <button type="submit" id="submitBtn">Send Message</button>
+    <button type="submit">Send Message</button>
   </form>
 
-  <div class="success-message" id="successMsg">
-    ✅ Message sent successfully! We’ll get back to you soon.
-  </div>
-
-  <!-- SOCIAL PREVIEW -->
-  <div class="social-preview">
-    <h3>Connect With Us</h3>
-    <div class="social-cards">
-      <div class="social-card"><a href="https://www.instagram.com/str8flightentertainment/?hl=en" target="_blank">Instagram</a></div>
-      <div class="social-card"><a href="https://www.facebook.com/Str8flightentertainment/" target="_blank">Facebook</a></div>
-      <div class="social-card"><a href="https://www.youtube.com/@str8flightentertainment" target="_blank">YouTube</a></div>
-      <div class="social-card"><a href="https://music.apple.com/us/album/party-riddim-2020/1527887305" target="_blank">Apple Music</a></div>
-    </div>
+  <div class="social-links">
+    <h3>Follow Us</h3>
+    <a href="https://www.instagram.com/str8flightentertainment/?hl=en" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/Str8flightentertainment/" target="_blank">Facebook</a>
+    <a href="https://www.youtube.com/@str8flightentertainment" target="_blank">YouTube</a>
+    <a href="https://music.apple.com/us/album/party-riddim-2020/1527887305" target="_blank">Apple Music</a>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   &copy; 2025 Str8 Flight Entertainment • Belize
 </footer>
-
-<script>
-const form = document.getElementById('contactForm');
-const btn = document.getElementById('submitBtn');
-const success = document.getElementById('successMsg');
-
-form.addEventListener('submit', () => {
-  btn.classList.add('loading');
-  setTimeout(() => {
-    success.style.display = 'block';
-    form.reset();
-    btn.classList.remove('loading');
-  }, 1500);
-});
-</script>
 
 </body>
 </html>
