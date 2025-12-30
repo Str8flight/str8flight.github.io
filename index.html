@@ -7,43 +7,43 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
-<!-- GOOGLE ADSENSE -->
+<!-- Google AdSense -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393"
-crossorigin="anonymous"></script>
+ crossorigin="anonymous"></script>
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
+/* ================= GLOBAL ================= */
+*{margin:0;padding:0;box-sizing:border-box}
+body{
   font-family:'Roboto',sans-serif;
   background:#0b0b0b;
   color:#fff;
-  line-height:1.7;
   overflow-x:hidden;
 }
+h1,h2{font-family:'Montserrat',sans-serif}
+a{text-decoration:none}
 
 /* ================= NAVBAR ================= */
-.navbar {
+.navbar{
   position:fixed;
   top:0;
   width:100%;
+  z-index:1000;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(6px);
   display:flex;
   justify-content:center;
   gap:28px;
-  padding:16px;
-  background:rgba(0,0,0,0.75);
-  backdrop-filter:blur(6px);
-  z-index:100;
+  padding:15px;
 }
-.navbar a {
+.navbar a{
   color:#b36b00;
   font-weight:700;
-  text-decoration:none;
-  transition:.3s;
 }
-.navbar a:hover { color:#ff9c3b; }
+.navbar a:hover{color:#ff9c3b}
 
 /* ================= HERO ================= */
-.hero {
+.hero{
   position:relative;
   height:100vh;
   display:flex;
@@ -53,82 +53,101 @@ body {
   text-align:center;
   overflow:hidden;
 }
-
-.hero h1 {
-  font-family:'Montserrat',sans-serif;
-  font-size:3.5em;
-  color:#b36b00;
-  text-shadow:0 0 15px #b36b00,0 0 30px #ff9c3b;
-  z-index:2;
+.hero h1{
+  font-size:3.2em;
+  background:linear-gradient(90deg,#b36b00,#ff9c3b);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 0 15px rgba(179,107,0,.7);
 }
-.hero p {
+.hero p{
   margin-top:15px;
   font-size:1.2em;
-  z-index:2;
+  max-width:700px;
+  color:#ddd;
 }
 
-/* ================= MIC PARTICLES ================= */
-.mic-field {
+/* ================= MIC BACKGROUND ================= */
+.mic-layer{
   position:absolute;
-  top:0; left:0;
+  top:0;left:0;
   width:100%;
   height:100%;
+  z-index:0;
   overflow:hidden;
-  z-index:1;
 }
-
-.mic {
+.mic{
   position:absolute;
-  width:28px;
-  opacity:0.75;
+  opacity:.7;
   animation:flyMic linear infinite;
-  filter:drop-shadow(0 0 6px #b36b00);
 }
 
-@keyframes flyMic {
-  0% {
-    transform:translateY(100vh) rotate(0deg);
+/* 🎤 MIC ANIMATION (TILT LEFT / RIGHT) */
+@keyframes flyMic{
+  0%{
+    transform:translateY(110vh) rotate(var(--tilt-start));
     opacity:0;
   }
-  10% { opacity:0.8; }
-  100% {
-    transform:translateY(-120vh) rotate(360deg);
+  20%{opacity:.75}
+  50%{
+    transform:translateY(0) rotate(var(--tilt-mid));
+  }
+  100%{
+    transform:translateY(-130vh) rotate(var(--tilt-end));
     opacity:0;
   }
 }
 
-/* ================= SECTIONS ================= */
-section {
-  padding:90px 20px;
-  max-width:1100px;
-  margin:auto;
+/* ================= CONTENT ================= */
+.section{
+  max-width:1200px;
+  margin:80px auto;
+  padding:0 20px;
 }
-section h2 {
-  font-family:'Montserrat',sans-serif;
+.card{
+  background:#1a1a1a;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 0 20px rgba(179,107,0,.4);
+  margin-bottom:40px;
+}
+.card h2{
   color:#b36b00;
-  margin-bottom:20px;
-  text-align:center;
+  margin-bottom:15px;
+}
+
+/* ================= VIDEOS ================= */
+.videos{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+iframe{
+  width:100%;
+  height:260px;
+  border:none;
+  border-radius:14px;
 }
 
 /* ================= FOOTER ================= */
-footer {
+footer{
   text-align:center;
   padding:25px;
-  background:#0b0b0b;
   color:#b36b00;
+  font-size:.9em;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= MOBILE ================= */
 @media(max-width:768px){
-  .hero h1{ font-size:2.4em; }
-  .mic{ width:20px; }
+  .hero h1{font-size:2.4em}
+  iframe{height:220px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav class="navbar">
   <a href="index.html">Home</a>
   <a href="#about">About</a>
@@ -140,62 +159,69 @@ footer {
 
 <!-- HERO -->
 <header class="hero">
-  <div class="mic-field" id="micField"></div>
+  <div class="mic-layer" id="micLayer"></div>
 
-  <img src="str8flight-logo.png" alt="Str8 Flight Logo" style="width:140px;margin-bottom:20px;z-index:2;">
+  <img src="str8flight-logo.png" alt="Str8 Flight Logo" style="width:120px;margin-bottom:20px;z-index:1">
   <h1>Str8 Flight Entertainment</h1>
-  <p>Belize Music • Culture • Flight</p>
+  <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
 </header>
 
 <!-- ABOUT -->
-<section id="about">
-  <h2>About Us</h2>
-  <p style="text-align:center;max-width:800px;margin:auto;">
-    Str8 Flight Entertainment represents authentic Belizean sound,
-    creativity, and elevation. From studio production to culture-driven
-    releases, we push music forward.
+<section class="section card" id="about">
+  <h2>About</h2>
+  <p>
+    Str8 Flight Entertainment is a Belize-based music and media platform founded by Denton Barrow,
+    alongside Cleon and Fenton Barrow. The brand focuses on originality, culture, and artist development.
   </p>
 </section>
 
 <!-- VIDEOS -->
-<section id="videos">
-  <h2>Latest Videos</h2>
-  <!-- Your YouTube embeds stay here -->
+<section class="section card" id="videos">
+  <h2>Featured Videos</h2>
+  <div class="videos">
+    <iframe src="https://www.youtube.com/embed/0QwKo-mssxc" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/pInxfriRH_w" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/8E9zA7Bq1js" allowfullscreen></iframe>
+  </div>
+
+  <!-- AdSense -->
+  <ins class="adsbygoogle"
+    style="display:block;margin-top:40px"
+    data-ad-client="ca-pub-1435942574271393"
+    data-ad-slot="1902622418"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  &copy; 2025 Str8 Flight Entertainment • Belize
+  © 2025 Str8 Flight Entertainment • Belize
 </footer>
 
+<!-- 🎤 MIC SCRIPT -->
 <script>
-/* ================= CREATE FLYING MICS ================= */
+const micLayer = document.getElementById("micLayer");
+const isMobile = window.innerWidth < 768;
+const micCount = isMobile ? 10 : 18;
 
-const micField = document.getElementById("micField");
-const MIC_COUNT = 22;
+for(let i=0;i<micCount;i++){
+  const mic=document.createElement("img");
+  mic.src="https://cdn-icons-png.flaticon.com/512/727/727245.png"; // mic icon
+  mic.className="mic";
 
-const micSVG = `
-<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-  <rect x="22" y="4" width="20" height="32" rx="10" fill="#b36b00"/>
-  <rect x="28" y="10" width="8" height="20" rx="4" fill="#0b0b0b"/>
-  <path d="M16 30c0 9 7 16 16 16s16-7 16-16"
-        stroke="#b36b00" stroke-width="4" fill="none"/>
-  <rect x="30" y="46" width="4" height="10" fill="#b36b00"/>
-  <rect x="24" y="56" width="16" height="4" rx="2" fill="#b36b00"/>
-</svg>
-`;
+  mic.style.left=Math.random()*100+"%";
+  mic.style.width=isMobile?"22px":"30px";
 
-for(let i=0;i<MIC_COUNT;i++){
-  const mic = document.createElement("div");
-  mic.className = "mic";
-  mic.innerHTML = micSVG;
+  const tiltRange=isMobile?20:45;
+  mic.style.setProperty("--tilt-start",(Math.random()*tiltRange-tiltRange/2)+"deg");
+  mic.style.setProperty("--tilt-mid",(Math.random()*tiltRange-tiltRange/2)+"deg");
+  mic.style.setProperty("--tilt-end",(Math.random()*tiltRange-tiltRange/2)+"deg");
 
-  mic.style.left = Math.random()*100 + "%";
-  mic.style.animationDuration = 10 + Math.random()*15 + "s";
-  mic.style.animationDelay = Math.random()*10 + "s";
-  mic.style.transform = `scale(${0.6 + Math.random()*0.8})`;
+  mic.style.animationDuration=(isMobile?10:14)+Math.random()*8+"s";
+  mic.style.animationDelay=Math.random()*10+"s";
 
-  micField.appendChild(mic);
+  micLayer.appendChild(mic);
 }
 </script>
 
