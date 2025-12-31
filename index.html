@@ -21,289 +21,121 @@ body {
 
 /* LIGHT MODE */
 body.light-mode {
-  background:#fff;
+  background:#f5f5f5;
   color:#111;
 }
 
-/* NAV */
+/* NAVBAR */
 .navbar {
-  position:fixed;
-  top:0; left:0;
-  width:100%;
-  z-index:1000;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  position:fixed; top:0; left:0; width:100%; z-index:1000;
+  display:flex; justify-content:space-between; align-items:center;
   padding:15px 24px;
   background:rgba(0,0,0,0.75);
   backdrop-filter:blur(8px);
   transition: background 0.3s;
 }
+body.light-mode .navbar { background: rgba(255,255,255,0.85); }
 
-body.light-mode .navbar {
-  background: rgba(255,255,255,0.85);
-}
-
-.logo {
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
+.logo { display:flex; align-items:center; gap:10px; }
 .logo img { height:42px; }
-
 .logo span {
-  font-family:'Montserrat',sans-serif;
-  font-size:1.4em;
+  font-family:'Montserrat',sans-serif; font-size:1.4em;
   background:linear-gradient(90deg,#b36b00,#ff9c3b);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
   transition: all 0.3s;
 }
+body.light-mode .logo span { background: linear-gradient(90deg,#ff9c3b,#b36b00); }
 
-/* LIGHT MODE LOGO */
-body.light-mode .logo span {
-  background:linear-gradient(90deg,#ff9c3b,#b36b00);
-}
-
-.flag { height:26px; }
-
-.menu-toggle {
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-  margin-left:15px;
-}
-
-.menu-toggle span {
-  width:26px;
-  height:3px;
-  background:#b36b00;
-  margin:4px 0;
-  transition: background 0.3s;
-}
-
-/* LIGHT MODE TOGGLE ICON */
-body.light-mode .menu-toggle span {
-  background:#ff9c3b;
-}
-
+/* MENU */
 .nav-list {
-  list-style:none;
-  display:flex;
-  gap:24px;
+  list-style:none; display:flex; gap:24px;
 }
-
 .nav-list a {
-  color:#b36b00;
-  font-weight:700;
-  text-shadow:0 0 6px #b36b00;
-  transition:.3s;
+  color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00;
+  transition:.3s; position:relative; letter-spacing:0.8px; text-transform:uppercase;
 }
-
-body.light-mode .nav-list a {
-  color:#b36b00;
-  text-shadow:0 0 6px #ff9c3b;
+.nav-list a::after {
+  content:''; position:absolute; left:0; bottom:-4px;
+  width:0%; height:2px; background:#ff9c3b; transition:.3s;
 }
+.nav-list a:hover::after { width:100%; }
+body.light-mode .nav-list a { color:#ff9c3b; text-shadow:0 0 6px #ff9c3b; }
 
-.nav-list a:hover {
-  color:#ff9c3b;
-  text-shadow:0 0 12px #ff9c3b;
-}
+/* MOBILE MENU */
+.menu-toggle { display:none; flex-direction:column; cursor:pointer; }
+.menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; transition:0.3s; }
+body.light-mode .menu-toggle span { background:#ff9c3b; }
 
-/* MOBILE NAV */
 @media(max-width:768px){
   .menu-toggle { display:flex; }
-
   .nav-list {
-    position:absolute;
-    top:65px;
-    right:20px;
-    width:220px;
-    background:#111;
-    flex-direction:column;
-    max-height:0;
-    overflow:hidden;
-    transition:max-height .35s ease, background 0.3s;
-    border-radius:0 0 12px 12px;
-    box-shadow:0 0 30px rgba(179,107,0,.6);
+    position:absolute; top:65px; right:20px; width:220px;
+    background:#111; flex-direction:column; max-height:0; overflow:hidden;
+    transition:max-height 0.35s ease; border-radius:0 0 12px 12px;
+    box-shadow:0 0 40px rgba(179,107,0,0.6);
   }
-
-  body.light-mode .nav-list { background:#fff; box-shadow:0 0 30px rgba(255,156,59,.6); }
-
   .nav-list.active { max-height:500px; }
-
-  .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
-
-  body.light-mode .nav-list li { border-bottom:1px solid rgba(255,156,59,.5); }
-
-  .nav-list a {
-    padding:14px 20px;
-    display:block;
-  }
+  .nav-list li { border-bottom:1px solid rgba(179,107,0,0.4); }
+  .nav-list a { padding:14px 20px; display:block; }
+  body.light-mode .nav-list { background:#fff; box-shadow:0 0 40px rgba(255,156,59,0.6); }
 }
+
+/* LIGHT/DARK TOGGLE */
+#modeToggle {
+  font-size:1.2em; cursor:pointer; margin-left:12px;
+  transition: color 0.3s;
+}
+body.light-mode #modeToggle { color:#ff9c3b; }
 
 /* HERO */
-.hero-header {
-  position:relative;
-  padding:150px 20px 90px;
-  text-align:center;
-  background:linear-gradient(135deg,#0b0b0b,#161616);
-  overflow:hidden;
-  transition: background 0.3s;
-}
+.hero-header { position:relative; padding:150px 20px 90px; text-align:center; background:linear-gradient(135deg,#0b0b0b,#161616); overflow:hidden; transition: background 0.3s; }
+body.light-mode .hero-header { background: linear-gradient(135deg,#f5f5f5,#e0e0e0); }
 
-body.light-mode .hero-header {
-  background: linear-gradient(135deg,#fff,#eee);
-}
-
-.hero-content {
-  position:relative;
-  z-index:3;
-}
-
-.hero-header h1 {
-  font-family:'Montserrat',sans-serif;
-  font-size:3em;
-  margin-bottom:10px;
-  text-shadow:0 0 14px #b36b00;
-  animation:fadeDown 1.2s ease forwards;
-}
-
+.hero-content { position:relative; z-index:3; }
+.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; margin-bottom:10px; text-shadow:0 0 14px #b36b00; animation:fadeDown 1.2s ease forwards; transition:text-shadow 0.3s; }
 body.light-mode .hero-header h1 { text-shadow:0 0 14px #ff9c3b; }
 
-.hero-header p {
-  font-size:1.2em;
-  animation:fadeUp 1.4s ease forwards;
-  color:#fff;
-}
-
-body.light-mode .hero-header p { color:#111; }
+.hero-header p { font-size:1.2em; animation:fadeUp 1.4s ease forwards; }
 
 /* PARTICLES */
-.particles {
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-}
+.particles { position:absolute; inset:0; z-index:1; pointer-events:none; }
+.particles span { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:.7; animation:floatUp linear infinite; filter:drop-shadow(0 0 6px #b36b00); }
+body.light-mode .particles span { filter:drop-shadow(0 0 6px #ff9c3b); background:#ff9c3b; }
 
-.particles span {
-  position:absolute;
-  width:6px;
-  height:6px;
-  background:#b36b00;
-  border-radius:50%;
-  opacity:.7;
-  animation:floatUp linear infinite;
-  filter:drop-shadow(0 0 6px #b36b00);
-}
-
-@keyframes floatUp {
-  from { transform:translateY(100vh); opacity:.8; }
-  to { transform:translateY(-120vh); opacity:0; }
-}
-
-@keyframes fadeDown {
-  from { opacity:0; transform:translateY(-30px); }
-  to { opacity:1; transform:translateY(0); }
-}
-
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(30px); }
-  to { opacity:1; transform:translateY(0); }
-}
+@keyframes floatUp { from {transform:translateY(100vh); opacity:.8;} to {transform:translateY(-120vh); opacity:0;} }
+@keyframes fadeDown { from { opacity:0; transform:translateY(-30px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
 
 /* PAGE LAYOUT */
-.page-container {
-  max-width:1400px;
-  margin:70px auto;
-  padding:0 20px;
-  display:flex;
-  gap:50px;
-}
-
-.column {
-  background:#141414;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 0 25px rgba(179,107,0,.4);
-  transition: all 0.3s;
-}
-
-body.light-mode .column { background:#f9f9f9; box-shadow:0 0 25px rgba(255,156,59,.3); }
-
-.column:hover {
-  box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00;
-}
-
-.column h2 {
-  color:#b36b00;
-  margin-bottom:15px;
-  text-shadow:0 0 8px #b36b00;
-}
-
+.page-container { max-width:1400px; margin:70px auto; padding:0 20px; display:flex; gap:50px; }
+.column { background:#141414; padding:30px; border-radius:18px; box-shadow:0 0 25px rgba(179,107,0,.4); transition: box-shadow 0.3s; }
+.column:hover { box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00; }
+body.light-mode .column { background:#fff; box-shadow:0 0 25px rgba(255,156,59,.4); }
+.left { flex:1; } .center { flex:3; }
+.column h2 { color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00; }
 body.light-mode .column h2 { color:#ff9c3b; text-shadow:0 0 8px #ff9c3b; }
-
 .column p { margin-bottom:15px; }
 
 /* VIDEOS */
-.section-title {
-  text-align:center;
-  font-size:2.2em;
-  margin-bottom:30px;
-  color:#b36b00;
-  text-shadow:0 0 10px #b36b00;
-}
-
+.section-title { text-align:center; font-size:2.2em; margin-bottom:30px; color:#b36b00; text-shadow:0 0 10px #b36b00; }
 body.light-mode .section-title { color:#ff9c3b; text-shadow:0 0 10px #ff9c3b; }
 
-.videos {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
-}
-
-.video-card {
-  background:#0f0f0f;
-  padding:18px;
-  border-radius:16px;
-  box-shadow:0 0 18px #b36b00;
-  transition:.3s;
-}
-
+.videos { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
+.video-card { background:#0f0f0f; padding:18px; border-radius:16px; box-shadow:0 0 18px #b36b00; transition:.3s; }
+.video-card:hover { box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00; }
 body.light-mode .video-card { background:#fff; box-shadow:0 0 18px #ff9c3b; }
-
-.video-card:hover {
-  box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00;
-}
-
 iframe { width:100%; height:260px; border:none; border-radius:12px; }
-
-.video-title {
-  margin-top:10px;
-  text-align:center;
-  font-weight:700;
-  text-shadow:0 0 5px #b36b00;
-}
-
-body.light-mode .video-title { color:#111; text-shadow:0 0 5px #ff9c3b; }
+.video-title { margin-top:10px; text-align:center; font-weight:700; text-shadow:0 0 5px #b36b00; }
+body.light-mode .video-title { text-shadow:0 0 5px #ff9c3b; }
 
 /* FOOTER */
-footer {
-  text-align:center;
-  padding:30px;
-  color:#b36b00;
-  background:#0b0b0b;
-  margin-top:70px;
-  transition: background 0.3s, color 0.3s;
-}
-
-body.light-mode footer { background:#fff; color:#111; }
+footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; transition: color 0.3s, background 0.3s; }
+body.light-mode footer { color:#ff9c3b; background:#f5f5f5; }
 
 /* RESPONSIVE */
 @media(max-width:1024px){ .page-container { flex-direction:column; } }
 @media(max-width:768px){ iframe { height:200px; } }
+
 </style>
 </head>
 
@@ -311,13 +143,16 @@ body.light-mode footer { background:#fff; color:#111; }
 
 <nav class="navbar">
   <div class="logo">
-    <img src="str8flight-logo.png" alt="Logo">
+    <img src="str8flight-logo.png">
     <span>STR8 FLIGHT</span>
-    <img src="belize-flag.png" class="flag" alt="Belize Flag">
+    <img src="belize-flag.png" class="flag">
   </div>
 
-  <div class="menu-toggle" id="menuBtn">
-    <span></span><span></span><span></span>
+  <div style="display:flex;align-items:center">
+    <div class="menu-toggle" id="menuBtn">
+      <span></span><span></span><span></span>
+    </div>
+    <div id="modeToggle"><i class="fas fa-sun"></i></div>
   </div>
 
   <ul class="nav-list">
@@ -327,11 +162,6 @@ body.light-mode footer { background:#fff; color:#111; }
     <li><a href="services.html">Services</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-
-  <!-- Dark/Light Toggle -->
-  <button id="modeToggle" style="margin-left:10px;cursor:pointer;font-size:1.2em;background:none;border:none;color:#b36b00;">
-    <i class="fas fa-sun"></i>
-  </button>
 </nav>
 
 <header class="hero-header">
@@ -353,7 +183,6 @@ body.light-mode footer { background:#fff; color:#111; }
 
   <div class="column center">
     <h2 class="section-title">Featured Music Videos</h2>
-
     <div class="videos" id="videos">
       <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc"></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w"></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
@@ -364,10 +193,9 @@ body.light-mode footer { background:#fff; color:#111; }
       <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0"></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
     </div>
 
-    <!-- Live Stream -->
-    <div id="live-stream" style="margin-top:40px; display:none;">
-      <h2 class="section-title">Live Now</h2>
-      <iframe id="liveFrame" width="100%" height="360" allow="autoplay" allowfullscreen></iframe>
+    <h2 class="section-title">Live Now</h2>
+    <div id="live-stream" style="display:none;">
+      <iframe id="liveFrame" src="" allowfullscreen></iframe>
     </div>
 
   </div>
@@ -394,18 +222,24 @@ for(let i=0;i<70;i++){
   particles.appendChild(dot);
 }
 
-/* Light/Dark toggle */
+/* LIGHT/DARK MODE */
 const modeBtn = document.getElementById('modeToggle');
+if(localStorage.getItem('mode') === 'light'){
+  document.body.classList.add('light-mode');
+  modeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+}
 modeBtn.onclick = () => {
   document.body.classList.toggle('light-mode');
-  modeBtn.innerHTML = document.body.classList.contains('light-mode') ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+  const isLight = document.body.classList.contains('light-mode');
+  modeBtn.innerHTML = isLight ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+  localStorage.setItem('mode', isLight ? 'light' : 'dark');
 };
 
-/* YouTube Live Check */
-const CHANNEL_ID = "UCp2UwspaBTvuEDMe9kx3aoA"; 
+/* YOUTUBE LIVE CHECK (Serverless API) */
+const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA";
 fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
-.then(r => r.json())
-.then(d => {
+.then(r=>r.json())
+.then(d=>{
   if(d.live && d.videoId){
     document.getElementById('liveFrame').src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
     document.getElementById('live-stream').style.display = 'block';
