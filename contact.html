@@ -114,25 +114,15 @@ body.light footer{background:#f4f4f4;color:#b36b00;}
   <a href="https://music.apple.com/us/artist/str8-flight-entertainment/1527887305" target="_blank"><i class="fab fa-apple"></i></a>
 </div>
 
-<footer>&copy; 2025 Str8 Flight Entertainment • Belize</footer>
+<footer>&copy; <span id="year"></span> Str8 Flight Entertainment • Belize</footer>
 
 <script>
+// Update year automatically
+document.getElementById('year').textContent = new Date().getFullYear();
+
 // Persistent Dark/Light Mode
 const body = document.body;
-
-// Load saved theme
 if(localStorage.theme === "light") body.classList.add("light"); else body.classList.add("dark");
-
-// Optional: create a toggle button if you add one later
-const themeToggle = document.createElement('div');
-themeToggle.id = 'themeToggle';
-themeToggle.style.display = 'none';
-themeToggle.addEventListener('click', () => {
-  body.classList.toggle("light");
-  body.classList.toggle("dark");
-  localStorage.theme = body.classList.contains("light") ? "light" : "dark";
-});
-document.body.appendChild(themeToggle);
 
 // Particles
 const particleContainer=document.getElementById('particles');
