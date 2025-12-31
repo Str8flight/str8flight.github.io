@@ -4,68 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Str8 Flight Entertainment | Belize Music & Culture</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ================= GLOBAL RESET ================= */
+/* ================= GLOBAL ================= */
 * { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family:'Roboto',sans-serif;
-  background:#0b0b0b;
-  color:#fff;
-  overflow-x:hidden;
-  transition: background 0.4s, color 0.4s;
-}
-
-/* ================= DARK/LIGHT MODE ================= */
-body.light-mode {
-  background:#f4f4f4;
-  color:#111;
-}
-body.light-mode .navbar { background:rgba(255,255,255,0.9); }
-body.light-mode .nav-list a { color:#b36b00; }
-body.light-mode .nav-list a:hover { color:#ff9c3b; }
-body.light-mode .hero-header { background:linear-gradient(135deg,#fff,#ddd); }
-body.light-mode .hero-header h1 { text-shadow:none; }
-body.light-mode .column { background:#f0f0f0; box-shadow:0 0 25px rgba(179,107,0,.2); }
-body.light-mode .video-card { background:#eaeaea; box-shadow:0 0 18px #b36b00; }
+body { font-family:'Roboto',sans-serif; background:#0b0b0b; color:#fff; overflow-x:hidden; transition:background 0.3s, color 0.3s;}
+a { text-decoration:none; }
 
 /* ================= NAVBAR ================= */
 .navbar {
-  position:fixed; top:0; left:0; width:100%;
-  z-index:1000; display:flex;
-  justify-content:space-between; align-items:center;
-  padding:15px 24px;
-  background:rgba(0,0,0,0.75);
-  backdrop-filter:blur(8px);
-  transition: background 0.4s;
+  position:fixed; top:0; width:100%; z-index:1000;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:15px 24px; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px);
 }
 .logo { display:flex; align-items:center; gap:10px; }
 .logo img { height:42px; }
-.logo span {
-  font-family:'Montserrat',sans-serif;
-  font-size:1.4em;
-  background:linear-gradient(90deg,#b36b00,#ff9c3b);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.flag { height:26px; }
+.logo span { font-family:'Montserrat',sans-serif; font-size:1.4em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 .menu-toggle { display:none; flex-direction:column; cursor:pointer; }
-.menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; }
+.menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; transition:0.3s; }
 .nav-list { list-style:none; display:flex; gap:24px; }
 .nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:.3s; }
 .nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
 
-/* MOBILE NAV */
+/* ================= MOBILE NAV ================= */
 @media(max-width:768px){
   .menu-toggle { display:flex; }
   .nav-list {
     position:absolute; top:65px; right:20px; width:220px;
-    background:#111; flex-direction:column;
-    max-height:0; overflow:hidden; transition:max-height .35s ease;
-    border-radius:0 0 12px 12px;
-    box-shadow:0 0 30px rgba(179,107,0,.6);
+    background:#111; flex-direction:column; max-height:0; overflow:hidden; transition:max-height .35s ease;
+    border-radius:0 0 12px 12px; box-shadow:0 0 30px rgba(179,107,0,.6);
   }
   .nav-list.active { max-height:500px; }
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
@@ -73,75 +42,61 @@ body.light-mode .video-card { background:#eaeaea; box-shadow:0 0 18px #b36b00; }
 }
 
 /* ================= HERO ================= */
-.hero-header {
-  position:relative; padding:150px 20px 90px; text-align:center;
-  background:linear-gradient(135deg,#0b0b0b,#161616);
-  overflow:hidden; transition: background 0.4s;
-}
-.hero-header h1 {
-  font-family:'Montserrat',sans-serif;
-  font-size:3em; margin-bottom:10px;
-  text-shadow:0 0 14px #b36b00;
-  animation:fadeDown 1.2s ease forwards;
-}
+.hero-header { position:relative; padding:150px 20px 90px; text-align:center; background:linear-gradient(135deg,#0b0b0b,#161616); overflow:hidden; }
+.hero-content { position:relative; z-index:3; }
+.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; margin-bottom:10px; text-shadow:0 0 14px #b36b00; animation:fadeDown 1.2s ease forwards; }
 .hero-header p { font-size:1.2em; animation:fadeUp 1.4s ease forwards; }
+@keyframes fadeDown { from { opacity:0; transform:translateY(-30px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
 
-/* PARTICLES */
-.particles {
-  position:absolute; inset:0; z-index:1; pointer-events:none;
-}
-.particles span {
-  position:absolute;
-  width:6px; height:6px; background:#b36b00;
-  border-radius:50%; opacity:.7;
-  animation:floatUp linear infinite;
-  filter:drop-shadow(0 0 6px #b36b00);
-}
+/* ================= PARTICLES ================= */
+.particles { position:absolute; inset:0; z-index:1; pointer-events:none; }
+.particles span { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:.7; animation:floatUp linear infinite; filter:drop-shadow(0 0 6px #b36b00); }
+@keyframes floatUp { from { transform:translateY(100vh); opacity:.8; } to { transform:translateY(-120vh); opacity:0; } }
 
-/* LIVE STREAM */
-#live-stream { display:none; margin:60px auto 0; padding:40px; background:#141414; border-radius:20px; box-shadow:0 0 35px rgba(179,107,0,.7); text-align:center; }
-#live-stream.show { display:block; animation:fadeUp .8s ease; }
-.live-header { display:flex; justify-content:center; align-items:center; gap:12px; margin-bottom:20px; }
-.live-dot { width:14px; height:14px; background:#ff2b2b; border-radius:50%; animation:pulse 1.4s infinite; }
-.live-header h2 { color:#b36b00; text-shadow:0 0 10px #b36b00; }
-.live-player { position:relative; padding-bottom:56.25%; height:0; }
-.live-player iframe { position:absolute; inset:0; width:100%; height:100%; border-radius:14px; box-shadow:0 0 25px #b36b00; }
-.live-text { margin-top:15px; font-weight:700; color:#ff9c3b; }
-
-/* PAGE LAYOUT */
-.page-container { max-width:1400px; margin:70px auto; padding:0 20px; display:flex; gap:50px; }
-.column { background:#141414; padding:30px; border-radius:18px; box-shadow:0 0 25px rgba(179,107,0,.4); transition:.3s; }
+/* ================= PAGE CONTENT ================= */
+.page-container { max-width:1400px; margin:70px auto; padding:0 20px; display:flex; gap:50px; flex-wrap:wrap; }
+.column { background:#141414; padding:30px; border-radius:18px; box-shadow:0 0 25px rgba(179,107,0,.4); flex:1; min-width:280px; }
 .column:hover { box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00; }
-.left { flex:1; }
-.center { flex:3; }
+.column h2 { color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00; }
+.column p { margin-bottom:15px; }
 
-/* VIDEOS */
+/* ================= VIDEOS ================= */
 .section-title { text-align:center; font-size:2.2em; margin-bottom:30px; color:#b36b00; text-shadow:0 0 10px #b36b00; }
 .videos { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
-.video-card { background:#0f0f0f; padding:18px; border-radius:16px; box-shadow:0 0 18px #b36b00; }
+.video-card { background:#0f0f0f; padding:18px; border-radius:16px; box-shadow:0 0 18px #b36b00; transition:.3s; }
+.video-card:hover { box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00; }
 iframe { width:100%; height:260px; border:none; border-radius:12px; }
+.video-title { margin-top:10px; text-align:center; font-weight:700; text-shadow:0 0 5px #b36b00; }
 
-/* FOOTER */
-footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; transition: background 0.4s; }
+/* ================= LIVE STREAM ================= */
+#live-stream { display:none; text-align:center; margin:40px 0; }
+#live-stream.show { animation:fadeInUp 1s forwards; }
+@keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
 
-/* ANIMATIONS */
-@keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(255,0,0,.7);} 70%{box-shadow:0 0 0 18px rgba(255,0,0,0);} 100%{box-shadow:0 0 0 0 rgba(255,0,0,0);} }
-@keyframes fadeUp { from { opacity:0; transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
-@keyframes fadeDown { from {opacity:0; transform:translateY(-20px);} to {opacity:1; transform:translateY(0);} }
-@keyframes floatUp { 0%{transform:translateY(0);} 100%{transform:translateY(-1200px);} }
+/* ================= FOOTER ================= */
+footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; }
 
+/* ================= RESPONSIVE ================= */
+@media(max-width:1024px){ .page-container { flex-direction:column; } }
+@media(max-width:768px){ iframe { height:200px; } }
 </style>
 </head>
+
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
-    <img src="str8flight-logo.png" alt="Logo">
+    <img src="str8flight-logo.png">
     <span>STR8 FLIGHT</span>
     <img src="belize-flag.png" class="flag">
   </div>
-  <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
+
+  <div class="menu-toggle" id="menuBtn">
+    <span></span><span></span><span></span>
+  </div>
+
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
     <li><a href="#about">About</a></li>
@@ -156,71 +111,72 @@ footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; mar
   <div class="particles" id="particles"></div>
   <div class="hero-content">
     <h1>Str8 Flight Entertainment</h1>
-    <p>Belize-based platform promoting original music & Caribbean creativity.</p>
+    <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
   </div>
 </header>
 
+<!-- LIVE STREAM -->
+<div id="live-stream">
+  <h2>Now Live!</h2>
+  <iframe id="liveFrame" width="100%" height="360"></iframe>
+</div>
+
 <!-- PAGE CONTENT -->
 <div class="page-container">
+
   <div class="column left" id="about">
     <h2>About</h2>
-    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by Denton Barrow and brothers. We promote original music, culture, and Caribbean creativity through engaging videos, live events, and online content.</p>
+    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with <strong>Cleon</strong> and <strong>Fenton Barrow</strong>.</p>
+    <p>The Barrow brothers are actively involved in music production, recording, creative direction, and artist development.</p>
+    <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations.</p>
   </div>
 
   <div class="column center">
-    <section id="live-stream">
-      <div class="live-header">
-        <span class="live-dot"></span>
-        <h2>LIVE NOW</h2>
-      </div>
-      <div class="live-player">
-        <iframe id="liveFrame" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="live-text">We are live on YouTube — tap in!</div>
-    </section>
-
     <h2 class="section-title">Featured Music Videos</h2>
     <div class="videos" id="videos">
-      <!-- Add your video cards here -->
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc"></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w"></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ"></iframe><div class="video-title">Denton - Furious (RAW)</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/8E9zA7Bq1js"></iframe><div class="video-title">Quarantine - Cleon x Denton</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/QdFS99yYcDE"></iframe><div class="video-title">Denton - Wiser</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/pmSFR_ohjJk"></iframe><div class="video-title">Denton - PARRAT</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0"></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
     </div>
   </div>
+
 </div>
 
 <footer>
-  © 2025 Str8 Flight Entertainment • Belize
+  &copy; 2025 Str8 Flight Entertainment • Belize
 </footer>
 
 <script>
-// MOBILE NAV TOGGLE
+/* ================= MOBILE NAV ================= */
 document.getElementById('menuBtn').onclick = () => {
   document.querySelector('.nav-list').classList.toggle('active');
 };
 
-// PARTICLES
+/* ================= PARTICLES ================= */
 const particles = document.getElementById('particles');
 for(let i=0;i<70;i++){
-  const dot=document.createElement('span');
-  dot.style.left=Math.random()*100+'%';
-  dot.style.animationDuration=(6+Math.random()*10)+'s';
-  dot.style.animationDelay=Math.random()*5+'s';
+  const dot = document.createElement('span');
+  dot.style.left = Math.random()*100+'%';
+  dot.style.animationDuration = (6 + Math.random()*10)+'s';
+  dot.style.animationDelay = Math.random()*5+'s';
   particles.appendChild(dot);
 }
 
-// YOUTUBE LIVE CHECK (Serverless API Recommended)
-const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA";
-// Replace with your Vercel serverless endpoint
+/* ================= YOUTUBE LIVE CHECK ================= */
+const CHANNEL_ID = "UCp2UwspaBTvuEDMe9kx3aoA"; // Replace with your channel ID
 fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
-.then(r=>r.json())
-.then(d=>{
-  if(d.live && d.videoId){
-    document.getElementById('liveFrame').src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
-    document.getElementById('live-stream').classList.add('show');
-  }
-});
-
-// DARK/LIGHT TOGGLE (optional)
-const toggleMode = () => { document.body.classList.toggle('light-mode'); };
-// Example: bind to a button or keyboard shortcut if needed
+  .then(res => res.json())
+  .then(data => {
+    if(data.live && data.videoId){
+      document.getElementById('liveFrame').src = `https://www.youtube.com/embed/${data.videoId}?autoplay=1`;
+      document.getElementById('live-stream').style.display = 'block';
+    }
+  })
+  .catch(err => console.error("Live check error:", err));
 </script>
 
 </body>
