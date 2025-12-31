@@ -4,79 +4,87 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services | Str8 Flight Entertainment</title>
+
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ================= GLOBAL ================= */
+/* ===== GLOBAL ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Roboto', sans-serif; line-height:1.7; overflow-x:hidden; transition: background 0.4s, color 0.4s;}
+body { font-family:'Roboto',sans-serif; line-height:1.7; overflow-x:hidden; transition: background 0.3s, color 0.3s; }
+a { text-decoration:none; }
 body.light { background:#f4f4f4; color:#111; }
 body.dark { background:#0b0b0b; color:#fff; }
-a { text-decoration:none; transition: color 0.3s; }
 
-/* ================= NAVBAR ================= */
+/* ===== NAVBAR ===== */
 .navbar {
   position: fixed; top:0; width:100%; z-index:1000;
   display:flex; justify-content:space-between; align-items:center;
-  padding:15px 20px; background:rgba(0,0,0,0.85); backdrop-filter:blur(5px);
-  box-shadow:0 0 20px rgba(179,107,0,0.3);
-  transition: background 0.4s, box-shadow 0.4s;
+  padding:15px 24px; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px);
+  transition: background 0.3s;
 }
-body.light .navbar { background: rgba(255,255,255,0.85); box-shadow:0 0 20px rgba(179,107,0,0.1); }
+body.light .navbar { background:rgba(255,255,255,0.9); }
 
-.navbar .logo { display:flex; align-items:center; gap:10px; z-index:2; }
-.navbar .logo img { width:50px; }
-.navbar .logo span { font-family:'Montserrat', sans-serif; font-weight:700; font-size:1.3em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 6px #b36b00;}
-body.light .navbar .logo span { color:#b36b00; background:none; -webkit-text-fill-color:unset; text-shadow:none; }
+.navbar .logo {
+  display:flex; align-items:center; gap:10px;
+}
+.navbar .logo img { height:42px; }
+.navbar .logo span { font-family:'Montserrat',sans-serif; font-size:1.4em; font-weight:700; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-.navbar .flag-toggle { display:flex; align-items:center; gap:12px; z-index:2; }
-.flag-toggle img.flag { width:26px; height:auto; }
-.flag-toggle i.mode-toggle { cursor:pointer; font-size:1.4em; transition: color 0.4s; }
-body.light .mode-toggle { color:#111; }
-body.dark .mode-toggle { color:#ff9c3b; }
+.navbar .logo img.flag, .navbar .logo i#theme-toggle { cursor:pointer; }
 
-.navbar .menu-toggle { display:none; flex-direction:column; cursor:pointer; gap:4px; z-index:2; }
-.navbar .menu-toggle div { width:25px; height:3px; background:#b36b00; transition:0.3s; }
-
-.nav-list { display:flex; gap:25px; list-style:none; z-index:2; }
-.nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:.3s; }
+.nav-list {
+  list-style:none; display:flex; gap:24px;
+}
+.nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:0.3s; }
 .nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
-body.light .nav-list a { color:#b36b00; text-shadow:none; }
 
-/* MOBILE HAMBURGER */
+/* Hamburger Menu */
+.menu-toggle { display:none; flex-direction:column; cursor:pointer; }
+.menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; }
+
+/* MOBILE NAV */
 @media(max-width:768px){
-  .navbar .menu-toggle { display:flex; }
+  .menu-toggle { display:flex; }
+
   .nav-list {
-    position:absolute; top:60px; right:0; width:220px; background:#0b0b0b;
-    flex-direction:column; gap:0; overflow:hidden; max-height:0; transition:max-height 0.4s ease-in, background 0.4s;
+    position:absolute; top:65px; right:20px; width:220px; background:#111; flex-direction:column;
+    max-height:0; overflow:hidden; transition:max-height .35s ease, background 0.3s;
     border-radius:0 0 12px 12px; box-shadow:0 0 30px rgba(179,107,0,.6);
   }
-  body.light .nav-list { background:#f4f4f4; }
-  .nav-list.active { max-height:600px; }
+  body.light .nav-list { background:#fff; }
+  .nav-list.active { max-height:500px; }
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
-  body.light .nav-list li { border-bottom:1px solid rgba(179,107,0,.3); }
-  .nav-list li a { padding:12px 20px; display:block; }
+  body.light .nav-list li { border-bottom:1px solid #b36b00; }
+  .nav-list li a { padding:14px 20px; display:block; }
+
+  /* FIX FLAG + ICON ALIGNMENT */
+  .navbar .logo { flex-wrap: wrap; justify-content: flex-start; gap:8px; }
+  .navbar .logo img.flag, #theme-toggle { order: 1; margin-left:0; }
 }
 
-/* ================= HERO ================= */
+/* ===== HERO ===== */
 .hero-header {
-  position:relative; height:50vh; text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center;
-  overflow:hidden; background:linear-gradient(135deg,#0b0b0b,#1a1a1a); transition: background 0.4s;
+  position:relative; padding:150px 20px 90px; text-align:center;
+  background:linear-gradient(135deg,#0b0b0b,#161616); overflow:hidden; transition: background 0.3s;
 }
 body.light .hero-header { background:linear-gradient(135deg,#fff,#eee); }
 
-.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 10px #b36b00; animation:fadeInDown 1.2s ease forwards;}
-.hero-header p { margin-top:15px; font-size:1.2em; opacity:0; animation:fadeInUp 1.5s ease forwards; animation-delay:0.3s; }
+.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; margin-bottom:10px; text-shadow:0 0 14px #b36b00; animation:fadeDown 1.2s ease forwards; }
+.hero-header p { font-size:1.2em; animation:fadeUp 1.4s ease forwards; }
 
-@keyframes fadeInDown {0%{opacity:0;transform:translateY(-30px);}100%{opacity:1;transform:translateY(0);}}
-@keyframes fadeInUp {0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
+@keyframes fadeDown { from {opacity:0; transform:translateY(-30px);} to {opacity:1; transform:translateY(0);} }
+@keyframes fadeUp { from {opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
 
-#particles { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden; }
+/* PARTICLES */
+#particles { position:absolute; inset:0; z-index:0; overflow:hidden; }
 #particles div { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:0.6; animation:moveParticles 10s linear infinite; }
 @keyframes moveParticles { 0%{transform:translateY(0) translateX(0);opacity:0.6;} 50%{opacity:1;} 100%{transform:translateY(-1200px) translateX(400px);opacity:0.2;} }
 
-/* ================= SERVICES CARDS ================= */
+/* ===== SERVICES CARDS ===== */
 .services-container {
   max-width:1200px; margin:50px auto; display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; padding:0 20px;
@@ -84,7 +92,7 @@ body.light .hero-header { background:linear-gradient(135deg,#fff,#eee); }
 .service-card {
   background:#1a1a1a; padding:30px; border-radius:16px;
   box-shadow:0 0 15px rgba(179,107,0,0.5),0 0 30px rgba(138,76,0,0.3);
-  text-align:center; transition:transform 0.3s ease, box-shadow 0.3s ease;
+  text-align:center; transition:transform 0.3s ease, box-shadow 0.3s ease, background 0.3s, color 0.3s;
   opacity:0; transform:translateY(30px);
 }
 body.light .service-card { background:#fff; color:#111; box-shadow:0 0 15px rgba(179,107,0,0.3),0 0 30px rgba(138,76,0,0.2);}
@@ -95,11 +103,11 @@ body.light .service-card h3 { color:#b36b00; text-shadow:none; }
 .service-card p { color:#e0e0e0; line-height:1.6; }
 body.light .service-card p { color:#111; }
 
-/* ================= FOOTER ================= */
-footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; }
-body.light footer { background:#f4f4f4; color:#b36b00; text-shadow:none; box-shadow:0 -3px 8px rgba(179,107,0,0.2); }
+/* FOOTER */
+footer { text-align:center; padding:25px 10px; color:#b36b00; background:#0b0b0b; text-shadow:0 0 4px #b36b00; transition: background 0.3s, color 0.3s; }
+body.light footer { background:#f4f4f4; color:#111; text-shadow:none; }
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
 @media(max-width:768px){ .hero-header h1{font-size:2.4em;} }
 </style>
 </head>
@@ -111,14 +119,11 @@ body.light footer { background:#f4f4f4; color:#b36b00; text-shadow:none; box-sha
   <div class="logo">
     <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
     <span>Str8 Flight</span>
-  </div>
-
-  <div class="flag-toggle">
     <img src="https://str8flight.github.io/belize-flag.png" class="flag" alt="Belize Flag">
-    <i class="fas fa-sun mode-toggle" id="modeToggle"></i>
+    <i class="fas fa-sun" id="theme-toggle"></i>
   </div>
 
-  <div class="menu-toggle" id="hamburger"><div></div><div></div><div></div></div>
+  <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
 
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
@@ -137,64 +142,29 @@ body.light footer { background:#f4f4f4; color:#b36b00; text-shadow:none; box-sha
 
 <!-- SERVICES CARDS -->
 <div class="services-container" id="services">
-  <div class="service-card">
-    <h3>Dub Plate</h3>
-    <p>Custom dub plates for artists, DJs, and events. High-quality recordings with unique vocal drops and professional sound mastering.</p>
-  </div>
-  <div class="service-card">
-    <h3>Mixing & Mastering</h3>
-    <p>Polish your tracks with professional mixing and mastering. Ensure your music sounds clear, balanced, and ready for release across all platforms.</p>
-  </div>
-  <div class="service-card">
-    <h3>Studio Recording</h3>
-    <p>Access a full-featured recording studio with experienced engineers. Capture vocals and instruments with top-quality equipment.</p>
-  </div>
-  <div class="service-card">
-    <h3>Vocal Recording & Editing</h3>
-    <p>Professional vocal tracking, tuning, and layering to make your voice shine in every project.</p>
-  </div>
-  <div class="service-card">
-    <h3>Songwriting & Arrangement</h3>
-    <p>Assist artists in crafting lyrics, melodies, and song structures for a polished final product.</p>
-  </div>
-  <div class="service-card">
-    <h3>Artist Development & Coaching</h3>
-    <p>Guidance on branding, performance, and music marketing to help you grow as an artist.</p>
-  </div>
-  <div class="service-card">
-    <h3>Live Session Recording</h3>
-    <p>Record live instruments or band sessions in the studio for high-quality audio capture.</p>
-  </div>
-  <div class="service-card">
-    <h3>Promotional Content Creation</h3>
-    <p>Short videos, teasers, and social media content for your releases to engage your audience.</p>
-  </div>
-  <div class="service-card">
-    <h3>Custom Dubplates & Vinyl Cuts</h3>
-    <p>Personalized tracks for DJs and events. Make your music unique and memorable.</p>
-  </div>
-  <div class="service-card">
-    <h3>Podcast & Voiceover Recording</h3>
-    <p>Professional audio production for podcasts, commercials, and voiceover work.</p>
-  </div>
-  <div class="service-card">
-    <h3>Remote Collaboration Services</h3>
-    <p>Work with our studio online from anywhere in the world to produce music seamlessly.</p>
-  </div>
+  <div class="service-card"><h3>Dub Plate</h3><p>Custom dub plates for artists, DJs, and events. High-quality recordings with unique vocal drops and professional sound mastering.</p></div>
+  <div class="service-card"><h3>Mixing & Mastering</h3><p>Polish your tracks with professional mixing and mastering. Ensure your music sounds clear, balanced, and ready for release across all platforms.</p></div>
+  <div class="service-card"><h3>Studio Recording</h3><p>Access a full-featured recording studio with experienced engineers. Capture vocals and instruments with top-quality equipment.</p></div>
+  <div class="service-card"><h3>Vocal Recording & Editing</h3><p>Professional vocal tracking, tuning, and layering to make your voice shine in every project.</p></div>
+  <div class="service-card"><h3>Songwriting & Arrangement</h3><p>Assist artists in crafting lyrics, melodies, and song structures for a polished final product.</p></div>
+  <div class="service-card"><h3>Artist Development & Coaching</h3><p>Guidance on branding, performance, and music marketing to help you grow as an artist.</p></div>
+  <div class="service-card"><h3>Live Session Recording</h3><p>Record live instruments or band sessions in the studio for high-quality audio capture.</p></div>
+  <div class="service-card"><h3>Promotional Content Creation</h3><p>Short videos, teasers, and social media content for your releases to engage your audience.</p></div>
+  <div class="service-card"><h3>Custom Dubplates & Vinyl Cuts</h3><p>Personalized tracks for DJs and events. Make your music unique and memorable.</p></div>
+  <div class="service-card"><h3>Podcast & Voiceover Recording</h3><p>Professional audio production for podcasts, commercials, and voiceover work.</p></div>
+  <div class="service-card"><h3>Remote Collaboration Services</h3><p>Work with our studio online from anywhere in the world to produce music seamlessly.</p></div>
 </div>
 
-<footer>
-  &copy; 2025 Str8 Flight Entertainment • Belize
-</footer>
+<footer>&copy; 2025 Str8 Flight Entertainment • Belize</footer>
 
 <script>
-// Hamburger toggle
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.querySelector('.nav-list');
-hamburger.addEventListener('click',()=>{ navLinks.classList.toggle('active'); });
+/* MOBILE NAV */
+document.getElementById('menuBtn').onclick = () => {
+  document.querySelector('.nav-list').classList.toggle('active');
+};
 
-// Particle animation
-const particleContainer = document.getElementById('particles');
+/* PARTICLES */
+const particles = document.getElementById('particles');
 for(let i=0;i<60;i++){
   const div=document.createElement('div');
   div.style.left=Math.random()*100+'%';
@@ -202,26 +172,26 @@ for(let i=0;i<60;i++){
   div.style.width=2+Math.random()*4+'px';
   div.style.height=2+Math.random()*4+'px';
   div.style.animationDuration=5+Math.random()*10+'s';
-  particleContainer.appendChild(div);
+  particles.appendChild(div);
 }
 
-// Scroll reveal animation
+/* SCROLL REVEAL */
 const cards=document.querySelectorAll('.service-card');
-const revealCards = () => {
-  const trigger=window.innerHeight*0.85;
-  cards.forEach(card=>{
-    if(card.getBoundingClientRect().top<trigger) card.classList.add('visible');
-  });
-};
+const revealCards=()=>{const trigger=window.innerHeight*0.85;cards.forEach(c=>{if(c.getBoundingClientRect().top<trigger)c.classList.add('visible');});};
 window.addEventListener('scroll',revealCards);
 revealCards();
 
-// Dark/Light mode
-const modeToggle = document.getElementById('modeToggle');
-modeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('light');
-  document.body.classList.toggle('dark');
-});
+/* DARK/LIGHT MODE */
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+themeToggle.onclick = () => {
+  body.classList.toggle('light');
+  body.classList.toggle('dark');
+  localStorage.setItem('theme', body.classList.contains('light')?'light':'dark');
+};
+const savedTheme = localStorage.getItem('theme');
+if(savedTheme==='light') body.classList.add('light');
+else body.classList.add('dark');
 </script>
 
 </body>
