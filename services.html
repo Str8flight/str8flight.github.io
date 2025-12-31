@@ -14,7 +14,7 @@
 <style>
 /* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Roboto',sans-serif;background:#0b0b0b;color:#fff;overflow-x:hidden;transition:.3s}
+body{font-family:'Roboto',sans-serif;background:#0b0b0b;color:#fff;overflow-x:hidden;transition:.3s;position:relative;}
 body.light{background:#f4f4f4;color:#111}
 a{text-decoration:none;color:inherit}
 
@@ -59,15 +59,21 @@ body.light .nav-list{background:#fff}
 .hero{
 padding:110px 20px 50px;text-align:center;
 background:linear-gradient(135deg,#0b0b0b,#161616);
-transition:.3s
+transition:.3s;
+position:relative;
+overflow:hidden;
 }
 body.light .hero{background:linear-gradient(135deg,#fff,#ddd)}
 .hero h1{
-font-family:'Montserrat',sans-serif;
-font-size:3em;color:#b36b00;
+font-family:'Montserrat',sans-serif;font-size:3em;color:#b36b00;
 text-shadow:0 0 14px #b36b00
 }
 .hero p{font-size:1.2em;max-width:900px;margin:15px auto 0}
+
+/* ===== PARTICLES ===== */
+.particles{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+.particles div{position:absolute;width:6px;height:6px;background:#b36b00;border-radius:50%;opacity:0.6;animation:moveParticles 10s linear infinite;}
+@keyframes moveParticles{0%{transform:translateY(0) translateX(0);opacity:0.6;}50%{opacity:1;}100%{transform:translateY(-1200px) translateX(400px);opacity:0.2;}}
 
 /* ===== SERVICES ===== */
 .services{
@@ -75,7 +81,9 @@ max-width:1400px;margin:50px auto;
 padding:0 20px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px
+gap:30px;
+position:relative;
+z-index:1;
 }
 .service-card{
 background:#141414;padding:30px;
@@ -94,8 +102,7 @@ font-size:2.8em;color:#b36b00;
 margin-bottom:20px
 }
 .service-card h3{
-font-family:'Montserrat',sans-serif;
-margin-bottom:12px
+font-family:'Montserrat',sans-serif;margin-bottom:12px
 }
 .service-card p{line-height:1.6}
 
@@ -104,7 +111,9 @@ margin-bottom:12px
 margin:70px 20px;text-align:center;
 padding:50px 20px;border-radius:20px;
 background:linear-gradient(135deg,#1a1a1a,#0b0b0b);
-box-shadow:0 0 35px rgba(179,107,0,.5)
+box-shadow:0 0 35px rgba(179,107,0,.5);
+position:relative;
+z-index:1;
 }
 body.light .cta{
 background:linear-gradient(135deg,#fff,#eee)
@@ -124,7 +133,9 @@ font-weight:700;transition:.3s
 /* ===== FOOTER ===== */
 footer{
 text-align:center;padding:30px;
-background:#0b0b0b;color:#b36b00
+background:#0b0b0b;color:#b36b00;
+position:relative;
+z-index:1;
 }
 body.light footer{background:#f4f4f4;color:#111}
 </style>
@@ -154,6 +165,7 @@ body.light footer{background:#f4f4f4;color:#111}
 
 <!-- HERO -->
 <section class="hero">
+  <div class="particles" id="particles"></div>
   <h1>Our Services</h1>
   <p>Professional music, media, and creative services rooted in Belizean culture and global sound.</p>
 </section>
@@ -222,6 +234,18 @@ localStorage.setItem('theme',t);
 }
 toggle.onclick=()=>setTheme(document.body.classList.contains('light')?'dark':'light');
 setTheme(localStorage.getItem('theme')||'dark');
+
+/* PARTICLES */
+const particleContainer=document.getElementById('particles');
+for(let i=0;i<60;i++){
+  const div=document.createElement('div');
+  div.style.left=Math.random()*100+'%';
+  div.style.top=Math.random()*100+'%';
+  div.style.width=2+Math.random()*4+'px';
+  div.style.height=2+Math.random()*4+'px';
+  div.style.animationDuration=5+Math.random()*10+'s';
+  particleContainer.appendChild(div);
+}
 </script>
 
 </body>
