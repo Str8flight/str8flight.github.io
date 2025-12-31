@@ -8,21 +8,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ================= RESET ================= */
+/* ================= GLOBAL RESET ================= */
 * { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family:'Roboto',sans-serif;
-  background:#0b0b0b;
-  color:#fff;
-  overflow-x:hidden;
-  transition: background 0.4s, color 0.4s;
-}
-
-/* ================= LIGHT MODE ================= */
-body.light {
-  background:#f5f5f5;
-  color:#111;
-}
+body { font-family:'Roboto',sans-serif; background:#0b0b0b; color:#fff; overflow-x:hidden; transition:0.3s; }
+a { text-decoration:none; }
+.light { background:#f2f2f2; color:#111; }
 
 /* ================= NAVBAR ================= */
 .navbar {
@@ -36,16 +26,19 @@ body.light {
   padding:15px 24px;
   background:rgba(0,0,0,0.75);
   backdrop-filter:blur(8px);
-  transition: background 0.4s;
+  transition:0.3s;
 }
-body.light .navbar { background:rgba(245,245,245,0.85); }
+
+body.light .navbar { background:rgba(255,255,255,0.85); }
 
 .logo {
   display:flex;
   align-items:center;
   gap:10px;
 }
+
 .logo img { height:42px; }
+
 .logo span {
   font-family:'Montserrat',sans-serif;
   font-size:1.4em;
@@ -54,59 +47,76 @@ body.light .navbar { background:rgba(245,245,245,0.85); }
   -webkit-text-fill-color:transparent;
 }
 
-/* ================= MENU LINKS ================= */
+.menu-toggle {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+}
+
+.menu-toggle i { font-size:1.3em; color:#b36b00; transition:0.3s; }
+body.light .menu-toggle i { color:#b36b00; }
+
 .nav-list {
   list-style:none;
   display:flex;
   gap:24px;
-  align-items:center;
 }
+
 .nav-list a {
   color:#b36b00;
   font-weight:700;
   text-shadow:0 0 6px #b36b00;
   transition:.3s;
 }
+
 .nav-list a:hover {
   color:#ff9c3b;
   text-shadow:0 0 12px #ff9c3b;
 }
-body.light .nav-list a {
-  color:#b36b00;
-  text-shadow:0 0 4px #b36b00;
-}
 
 /* ================= MOBILE NAV ================= */
-.menu-toggle {
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-  font-size:1.3em;
-}
-.menu-toggle i {
-  color:#b36b00;
-  transition:0.3s;
-}
-.nav-list.mobile-active { max-height:500px; }
-
 @media(max-width:768px){
-  .menu-toggle { display:flex; gap:5px; align-items:center; }
   .nav-list {
-    position:absolute;
-    top:65px;
-    right:20px;
-    width:220px;
-    background:#111;
+    position:fixed;
+    top:0;
+    right:-260px;
+    width:240px;
+    height:100vh;
+    background:linear-gradient(180deg,#0b0b0b,#1a1a1a);
     flex-direction:column;
-    max-height:0;
+    max-height:100%;
     overflow:hidden;
-    transition:max-height .35s ease;
-    border-radius:0 0 12px 12px;
+    transition:right 0.4s ease;
+    border-left:2px solid #b36b00;
     box-shadow:0 0 30px rgba(179,107,0,.6);
+    z-index:999;
+    padding-top:70px;
   }
-  body.light .nav-list { background:#f5f5f5; }
+  .nav-list.mobile-active { right:0; }
+
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
-  .nav-list a { padding:14px 20px; display:block; }
+
+  .nav-list a {
+    padding:18px 24px;
+    display:block;
+    font-size:1.1em;
+    color:#b36b00;
+    text-shadow:0 0 6px #b36b00;
+    transition: all 0.3s ease;
+  }
+
+  .nav-list a:hover {
+    color:#ff9c3b;
+    text-shadow:0 0 16px #ff9c3b;
+    transform:scale(1.05);
+    background:rgba(179,107,0,0.1);
+    border-radius:8px;
+  }
+
+  body.light .nav-list { background:linear-gradient(180deg,#fff,#eee); border-left:2px solid #b36b00; }
+  body.light .nav-list a { color:#b36b00; text-shadow:0 0 2px #b36b00; }
+  body.light .nav-list a:hover { color:#ff9c3b; text-shadow:0 0 10px #ff9c3b; background:rgba(179,107,0,0.05); }
 }
 
 /* ================= HERO ================= */
@@ -116,14 +126,13 @@ body.light .nav-list a {
   text-align:center;
   background:linear-gradient(135deg,#0b0b0b,#161616);
   overflow:hidden;
-  transition: background 0.4s;
+  transition:0.3s;
 }
-body.light .hero-header { background:linear-gradient(135deg,#e5e5e5,#ddd); }
 
-.hero-content {
-  position:relative;
-  z-index:3;
-}
+body.light .hero-header { background:linear-gradient(135deg,#fff,#ddd); }
+
+.hero-content { position:relative; z-index:3; }
+
 .hero-header h1 {
   font-family:'Montserrat',sans-serif;
   font-size:3em;
@@ -131,10 +140,13 @@ body.light .hero-header { background:linear-gradient(135deg,#e5e5e5,#ddd); }
   text-shadow:0 0 14px #b36b00;
   animation:fadeDown 1.2s ease forwards;
 }
-.hero-header p {
-  font-size:1.2em;
-  animation:fadeUp 1.4s ease forwards;
-}
+
+body.light .hero-header h1 { text-shadow:none; color:#b36b00; }
+
+.hero-header p { font-size:1.2em; animation:fadeUp 1.4s ease forwards; }
+
+@keyframes fadeDown { from { opacity:0; transform:translateY(-30px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
 
 /* ================= PARTICLES ================= */
 .particles {
@@ -143,6 +155,7 @@ body.light .hero-header { background:linear-gradient(135deg,#e5e5e5,#ddd); }
   z-index:1;
   pointer-events:none;
 }
+
 .particles span {
   position:absolute;
   width:6px;
@@ -153,57 +166,105 @@ body.light .hero-header { background:linear-gradient(135deg,#e5e5e5,#ddd); }
   animation:floatUp linear infinite;
   filter:drop-shadow(0 0 6px #b36b00);
 }
-body.light .particles span { background:#ff9c3b; filter:drop-shadow(0 0 6px #ff9c3b); }
 
 @keyframes floatUp {
   from { transform:translateY(100vh); opacity:.8; }
   to { transform:translateY(-120vh); opacity:0; }
 }
-@keyframes fadeDown { from{opacity:0;transform:translateY(-30px);} to{opacity:1;transform:translateY(0);} }
-@keyframes fadeUp { from{opacity:0;transform:translateY(30px);} to{opacity:1;transform:translateY(0);} }
 
-/* ================= PAGE CONTENT ================= */
-.page-container { max-width:1400px; margin:70px auto; padding:0 20px; display:flex; gap:50px; }
-.column { background:#141414; padding:30px; border-radius:18px; box-shadow:0 0 25px rgba(179,107,0,.4); transition:.4s; }
+/* ================= PAGE LAYOUT ================= */
+.page-container {
+  max-width:1400px;
+  margin:70px auto;
+  padding:0 20px;
+  display:flex;
+  gap:50px;
+}
+
+.column {
+  background:#141414;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 0 25px rgba(179,107,0,.4);
+  transition:0.3s;
+}
+
+body.light .column { background:#f9f9f9; box-shadow:0 0 25px rgba(179,107,0,.2); }
+
 .column:hover { box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00; }
-.column h2 { color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00; }
+
+.left { flex:1; }
+.center { flex:3; }
+
+.column h2 {
+  color:#b36b00;
+  margin-bottom:15px;
+  text-shadow:0 0 8px #b36b00;
+}
+
+body.light .column h2 { text-shadow:none; color:#b36b00; }
+
 .column p { margin-bottom:15px; }
-body.light .column { background:#fff; color:#111; box-shadow:0 0 20px rgba(179,107,0,.2); }
 
 /* ================= VIDEOS ================= */
-.section-title { text-align:center; font-size:2.2em; margin-bottom:30px; color:#b36b00; text-shadow:0 0 10px #b36b00; }
-.videos { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
-.video-card { background:#0f0f0f; padding:18px; border-radius:16px; box-shadow:0 0 18px #b36b00; transition:.3s; }
-.video-card:hover { box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00; }
-iframe { width:100%; height:260px; border:none; border-radius:12px; }
-.video-title { margin-top:10px; text-align:center; font-weight:700; text-shadow:0 0 5px #b36b00; }
-body.light .video-card { background:#fff; color:#111; box-shadow:0 0 18px #b36b00; }
-body.light iframe { background:#ddd; }
+.section-title {
+  text-align:center;
+  font-size:2.2em;
+  margin-bottom:30px;
+  color:#b36b00;
+  text-shadow:0 0 10px #b36b00;
+}
 
-/* ================= LIVE STREAM ================= */
-#live-stream { display:none; margin-top:30px; }
-#live-stream.show { display:block; }
-#liveFrame { width:100%; height:350px; border:none; border-radius:12px; }
+body.light .section-title { text-shadow:none; color:#b36b00; }
+
+.videos {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+.video-card {
+  background:#0f0f0f;
+  padding:18px;
+  border-radius:16px;
+  box-shadow:0 0 18px #b36b00;
+  transition:.3s;
+}
+
+body.light .video-card { background:#fff; box-shadow:0 0 12px #b36b00; }
+
+.video-card:hover { box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00; }
+
+iframe { width:100%; height:260px; border:none; border-radius:12px; }
+
+.video-title { margin-top:10px; text-align:center; font-weight:700; text-shadow:0 0 5px #b36b00; }
+
+body.light .video-title { text-shadow:none; color:#b36b00; }
 
 /* ================= FOOTER ================= */
-footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; transition:background 0.4s, color 0.4s; }
-body.light footer { background:#f5f5f5; color:#111; }
+footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; }
+
+body.light footer { background:#f2f2f2; color:#b36b00; }
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:1024px){ .page-container { flex-direction:column; } }
 @media(max-width:768px){ iframe { height:200px; } }
-
 </style>
 </head>
 <body>
 
 <nav class="navbar">
   <div class="logo">
-    <img src="str8flight-logo.png">
+    <img src="str8flight-logo.png" alt="Logo">
     <span>STR8 FLIGHT</span>
-    <i class="fas fa-sun" id="modeToggle" style="margin-left:12px;cursor:pointer;"></i>
+    <img src="belize-flag.png" class="flag">
   </div>
-  <div class="menu-toggle" id="menuBtn"><i class="fas fa-bars"></i></div>
+
+  <div class="menu-toggle" id="menuBtn">
+    <i class="fas fa-sun" id="lightIcon"></i>
+    <i class="fas fa-moon" id="darkIcon" style="display:none;"></i>
+  </div>
+
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
     <li><a href="#about">About</a></li>
@@ -215,6 +276,7 @@ body.light footer { background:#f5f5f5; color:#111; }
 
 <header class="hero-header">
   <div class="particles" id="particles"></div>
+
   <div class="hero-content">
     <h1>Str8 Flight Entertainment</h1>
     <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
@@ -232,6 +294,7 @@ body.light footer { background:#f5f5f5; color:#111; }
 
   <div class="column center">
     <h2 class="section-title">Featured Music Videos</h2>
+
     <div class="videos" id="videos">
       <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc"></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w"></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
@@ -240,11 +303,6 @@ body.light footer { background:#f5f5f5; color:#111; }
       <div class="video-card"><iframe src="https://www.youtube.com/embed/QdFS99yYcDE"></iframe><div class="video-title">Denton - Wiser</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pmSFR_ohjJk"></iframe><div class="video-title">Denton - PARRAT</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0"></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
-    </div>
-
-    <!-- LIVE STREAM -->
-    <div id="live-stream">
-      <iframe id="liveFrame"></iframe>
     </div>
   </div>
 
@@ -255,23 +313,12 @@ body.light footer { background:#f5f5f5; color:#111; }
 </footer>
 
 <script>
-/* ================= MOBILE MENU ================= */
+// MOBILE NAV
 document.getElementById('menuBtn').onclick = () => {
   document.querySelector('.nav-list').classList.toggle('mobile-active');
 };
 
-/* ================= LIGHT/DARK MODE ================= */
-const modeToggle = document.getElementById('modeToggle');
-modeToggle.onclick = () => {
-  document.body.classList.toggle('light');
-  if(document.body.classList.contains('light')) {
-    modeToggle.classList.replace('fa-sun','fa-moon');
-  } else {
-    modeToggle.classList.replace('fa-moon','fa-sun');
-  }
-};
-
-/* ================= PARTICLES ================= */
+// PARTICLES
 const particles = document.getElementById('particles');
 for(let i=0;i<70;i++){
   const dot = document.createElement('span');
@@ -281,14 +328,36 @@ for(let i=0;i<70;i++){
   particles.appendChild(dot);
 }
 
-/* ================= YOUTUBE LIVE CHECK ================= */
-const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA";
+// LIGHT/DARK TOGGLE
+const body = document.body;
+const lightIcon = document.getElementById('lightIcon');
+const darkIcon = document.getElementById('darkIcon');
+
+document.getElementById('menuBtn').addEventListener('click', () => {
+  if(body.classList.contains('light')){
+    body.classList.remove('light');
+    lightIcon.style.display = 'inline';
+    darkIcon.style.display = 'none';
+  } else {
+    body.classList.add('light');
+    lightIcon.style.display = 'none';
+    darkIcon.style.display = 'inline';
+  }
+});
+
+// YOUTUBE LIVE CHECK
+const CHANNEL_ID = "UCp2UwspaBTvuEDMe9kx3aoA"; // your channel ID
 fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
-.then(r=>r.json())
-.then(d=>{
+.then(r => r.json())
+.then(d => {
   if(d.live && d.videoId){
-    document.getElementById('liveFrame').src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
-    document.getElementById('live-stream').classList.add('show');
+    // Create a live embed at the top
+    const liveSection = document.createElement('div');
+    liveSection.innerHTML = `
+      <h2 style="text-align:center;color:#ff3b3b;margin:20px 0;">LIVE NOW</h2>
+      <iframe id="liveFrame" src="https://www.youtube.com/embed/${d.videoId}?autoplay=1" width="100%" height="360" frameborder="0" allowfullscreen></iframe>
+    `;
+    document.body.insertBefore(liveSection, document.querySelector('.page-container'));
   }
 });
 </script>
