@@ -4,264 +4,116 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Str8 Flight Entertainment | Belize Music & Culture</title>
+
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393" crossorigin="anonymous"></script>
+
 <style>
-/* RESET */
+/* ===== GLOBAL ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
-body {
-  font-family:'Roboto',sans-serif;
-  background:#0b0b0b;
-  color:#fff;
-  overflow-x:hidden;
-  transition: background 0.4s, color 0.4s;
-}
+body { font-family:'Roboto',sans-serif; background:#0b0b0b; color:#fff; overflow-x:hidden; transition: background 0.3s, color 0.3s; }
+a { text-decoration:none; }
+.hidden { display:none; }
 
-/* NAV */
+/* ===== NAVBAR ===== */
 .navbar {
-  position:fixed;
-  top:0; left:0;
-  width:100%;
-  z-index:1000;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 24px;
-  background:rgba(0,0,0,0.75);
-  backdrop-filter:blur(8px);
-  transition: background 0.4s;
+  position:fixed; top:0; left:0; width:100%; z-index:1000;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:15px 24px; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px);
+  transition: background 0.3s;
 }
-
-.logo {
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
+.logo { display:flex; align-items:center; gap:10px; }
 .logo img { height:42px; }
-.logo span {
-  font-family:'Montserrat',sans-serif;
-  font-size:1.4em;
-  background:linear-gradient(90deg,#b36b00,#ff9c3b);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.menu-toggle {
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-}
-
-.menu-toggle span {
-  width:26px;
-  height:3px;
-  background:#b36b00;
-  margin:4px 0;
-  transition: 0.3s;
-}
-
-#theme-toggle {
-  margin-left:10px;
-  cursor:pointer;
-  font-size:1.3em;
-  transition: color 0.3s;
-}
+.logo span { font-family:'Montserrat',sans-serif; font-size:1.4em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; transition: color 0.3s; }
+.flag { height:26px; }
 
 .nav-list {
-  list-style:none;
-  display:flex;
-  gap:24px;
-  align-items:center;
+  list-style:none; display:flex; gap:24px; transition: background 0.3s;
 }
-
-.nav-list a {
-  color:#b36b00;
-  font-weight:700;
-  text-shadow:0 0 6px #b36b00;
-  transition:.3s;
-}
-
-.nav-list a:hover {
-  color:#ff9c3b;
-  text-shadow:0 0 12px #ff9c3b;
-}
+.nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:.3s; }
+.nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
 
 /* MOBILE NAV */
+.menu-toggle { display:none; flex-direction:column; cursor:pointer; }
+.menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; }
+
 @media(max-width:768px){
   .menu-toggle { display:flex; }
 
   .nav-list {
-    position:absolute;
-    top:65px;
-    right:20px;
-    width:220px;
-    background:#111;
-    flex-direction:column;
-    max-height:0;
-    overflow:hidden;
-    transition:max-height .35s ease;
-    border-radius:0 0 12px 12px;
-    box-shadow:0 0 30px rgba(179,107,0,.6);
+    position:absolute; top:65px; right:20px; width:220px; background:#111; flex-direction:column;
+    max-height:0; overflow:hidden; transition:max-height .35s ease, background 0.3s;
+    border-radius:0 0 12px 12px; box-shadow:0 0 30px rgba(179,107,0,.6);
   }
-
   .nav-list.active { max-height:500px; }
-
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
-
   .nav-list a { padding:14px 20px; display:block; }
 }
 
-/* HERO */
+/* ===== LIGHT/DARK TOGGLE ===== */
+#theme-toggle {
+  cursor:pointer;
+  font-size:1.3em;
+  margin-left:10px;
+  transition: color 0.3s;
+}
+
+/* ===== HERO ===== */
 .hero-header {
-  position:relative;
-  padding:150px 20px 90px;
-  text-align:center;
-  background:linear-gradient(135deg,#0b0b0b,#161616);
-  overflow:hidden;
-  transition: background 0.4s;
+  position:relative; padding:150px 20px 90px; text-align:center;
+  background:linear-gradient(135deg,#0b0b0b,#161616); overflow:hidden;
+  transition: background 0.3s;
 }
-
-/* IMPORTANT FIX */
 .hero-content { position:relative; z-index:3; }
+.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; margin-bottom:10px; text-shadow:0 0 14px #b36b00; animation:fadeDown 1.2s ease forwards; }
+.hero-header p { font-size:1.2em; animation:fadeUp 1.4s ease forwards; }
 
-.hero-header h1 {
-  font-family:'Montserrat',sans-serif;
-  font-size:3em;
-  margin-bottom:10px;
-  text-shadow:0 0 14px #b36b00;
-  animation:fadeDown 1.2s ease forwards;
-}
+@keyframes fadeDown { from {opacity:0;transform:translateY(-30px);} to {opacity:1;transform:translateY(0);} }
+@keyframes fadeUp { from {opacity:0;transform:translateY(30px);} to {opacity:1;transform:translateY(0);} }
 
-.hero-header p {
-  font-size:1.2em;
-  animation:fadeUp 1.4s ease forwards;
-}
+/* ===== PARTICLES ===== */
+.particles { position:absolute; inset:0; z-index:1; pointer-events:none; }
+.particles span { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:.7; animation:floatUp linear infinite; filter:drop-shadow(0 0 6px #b36b00); }
+@keyframes floatUp { from { transform:translateY(100vh); opacity:.8; } to { transform:translateY(-120vh); opacity:0; } }
 
-/* PARTICLES */
-.particles {
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-}
-
-.particles span {
-  position:absolute;
-  width:6px;
-  height:6px;
-  background:#b36b00;
-  border-radius:50%;
-  opacity:.7;
-  animation:floatUp linear infinite;
-  filter:drop-shadow(0 0 6px #b36b00);
-}
-
-@keyframes floatUp {
-  from { transform:translateY(100vh); opacity:.8; }
-  to { transform:translateY(-120vh); opacity:0; }
-}
-
-@keyframes fadeDown { from { opacity:0; transform:translateY(-30px); } to { opacity:1; transform:translateY(0); } }
-@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-
-/* PAGE LAYOUT */
-.page-container {
-  max-width:1400px;
-  margin:70px auto;
-  padding:0 20px;
-  display:flex;
-  gap:50px;
-}
-
-.column {
-  background:#141414;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 0 25px rgba(179,107,0,.4);
-  transition: background 0.4s, color 0.4s, box-shadow 0.4s;
-}
-
-.column:hover {
-  box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00;
-}
-
-.left { flex:1; }
-.center { flex:3; }
-
+/* ===== PAGE LAYOUT ===== */
+.page-container { max-width:1400px; margin:70px auto; padding:0 20px; display:flex; gap:50px; transition: color 0.3s; }
+.column { background:#141414; padding:30px; border-radius:18px; box-shadow:0 0 25px rgba(179,107,0,.4); transition: background 0.3s, box-shadow 0.3s; }
+.column:hover { box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00; }
+.left { flex:1; } .center { flex:3; }
 .column h2 { color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00; }
 .column p { margin-bottom:15px; }
 
-/* VIDEOS */
-.section-title {
-  text-align:center;
-  font-size:2.2em;
-  margin-bottom:30px;
-  color:#b36b00;
-  text-shadow:0 0 10px #b36b00;
-}
-
-.videos {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
-}
-
-.video-card {
-  background:#0f0f0f;
-  padding:18px;
-  border-radius:16px;
-  box-shadow:0 0 18px #b36b00;
-  transition:.3s;
-}
-
-.video-card:hover {
-  box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00;
-}
-
-iframe {
-  width:100%;
-  height:260px;
-  border:none;
-  border-radius:12px;
-}
-
+/* ===== VIDEOS ===== */
+.section-title { text-align:center; font-size:2.2em; margin-bottom:30px; color:#b36b00; text-shadow:0 0 10px #b36b00; }
+.videos { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
+.video-card { background:#0f0f0f; padding:18px; border-radius:16px; box-shadow:0 0 18px #b36b00; transition:.3s; }
+.video-card:hover { box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00; }
+iframe { width:100%; height:260px; border:none; border-radius:12px; }
 .video-title { margin-top:10px; text-align:center; font-weight:700; text-shadow:0 0 5px #b36b00; }
 
-/* FOOTER */
-footer {
-  text-align:center;
-  padding:30px;
-  color:#b36b00;
-  background:#0b0b0b;
-  margin-top:70px;
-  transition: background 0.4s, color 0.4s;
-}
+/* ===== FOOTER ===== */
+footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; transition: background 0.3s, color 0.3s; }
 
-/* LIGHT MODE */
-body.light {
-  background:#f5f5f5;
-  color:#222;
-}
+/* ===== LIGHT MODE ===== */
+body.light { background:#f4f4f4; color:#111; }
+body.light .navbar { background:rgba(255,255,255,0.9); }
+body.light .nav-list { background:#fff; }
+body.light .nav-list a { color:#b36b00; text-shadow:none; }
+body.light .nav-list a:hover { color:#ff9c3b; text-shadow:none; }
+body.light .hero-header { background:linear-gradient(135deg,#fff,#ddd); }
+body.light .column { background:#eee; }
+body.light .video-card { background:#fff; box-shadow:0 0 18px #b36b00; }
+body.light footer { background:#f4f4f4; color:#111; }
+body.light .logo span { background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
 
-body.light .column {
-  background:#fff;
-  box-shadow:0 0 25px rgba(179,107,0,.4);
-}
-
-body.light .column:hover {
-  box-shadow:0 0 35px #b36b00,0 0 60px #ff9c3b;
-}
-
-body.light footer { background:#eaeaea; color:#222; }
-body.light .hero-header { background:linear-gradient(135deg,#fff,#eee); }
-body.light .hero-header h1,
-body.light .hero-header p { color:#b36b00; }
-body.light .nav-list a { color:#222; }
-body.light .nav-list a:hover { color:#ff9c3b; }
-
-/* RESPONSIVE */
+/* ===== RESPONSIVE ===== */
 @media(max-width:1024px){ .page-container { flex-direction:column; } }
 @media(max-width:768px){ iframe { height:200px; } }
 </style>
@@ -269,17 +121,16 @@ body.light .nav-list a:hover { color:#ff9c3b; }
 
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
-    <img src="str8flight-logo.png">
-    <span id="logoText">STR8 FLIGHT</span>
+    <img src="str8flight-logo.png" alt="Logo">
+    <span>STR8 FLIGHT</span>
     <img src="belize-flag.png" class="flag">
+    <i class="fas fa-sun" id="theme-toggle"></i>
   </div>
 
-  <div style="display:flex; align-items:center;">
-    <i class="fas fa-sun" id="theme-toggle"></i>
-    <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
-  </div>
+  <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
 
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
@@ -290,6 +141,7 @@ body.light .nav-list a:hover { color:#ff9c3b; }
   </ul>
 </nav>
 
+<!-- HERO -->
 <header class="hero-header">
   <div class="particles" id="particles"></div>
   <div class="hero-content">
@@ -298,6 +150,7 @@ body.light .nav-list a:hover { color:#ff9c3b; }
   </div>
 </header>
 
+<!-- PAGE CONTENT -->
 <div class="page-container">
   <div class="column left" id="about">
     <h2>About</h2>
@@ -320,39 +173,15 @@ body.light .nav-list a:hover { color:#ff9c3b; }
   </div>
 </div>
 
-<footer>
-  &copy; 2025 Str8 Flight Entertainment • Belize
-</footer>
+<footer>&copy; 2025 Str8 Flight Entertainment • Belize</footer>
 
 <script>
-/* mobile nav */
+/* MOBILE NAV */
 document.getElementById('menuBtn').onclick = () => {
   document.querySelector('.nav-list').classList.toggle('active');
 };
 
-/* theme toggle */
-const themeToggle = document.getElementById('theme-toggle');
-themeToggle.onclick = () => {
-  document.body.classList.toggle('light');
-  if(document.body.classList.contains('light')){
-    themeToggle.className = 'fas fa-moon';
-    localStorage.setItem('theme','light');
-  } else {
-    themeToggle.className = 'fas fa-sun';
-    localStorage.setItem('theme','dark');
-  }
-};
-
-/* set theme on load */
-if(localStorage.getItem('theme')==='light'){
-  document.body.classList.add('light');
-  themeToggle.className='fas fa-moon';
-} else {
-  document.body.classList.remove('light');
-  themeToggle.className='fas fa-sun';
-}
-
-/* particles */
+/* PARTICLES */
 const particles = document.getElementById('particles');
 for(let i=0;i<70;i++){
   const dot = document.createElement('span');
@@ -362,19 +191,53 @@ for(let i=0;i<70;i++){
   particles.appendChild(dot);
 }
 
-/* YouTube Live Check (Vercel Serverless API) */
+/* LIGHT/DARK MODE */
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+const darkIcon = 'fas fa-moon';
+const lightIcon = 'fas fa-sun';
+
+function setTheme(isLight){
+  if(isLight){
+    body.classList.add('light');
+    themeToggle.className = lightIcon;
+    localStorage.setItem('theme','light');
+  }else{
+    body.classList.remove('light');
+    themeToggle.className = darkIcon;
+    localStorage.setItem('theme','dark');
+  }
+}
+
+themeToggle.onclick = () => {
+  setTheme(!body.classList.contains('light'));
+};
+
+/* LOAD THEME */
+const savedTheme = localStorage.getItem('theme');
+setTheme(savedTheme==='light');
+
+/* YOUTUBE LIVE CHECK (Serverless API) */
 const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA";
 fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
 .then(r=>r.json())
 .then(d=>{
   if(d.live && d.videoId){
-    const liveFrame=document.createElement('iframe');
-    liveFrame.src=`https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
-    liveFrame.width='100%';
-    liveFrame.height='260';
-    liveFrame.style.border='none';
-    liveFrame.style.borderRadius='12px';
-    document.querySelector('.videos').prepend(liveFrame);
+    const liveFrame = document.createElement('iframe');
+    liveFrame.src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
+    liveFrame.width = "100%";
+    liveFrame.height = "260px";
+    liveFrame.style.border = "none";
+    liveFrame.style.borderRadius = "12px";
+    const videosContainer = document.getElementById('videos');
+    const liveDiv = document.createElement('div');
+    liveDiv.className = 'video-card';
+    liveDiv.appendChild(liveFrame);
+    const liveTitle = document.createElement('div');
+    liveTitle.className = 'video-title';
+    liveTitle.innerText = "LIVE NOW";
+    liveDiv.appendChild(liveTitle);
+    videosContainer.prepend(liveDiv);
   }
 });
 </script>
