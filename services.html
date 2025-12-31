@@ -9,71 +9,90 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ================= RESET ================= */
+/* ================= GLOBAL ================= */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Roboto',sans-serif; overflow-x:hidden; transition:background 0.3s,color 0.3s; }
-a { text-decoration:none; }
-
-/* ================= LIGHT/DARK ================= */
-body.light { background:#f5f5f5; color:#111; }
-body.light .navbar, body.light .service-card, body.light footer { background:#fff; color:#111; }
-body.light .navbar .nav-list a { color:#b36b00; text-shadow:none; }
-body.light .navbar .nav-list a:hover { color:#ff9c3b; text-shadow:none; }
-body.light .service-card h3 { color:#b36b00; text-shadow:none; }
-body.light .hero-header h1, body.light .hero-header p { color:#b36b00; text-shadow:none; }
+body {
+  font-family:'Roboto',sans-serif;
+  background:#0b0b0b;
+  color:#fff;
+  line-height:1.7;
+  overflow-x:hidden;
+  transition:background-color 0.4s, color 0.4s;
+}
+a { text-decoration:none; transition: color 0.4s; }
 
 /* ================= NAVBAR ================= */
 .navbar {
-  position:fixed; top:0; width:100%; z-index:1000;
+  position:fixed; top:0; left:0; width:100%; z-index:1000;
   display:flex; justify-content:space-between; align-items:center;
-  padding:15px 24px; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px);
-  transition:background 0.3s,color 0.3s;
+  padding:15px 24px;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(8px);
+  transition: background-color 0.4s;
 }
-.logo { display:flex; align-items:center; gap:10px; }
-.logo img { height:42px; }
-.logo span { font-family:'Montserrat',sans-serif; font-size:1.4em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-.menu-toggle { display:none; flex-direction:column; cursor:pointer; margin-left:10px; }
-.menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; }
+.logo {
+  display:flex; align-items:center; gap:10px;
+}
+.logo img.logo-img { height:42px; }
+.logo img.flag { height:26px; }
+.logo span {
+  font-family:'Montserrat',sans-serif;
+  font-size:1.4em;
+  font-weight:700;
+  background:linear-gradient(90deg,#b36b00,#ff9c3b);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  transition: color 0.4s;
+}
+
+/* Menu */
 .nav-list { list-style:none; display:flex; gap:24px; }
-.nav-list a { color:#b36b00; font-weight:700; transition:.3s; }
-.nav-list a:hover { color:#ff9c3b; }
+.nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; }
+.nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
 
-/* DARK/LIGHT ICON */
-#mode-toggle { font-size:1.4em; margin-left:12px; cursor:pointer; color:#b36b00; transition:.3s; }
+/* Hamburger & Mode Toggle */
+.menu-toggle { display:none; flex-direction:column; cursor:pointer; }
+.menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; transition: all 0.3s; }
+.mode-toggle { font-size:1.4em; cursor:pointer; margin-left:12px; transition: color 0.4s; }
 
-/* MOBILE NAV */
+/* Mobile */
 @media(max-width:768px){
   .menu-toggle { display:flex; }
   .nav-list {
     position:absolute; top:65px; right:20px; width:220px; background:#111;
     flex-direction:column; max-height:0; overflow:hidden;
-    transition:max-height .35s ease; border-radius:0 0 12px 12px;
-    box-shadow:0 0 30px rgba(179,107,0,.6);
+    transition:max-height 0.35s ease;
+    border-radius:0 0 12px 12px; box-shadow:0 0 30px rgba(179,107,0,.6);
   }
-  .nav-list.active { max-height:600px; }
+  .nav-list.active { max-height:500px; }
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
   .nav-list a { padding:14px 20px; display:block; }
 }
 
 /* ================= HERO ================= */
 .hero-header {
-  position:relative; padding:150px 20px 90px; text-align:center; background:linear-gradient(135deg,#0b0b0b,#161616); overflow:hidden;
+  position:relative; padding:150px 20px 90px; text-align:center;
+  background:linear-gradient(135deg,#0b0b0b,#161616);
+  overflow:hidden; transition: background-color 0.4s;
 }
-.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; margin-bottom:10px; color:#b36b00; text-shadow:0 0 14px #b36b00; animation:fadeDown 1.2s ease forwards; }
-.hero-header p { font-size:1.2em; animation:fadeUp 1.4s ease forwards; }
-.particles { position:absolute; inset:0; z-index:1; pointer-events:none; }
-.particles span { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:.7; animation:floatUp linear infinite; filter:drop-shadow(0 0 6px #b36b00); }
+.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; margin-bottom:10px; text-shadow:0 0 14px #b36b00; }
+.hero-header p { font-size:1.2em; }
 
+/* ================= PARTICLES ================= */
+#particles { position:absolute; inset:0; z-index:1; pointer-events:none; }
+#particles span { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:.7; animation:floatUp linear infinite; filter:drop-shadow(0 0 6px #b36b00); }
 @keyframes floatUp { from { transform:translateY(100vh); opacity:.8; } to { transform:translateY(-120vh); opacity:0; } }
-@keyframes fadeDown { from { opacity:0; transform:translateY(-30px); } to { opacity:1; transform:translateY(0); } }
-@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
 
 /* ================= SERVICES CARDS ================= */
-.services-container { max-width:1200px; margin:50px auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; padding:0 20px; }
+.services-container {
+  max-width:1200px; margin:50px auto; display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px; padding:0 20px;
+}
 .service-card {
   background:#1a1a1a; padding:30px; border-radius:16px;
   box-shadow:0 0 15px rgba(179,107,0,0.5),0 0 30px rgba(138,76,0,0.3);
-  text-align:center; transition:transform 0.3s ease, box-shadow 0.3s ease, background 0.3s, color 0.3s;
+  text-align:center; transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s, color 0.4s;
   opacity:0; transform:translateY(30px);
 }
 .service-card.visible { opacity:1; transform:translateY(0); transition:1s ease; }
@@ -82,23 +101,35 @@ body.light .hero-header h1, body.light .hero-header p { color:#b36b00; text-shad
 .service-card p { color:#e0e0e0; line-height:1.6; }
 
 /* ================= FOOTER ================= */
-footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; transition:background 0.3s,color 0.3s; }
+footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; transition: background-color 0.4s, color 0.4s; }
+
+/* ================= DARK/LIGHT MODE ================= */
+body.light-mode { background:#f2f2f2; color:#111; }
+body.light-mode .navbar { background:rgba(255,255,255,0.95); }
+body.light-mode .nav-list a { color:#ff8c00; text-shadow:none; }
+body.light-mode .nav-list a:hover { color:#ff6a00; text-shadow:none; }
+body.light-mode .hero-header { background:linear-gradient(135deg,#f2f2f2,#e0e0e0); }
+body.light-mode .service-card { background:#fff; color:#111; box-shadow:0 0 15px rgba(255,140,0,0.4),0 0 30px rgba(255,106,0,0.2); }
+body.light-mode footer { background:#f2f2f2; color:#111; text-shadow:none; }
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){ .hero-header h1{font-size:2.4em;} }
 </style>
 </head>
+
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
-    <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
+    <img src="https://str8flight.github.io/str8flight-logo.png" class="logo-img" alt="Logo">
     <span>Str8 Flight</span>
     <img src="https://str8flight.github.io/belize-flag.png" class="flag" alt="Belize Flag">
-    <i id="mode-toggle" class="fas fa-sun"></i>
   </div>
-  <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
+  <div style="display:flex;align-items:center;">
+    <i class="fas fa-sun mode-toggle" id="modeToggle"></i>
+    <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
+  </div>
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
     <li><a href="#services">Services</a></li>
@@ -109,14 +140,13 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
 
 <!-- HERO -->
 <header class="hero-header">
-  <div class="particles" id="particles"></div>
+  <div id="particles"></div>
   <h1>Our Services</h1>
   <p>Professional music production & studio services to elevate your sound</p>
 </header>
 
 <!-- SERVICES CARDS -->
 <div class="services-container" id="services">
-  <!-- All 11 original service cards -->
   <div class="service-card"><h3>Dub Plate</h3><p>Custom dub plates for artists, DJs, and events. High-quality recordings with unique vocal drops and professional sound mastering.</p></div>
   <div class="service-card"><h3>Mixing & Mastering</h3><p>Polish your tracks with professional mixing and mastering. Ensure your music sounds clear, balanced, and ready for release across all platforms.</p></div>
   <div class="service-card"><h3>Studio Recording</h3><p>Access a full-featured recording studio with experienced engineers. Capture vocals and instruments with top-quality equipment.</p></div>
@@ -135,42 +165,45 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
 </footer>
 
 <script>
-// ================= MOBILE MENU =================
+// Hamburger menu toggle
 document.getElementById('menuBtn').onclick = () => {
   document.querySelector('.nav-list').classList.toggle('active');
 };
 
-// ================= PARTICLES =================
-const particles = document.getElementById('particles');
+// Dark/light mode toggle
+const modeToggle = document.getElementById('modeToggle');
+modeToggle.onclick = () => {
+  document.body.classList.toggle('light-mode');
+  if(document.body.classList.contains('light-mode')){
+    modeToggle.classList.replace('fa-sun','fa-moon');
+  } else {
+    modeToggle.classList.replace('fa-moon','fa-sun');
+  }
+  // Save preference
+  localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+};
+
+// Load saved theme
+if(localStorage.getItem('theme')==='light'){ document.body.classList.add('light-mode'); modeToggle.classList.replace('fa-sun','fa-moon'); }
+
+// Particle animation
+const particleContainer = document.getElementById('particles');
 for(let i=0;i<60;i++){
-  const dot = document.createElement('span');
-  dot.style.left = Math.random()*100+'%';
-  dot.style.animationDuration = (6 + Math.random()*10)+'s';
-  dot.style.animationDelay = Math.random()*5+'s';
-  particles.appendChild(dot);
+  const span = document.createElement('span');
+  span.style.left=Math.random()*100+'%';
+  span.style.animationDuration=(6+Math.random()*10)+'s';
+  span.style.animationDelay=Math.random()*5+'s';
+  particleContainer.appendChild(span);
 }
 
-// ================= SCROLL REVEAL =================
+// Scroll reveal for service cards
 const cards = document.querySelectorAll('.service-card');
 const revealCards = () => {
-  const trigger = window.innerHeight * 0.85;
-  cards.forEach(card => {
-    if(card.getBoundingClientRect().top < trigger) card.classList.add('visible');
-  });
+  const trigger = window.innerHeight*0.85;
+  cards.forEach(card => { if(card.getBoundingClientRect().top<trigger) card.classList.add('visible'); });
 };
-window.addEventListener('scroll', revealCards);
+window.addEventListener('scroll',revealCards);
 revealCards();
-
-// ================= LIGHT/DARK TOGGLE =================
-const modeBtn = document.getElementById('mode-toggle');
-modeBtn.onclick = () => {
-  document.body.classList.toggle('light');
-  if(document.body.classList.contains('light')){
-    modeBtn.classList.replace('fa-sun','fa-moon');
-  } else {
-    modeBtn.classList.replace('fa-moon','fa-sun');
-  }
-};
 </script>
 
 </body>
