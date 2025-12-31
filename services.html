@@ -37,7 +37,6 @@ a { text-decoration:none; }
 
 @media(max-width:768px){
   .menu-toggle { display:flex; }
-
   .nav-list {
     position:absolute; top:65px; right:20px; width:220px; background:#111; flex-direction:column;
     max-height:0; overflow:hidden; transition:max-height .35s ease, background 0.3s;
@@ -47,7 +46,7 @@ a { text-decoration:none; }
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
   .nav-list a { padding:14px 20px; display:block; }
 
-  /* Align flag and dark/light closer to text */
+  /* Align flag and dark/light closer to header text on mobile */
   .logo-container { flex-direction:row; justify-content:flex-start; }
   .flag-toggle { margin-left:5px; }
 }
