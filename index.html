@@ -15,66 +15,69 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393" crossorigin="anonymous"></script>
 
 <style>
+/* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Roboto',sans-serif;background:#0b0b0b;color:#fff;overflow-x:hidden;transition:.4s;}
+body{font-family:'Roboto',sans-serif;background:#0b0b0b;color:#fff;overflow-x:hidden;transition:0.3s;}
 body.light{background:#f4f4f4;color:#111;}
 a{text-decoration:none;color:inherit;}
 
-/* NAVBAR */
+/* ===== NAVBAR ===== */
 .navbar{
-  position:fixed;top:0;width:100%;z-index:1000;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:15px 24px;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);
+position:fixed;top:0;width:100%;z-index:1000;
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 24px;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);
+transition:.3s;
 }
-body.light .navbar{background:rgba(255,255,255,.9);}
-.logo{display:flex;align-items:center;gap:10px}
-.logo img{height:42px}
+body.light .navbar{background:rgba(255,255,255,0.9);}
+
+.logo{display:flex;align-items:center;gap:10px;}
+.logo img{height:42px;}
 .logo span{font-family:'Montserrat',sans-serif;font-size:1.4em;background:linear-gradient(90deg,#b36b00,#ff9c3b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .flag{height:26px;}
 #theme-toggle{cursor:pointer;font-size:1.3em;}
-.nav-list{list-style:none;display:flex;gap:24px}
+
+.nav-list{list-style:none;display:flex;gap:24px;}
 .nav-list a{color:#b36b00;font-weight:700;}
 .menu-toggle{display:none;flex-direction:column;cursor:pointer;}
 .menu-toggle span{width:26px;height:3px;background:#b36b00;margin:4px 0;}
 @media(max-width:768px){
-.menu-toggle{display:flex}
-.nav-list{
-  position:absolute;top:65px;right:20px;width:220px;
-  background:#111;flex-direction:column;
-  max-height:0;overflow:hidden;border-radius:12px;transition:.3s
-}
-body.light .nav-list{background:#fff}
-.nav-list.active{max-height:600px}
-.nav-list li a{padding:14px 20px;display:block}
+  .menu-toggle{display:flex;}
+  .nav-list{
+    position:absolute;top:65px;right:20px;width:220px;
+    background:#111;flex-direction:column;max-height:0;overflow:hidden;border-radius:12px;transition:.3s;
+  }
+  body.light .nav-list{background:#fff;}
+  .nav-list.active{max-height:600px;}
+  .nav-list li a{padding:14px 20px;display:block;}
 }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero-header{
-  position:relative;text-align:center;padding:100px 20px 40px;background:linear-gradient(135deg,#0b0b0b,#161616);overflow:hidden;
+  position:relative;padding:100px 20px 40px;text-align:center;background:linear-gradient(135deg,#0b0b0b,#161616);overflow:hidden;transition:.3s;
 }
 body.light .hero-header{background:linear-gradient(135deg,#fff,#ddd);}
-.hero-header h1{font-family:'Montserrat',sans-serif;font-size:3em;margin-bottom:10px;color:#b36b00;text-shadow:0 0 14px #b36b00;}
-.hero-header p{font-size:1.2em;max-width:900px;margin:15px auto;color:#fff;}
-body.light .hero-header p{color:#111;}
+.hero-header h1{font-family:'Montserrat',sans-serif;font-size:3em;margin-bottom:10px;text-shadow:0 0 14px #b36b00;}
+.hero-header p{font-size:1.2em;max-width:900px;margin:15px auto;}
 
-/* PARTICLES */
-.particles{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;}
-.particles div{position:absolute;width:6px;height:6px;background:#b36b00;border-radius:50%;opacity:0.6;animation:moveParticles 10s linear infinite;}
-@keyframes moveParticles{0%{transform:translateY(0) translateX(0);opacity:0.6;}50%{opacity:1;}100%{transform:translateY(-1200px) translateX(400px);opacity:0.2;}}
+/* ===== PARTICLES ===== */
+.particles{position:absolute;inset:0;z-index:1;pointer-events:none;}
+.particles span{position:absolute;width:6px;height:6px;background:#b36b00;border-radius:50%;opacity:.7;animation:floatUp linear infinite;filter:drop-shadow(0 0 6px #b36b00);}
+@keyframes floatUp{from{transform:translateY(100vh);opacity:.8;}to{transform:translateY(-120vh);opacity:0;}}
 
-/* PAGE LAYOUT */
-.page-container{max-width:1400px;margin:40px auto 80px;padding:0 20px;display:flex;gap:40px;}
-.column{background:#141414;padding:30px;border-radius:18px;box-shadow:0 0 25px rgba(179,107,0,.4);transition:.3s;}
+/* ===== PAGE CONTENT ===== */
+.page-container{max-width:1400px;margin:40px auto 70px;padding:0 20px;display:flex;gap:40px;}
+.column{background:#141414;padding:30px;border-radius:18px;box-shadow:0 0 25px rgba(179,107,0,.4);transition:background 0.3s, box-shadow 0.3s;}
+.column:hover{box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00;}
 body.light .column{background:#fff;}
-.left{flex:1;}
-.center{flex:3;}
+.left{flex:1;} .center{flex:3;}
 .column h2{color:#b36b00;margin-bottom:15px;text-shadow:0 0 8px #b36b00;}
-.column p{margin-bottom:14px;line-height:1.7;}
+.column p{margin-bottom:15px;line-height:1.7;}
+.section-title{text-align:center;font-size:2.2em;margin-bottom:30px;color:#b36b00;text-shadow:0 0 10px #b36b00;}
 
 /* VIDEOS */
-.section-title{text-align:center;font-size:2.2em;margin-bottom:30px;color:#b36b00;text-shadow:0 0 10px #b36b00;}
 .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
-.video-card{background:#0f0f0f;padding:18px;border-radius:16px;box-shadow:0 0 18px #b36b00;}
+.video-card{background:#0f0f0f;padding:18px;border-radius:16px;box-shadow:0 0 18px #b36b00;transition:.3s;}
+.video-card:hover{box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00;}
 body.light .video-card{background:#fff;}
 iframe{width:100%;height:260px;border:none;border-radius:12px;}
 .video-title{text-align:center;margin-top:10px;font-weight:700;}
@@ -82,25 +85,22 @@ iframe{width:100%;height:260px;border:none;border-radius:12px;}
 /* FOOTER */
 footer{text-align:center;padding:30px;background:#0b0b0b;color:#b36b00;margin-top:70px;}
 body.light footer{background:#f4f4f4;color:#111;}
-
-/* RESPONSIVE */
-@media(max-width:1024px){.page-container{flex-direction:column}}
+@media(max-width:1024px){.page-container{flex-direction:column;}}
 @media(max-width:768px){iframe{height:200px;}}
 </style>
 </head>
-<body>
+
+<body class="dark">
 
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
-    <img src="https://str8flight.github.io/str8flight-logo.png">
+    <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
     <span>STR8 FLIGHT</span>
-    <img src="https://str8flight.github.io/belize-flag.png" class="flag">
+    <img src="https://str8flight.github.io/belize-flag.png" class="flag" alt="Belize Flag">
     <i class="fas fa-sun" id="theme-toggle"></i>
   </div>
-
   <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
-
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
     <li><a href="#about">About</a></li>
@@ -113,12 +113,16 @@ body.light footer{background:#f4f4f4;color:#111;}
 <!-- HERO -->
 <header class="hero-header">
   <div class="particles" id="particles"></div>
-  <h1>Str8 Flight Entertainment</h1>
-  <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
+  <div class="hero-content">
+    <h1>Str8 Flight Entertainment</h1>
+    <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
+  </div>
 </header>
 
 <!-- PAGE CONTENT -->
 <div class="page-container">
+
+  <!-- ABOUT -->
   <div class="column left" id="about">
     <h2>About</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
@@ -126,89 +130,82 @@ body.light footer{background:#f4f4f4;color:#111;}
     <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations.</p>
   </div>
 
+  <!-- VIDEOS -->
   <div class="column center">
     <h2 class="section-title" id="videos">Featured Music Videos</h2>
     <div class="videos" id="videos-container"></div>
   </div>
+
 </div>
 
-<footer>&copy; <span id="year"></span> Str8 Flight Entertainment • Belize</footer>
+<footer>© <span id="year"></span> Str8 Flight Entertainment • Belize</footer>
 
 <script>
-// Update year
+// Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// MENU
-document.getElementById('menuBtn').onclick = ()=>document.querySelector('.nav-list').classList.toggle('active');
+// Mobile menu
+menuBtn.onclick = () => document.querySelector('.nav-list').classList.toggle('active');
 
-// THEME
-const body = document.body;
-const themeToggle = document.getElementById('theme-toggle');
+// Dark/Light mode
+const toggle = document.getElementById('theme-toggle');
 function setTheme(t){
-  if(t==='light'){body.classList.add('light');body.classList.remove('dark');themeToggle.className='fas fa-sun';}
-  else{body.classList.add('dark');body.classList.remove('light');themeToggle.className='fas fa-moon';}
-  localStorage.setItem('theme',t);
+  document.body.className = t;
+  toggle.className = t==='light'?'fas fa-sun':'fas fa-moon';
+  localStorage.setItem('theme', t);
 }
-themeToggle.onclick = ()=>setTheme(body.classList.contains('light')?'dark':'light');
-setTheme(localStorage.getItem('theme')||'dark');
+toggle.onclick = () => setTheme(document.body.classList.contains('light')?'dark':'light');
+setTheme(localStorage.getItem('theme') || 'dark');
 
-// PARTICLES
-const particleContainer=document.getElementById('particles');
-for(let i=0;i<60;i++){
-  const div=document.createElement('div');
-  div.style.left=Math.random()*100+'%';
-  div.style.top=Math.random()*100+'%';
-  div.style.width=2+Math.random()*4+'px';
-  div.style.height=2+Math.random()*4+'px';
-  div.style.animationDuration=5+Math.random()*10+'s';
-  particleContainer.appendChild(div);
+// Particles
+const particlesContainer = document.getElementById('particles');
+for(let i=0;i<70;i++){
+  const dot = document.createElement('span');
+  dot.style.left = Math.random()*100+'%';
+  dot.style.animationDuration = (6 + Math.random()*10)+'s';
+  dot.style.animationDelay = Math.random()*5+'s';
+  particlesContainer.appendChild(dot);
 }
 
-// VIDEOS
-const videos=[
-["0QwKo-mssxc","Perry da Artist - Bad Freak"],
-["pInxfriRH_w","Mr. Program - Rise-in-Glory"],
-["cXzqzTYxbsQ","Denton - Furious (RAW)"],
-["8E9zA7Bq1js","Quarantine - Cleon x Denton"],
-["QdFS99yYcDE","Denton - Wiser"],
-["pmSFR_ohjJk","Denton - PARRAT"],
-["WTW5qQPIgX0","Cocono Bwai - Wielo Wielo"]
+// Videos
+const videosContainer = document.getElementById('videos-container');
+const videosList = [
+  ["0QwKo-mssxc","Perry da Artist - Bad Freak"],
+  ["pInxfriRH_w","Mr. Program - Rise-in-Glory"],
+  ["cXzqzTYxbsQ","Denton - Furious (RAW)"],
+  ["8E9zA7Bq1js","Quarantine - Cleon x Denton"],
+  ["QdFS99yYcDE","Denton - Wiser"],
+  ["pmSFR_ohjJk","Denton - PARRAT"],
+  ["WTW5qQPIgX0","Cocono Bwai - Wielo Wielo"]
 ];
-
-const vc=document.getElementById('videos-container');
-videos.forEach(v=>{
-  const d=document.createElement('div');
-  d.className='video-card';
-  d.innerHTML=`<iframe src="https://www.youtube.com/embed/${v[0]}" allowfullscreen></iframe><div class="video-title">${v[1]}</div>`;
-  vc.appendChild(d);
+videosList.forEach(v=>{
+  const div = document.createElement('div');
+  div.className='video-card';
+  div.innerHTML = `<iframe src="https://www.youtube.com/embed/${v[0]}" allowfullscreen></iframe>
+                   <div class="video-title">${v[1]}</div>`;
+  videosContainer.appendChild(div);
 });
 
-// LIVE YOUTUBE CHECK
-const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA";
+// Live detection (polls every 10s)
+const CHANNEL_ID = "UCp2UwspaBTvuEDMe9kx3aoA";
 function checkLive() {
   fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
-  .then(r=>r.json())
-  .then(d=>{
-    const existingLive = document.getElementById('live-card');
-    if(existingLive) existingLive.remove();
-    if(d.live && d.videoId){
-      const liveDiv = document.createElement('div');
-      liveDiv.className='video-card';
-      liveDiv.id='live-card';
-      const liveFrame = document.createElement('iframe');
-      liveFrame.src=`https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
-      liveFrame.allow="autoplay";
-      liveDiv.appendChild(liveFrame);
-      const liveTitle=document.createElement('div');
-      liveTitle.className='video-title';
-      liveTitle.innerText="LIVE NOW 🔴";
-      liveDiv.appendChild(liveTitle);
-      vc.prepend(liveDiv);
-    }
-  }).catch(e=>console.error(e));
+    .then(r => r.json())
+    .then(d => {
+      const existingLive = document.getElementById('live-card');
+      if(existingLive) existingLive.remove();
+      if(d.live && d.videoId){
+        const liveDiv = document.createElement('div');
+        liveDiv.className='video-card';
+        liveDiv.id='live-card';
+        liveDiv.innerHTML = `<iframe src="https://www.youtube.com/embed/${d.videoId}?autoplay=1" allowfullscreen></iframe>
+                             <div class="video-title">LIVE NOW 🔴</div>`;
+        videosContainer.prepend(liveDiv);
+      }
+    }).catch(e=>console.error(e));
 }
 checkLive();
-setInterval(checkLive,30000);
+setInterval(checkLive,10000); // poll every 10 seconds
 </script>
 
 </body>
