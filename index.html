@@ -19,7 +19,13 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* NAVBAR */
+/* LIGHT MODE */
+body.light-mode {
+  background:#fff;
+  color:#111;
+}
+
+/* NAV */
 .navbar {
   position:fixed;
   top:0; left:0;
@@ -31,6 +37,11 @@ body {
   padding:15px 24px;
   background:rgba(0,0,0,0.75);
   backdrop-filter:blur(8px);
+  transition: background 0.3s;
+}
+
+body.light-mode .navbar {
+  background: rgba(255,255,255,0.85);
 }
 
 .logo {
@@ -40,18 +51,25 @@ body {
 }
 
 .logo img { height:42px; }
+
 .logo span {
   font-family:'Montserrat',sans-serif;
   font-size:1.4em;
   background:linear-gradient(90deg,#b36b00,#ff9c3b);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+  transition: all 0.3s;
+}
+
+/* LIGHT MODE LOGO */
+body.light-mode .logo span {
+  background:linear-gradient(90deg,#ff9c3b,#b36b00);
 }
 
 .flag { height:26px; }
 
 .menu-toggle {
-  display:flex;
+  display:none;
   flex-direction:column;
   cursor:pointer;
   margin-left:15px;
@@ -62,14 +80,18 @@ body {
   height:3px;
   background:#b36b00;
   margin:4px 0;
-  border-radius:2px;
+  transition: background 0.3s;
+}
+
+/* LIGHT MODE TOGGLE ICON */
+body.light-mode .menu-toggle span {
+  background:#ff9c3b;
 }
 
 .nav-list {
   list-style:none;
   display:flex;
   gap:24px;
-  align-items:center;
 }
 
 .nav-list a {
@@ -79,6 +101,11 @@ body {
   transition:.3s;
 }
 
+body.light-mode .nav-list a {
+  color:#b36b00;
+  text-shadow:0 0 6px #ff9c3b;
+}
+
 .nav-list a:hover {
   color:#ff9c3b;
   text-shadow:0 0 12px #ff9c3b;
@@ -86,6 +113,8 @@ body {
 
 /* MOBILE NAV */
 @media(max-width:768px){
+  .menu-toggle { display:flex; }
+
   .nav-list {
     position:absolute;
     top:65px;
@@ -95,13 +124,23 @@ body {
     flex-direction:column;
     max-height:0;
     overflow:hidden;
-    transition:max-height .35s ease;
+    transition:max-height .35s ease, background 0.3s;
     border-radius:0 0 12px 12px;
     box-shadow:0 0 30px rgba(179,107,0,.6);
   }
+
+  body.light-mode .nav-list { background:#fff; box-shadow:0 0 30px rgba(255,156,59,.6); }
+
   .nav-list.active { max-height:500px; }
+
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
-  .nav-list a { padding:14px 20px; display:block; }
+
+  body.light-mode .nav-list li { border-bottom:1px solid rgba(255,156,59,.5); }
+
+  .nav-list a {
+    padding:14px 20px;
+    display:block;
+  }
 }
 
 /* HERO */
@@ -111,6 +150,11 @@ body {
   text-align:center;
   background:linear-gradient(135deg,#0b0b0b,#161616);
   overflow:hidden;
+  transition: background 0.3s;
+}
+
+body.light-mode .hero-header {
+  background: linear-gradient(135deg,#fff,#eee);
 }
 
 .hero-content {
@@ -126,10 +170,15 @@ body {
   animation:fadeDown 1.2s ease forwards;
 }
 
+body.light-mode .hero-header h1 { text-shadow:0 0 14px #ff9c3b; }
+
 .hero-header p {
   font-size:1.2em;
   animation:fadeUp 1.4s ease forwards;
+  color:#fff;
 }
+
+body.light-mode .hero-header p { color:#111; }
 
 /* PARTICLES */
 .particles {
@@ -154,8 +203,16 @@ body {
   from { transform:translateY(100vh); opacity:.8; }
   to { transform:translateY(-120vh); opacity:0; }
 }
-@keyframes fadeDown { from { opacity:0; transform:translateY(-30px);} to {opacity:1; transform:translateY(0);} }
-@keyframes fadeUp { from { opacity:0; transform:translateY(30px);} to {opacity:1; transform:translateY(0);} }
+
+@keyframes fadeDown {
+  from { opacity:0; transform:translateY(-30px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(30px); }
+  to { opacity:1; transform:translateY(0); }
+}
 
 /* PAGE LAYOUT */
 .page-container {
@@ -174,18 +231,19 @@ body {
   transition: all 0.3s;
 }
 
+body.light-mode .column { background:#f9f9f9; box-shadow:0 0 25px rgba(255,156,59,.3); }
+
 .column:hover {
   box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00;
 }
-
-.left { flex:1; }
-.center { flex:3; }
 
 .column h2 {
   color:#b36b00;
   margin-bottom:15px;
   text-shadow:0 0 8px #b36b00;
 }
+
+body.light-mode .column h2 { color:#ff9c3b; text-shadow:0 0 8px #ff9c3b; }
 
 .column p { margin-bottom:15px; }
 
@@ -197,6 +255,8 @@ body {
   color:#b36b00;
   text-shadow:0 0 10px #b36b00;
 }
+
+body.light-mode .section-title { color:#ff9c3b; text-shadow:0 0 10px #ff9c3b; }
 
 .videos {
   display:grid;
@@ -212,16 +272,13 @@ body {
   transition:.3s;
 }
 
+body.light-mode .video-card { background:#fff; box-shadow:0 0 18px #ff9c3b; }
+
 .video-card:hover {
   box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00;
 }
 
-iframe {
-  width:100%;
-  height:260px;
-  border:none;
-  border-radius:12px;
-}
+iframe { width:100%; height:260px; border:none; border-radius:12px; }
 
 .video-title {
   margin-top:10px;
@@ -229,6 +286,8 @@ iframe {
   font-weight:700;
   text-shadow:0 0 5px #b36b00;
 }
+
+body.light-mode .video-title { color:#111; text-shadow:0 0 5px #ff9c3b; }
 
 /* FOOTER */
 footer {
@@ -240,57 +299,21 @@ footer {
   transition: background 0.3s, color 0.3s;
 }
 
-/* LIGHT MODE */
-body.light-mode {
-  background:#f5f5f5;
-  color:#111;
-}
-
-body.light-mode .navbar {
-  background: rgba(255,255,255,0.9);
-}
-
-body.light-mode .nav-list a {
-  color:#b36b00;
-  text-shadow:none;
-}
-
-body.light-mode .nav-list a:hover {
-  color:#ff9c3b;
-}
-
-body.light-mode .column {
-  background:#fff;
-  color:#111;
-  box-shadow:0 0 25px rgba(179,107,0,.2);
-}
-
-body.light-mode .column h2 { color:#b36b00; text-shadow:none; }
-
-body.light-mode .video-card {
-  background:#f0f0f0;
-  box-shadow:0 0 18px rgba(179,107,0,.2);
-}
-
-body.light-mode .video-card:hover {
-  box-shadow:0 0 25px #b36b00,0 0 35px #8a4c00;
-}
-
-body.light-mode iframe { background:#fff; }
+body.light-mode footer { background:#fff; color:#111; }
 
 /* RESPONSIVE */
 @media(max-width:1024px){ .page-container { flex-direction:column; } }
-@media(max-width:768px){ iframe{height:200px;} }
+@media(max-width:768px){ iframe { height:200px; } }
 </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
-    <img src="str8flight-logo.png">
+    <img src="str8flight-logo.png" alt="Logo">
     <span>STR8 FLIGHT</span>
-    <img src="belize-flag.png" class="flag">
+    <img src="belize-flag.png" class="flag" alt="Belize Flag">
   </div>
 
   <div class="menu-toggle" id="menuBtn">
@@ -305,16 +328,14 @@ body.light-mode iframe { background:#fff; }
     <li><a href="contact.html">Contact</a></li>
   </ul>
 
-  <!-- Light/Dark Mode Toggle -->
-  <div id="modeToggle" style="cursor:pointer;margin-left:15px;">
-    <i class="fas fa-sun" id="sunIcon"></i>
-    <i class="fas fa-moon" id="moonIcon" style="display:none;"></i>
-  </div>
+  <!-- Dark/Light Toggle -->
+  <button id="modeToggle" style="margin-left:10px;cursor:pointer;font-size:1.2em;background:none;border:none;color:#b36b00;">
+    <i class="fas fa-sun"></i>
+  </button>
 </nav>
 
 <header class="hero-header">
   <div class="particles" id="particles"></div>
-
   <div class="hero-content">
     <h1>Str8 Flight Entertainment</h1>
     <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
@@ -332,6 +353,7 @@ body.light-mode iframe { background:#fff; }
 
   <div class="column center">
     <h2 class="section-title">Featured Music Videos</h2>
+
     <div class="videos" id="videos">
       <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc"></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w"></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
@@ -341,6 +363,13 @@ body.light-mode iframe { background:#fff; }
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pmSFR_ohjJk"></iframe><div class="video-title">Denton - PARRAT</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0"></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
     </div>
+
+    <!-- Live Stream -->
+    <div id="live-stream" style="margin-top:40px; display:none;">
+      <h2 class="section-title">Live Now</h2>
+      <iframe id="liveFrame" width="100%" height="360" allow="autoplay" allowfullscreen></iframe>
+    </div>
+
   </div>
 
 </div>
@@ -350,12 +379,12 @@ body.light-mode iframe { background:#fff; }
 </footer>
 
 <script>
-// MOBILE MENU
+/* mobile nav */
 document.getElementById('menuBtn').onclick = () => {
   document.querySelector('.nav-list').classList.toggle('active');
 };
 
-// PARTICLES
+/* particles */
 const particles = document.getElementById('particles');
 for(let i=0;i<70;i++){
   const dot = document.createElement('span');
@@ -365,32 +394,21 @@ for(let i=0;i<70;i++){
   particles.appendChild(dot);
 }
 
-// LIGHT/DARK TOGGLE
-const modeToggle = document.getElementById('modeToggle');
-const sunIcon = document.getElementById('sunIcon');
-const moonIcon = document.getElementById('moonIcon');
-
-modeToggle.addEventListener('click',()=>{
+/* Light/Dark toggle */
+const modeBtn = document.getElementById('modeToggle');
+modeBtn.onclick = () => {
   document.body.classList.toggle('light-mode');
-  const isLight = document.body.classList.contains('light-mode');
-  sunIcon.style.display = isLight ? 'none' : 'inline';
-  moonIcon.style.display = isLight ? 'inline' : 'none';
-});
+  modeBtn.innerHTML = document.body.classList.contains('light-mode') ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+};
 
-// YOUTUBE LIVE CHECK (Serverless API Recommended)
-const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA"; 
+/* YouTube Live Check */
+const CHANNEL_ID = "UCp2UwspaBTvuEDMe9kx3aoA"; 
 fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
-.then(r=>r.json())
-.then(d=>{
+.then(r => r.json())
+.then(d => {
   if(d.live && d.videoId){
-    const liveFrame = document.createElement('iframe');
-    liveFrame.src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
-    liveFrame.width="100%";
-    liveFrame.height="360";
-    liveFrame.frameBorder="0";
-    liveFrame.allow="autoplay; encrypted-media";
-    liveFrame.style.borderRadius="12px";
-    document.querySelector('.center').prepend(liveFrame);
+    document.getElementById('liveFrame').src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
+    document.getElementById('live-stream').style.display = 'block';
   }
 });
 </script>
