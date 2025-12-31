@@ -17,7 +17,7 @@ body {
   color:#fff;
   line-height:1.7;
   overflow-x:hidden;
-  transition:background-color 0.4s, color 0.4s;
+  transition: background-color 0.4s, color 0.4s;
 }
 a { text-decoration:none; transition: color 0.4s; }
 
@@ -35,6 +35,7 @@ a { text-decoration:none; transition: color 0.4s; }
 }
 .logo img.logo-img { height:42px; }
 .logo img.flag { height:26px; }
+
 .logo span {
   font-family:'Montserrat',sans-serif;
   font-size:1.4em;
@@ -46,22 +47,23 @@ a { text-decoration:none; transition: color 0.4s; }
 }
 
 /* Menu */
-.nav-list { list-style:none; display:flex; gap:24px; }
+.nav-list { list-style:none; display:flex; gap:24px; transition: background-color 0.4s; }
 .nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; }
 .nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
 
 /* Hamburger & Mode Toggle */
 .menu-toggle { display:none; flex-direction:column; cursor:pointer; }
 .menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; transition: all 0.3s; }
-.mode-toggle { font-size:1.4em; cursor:pointer; margin-left:12px; transition: color 0.4s; }
+.mode-toggle { font-size:1.4em; cursor:pointer; margin-left:10px; transition: color 0.4s; }
 
 /* Mobile */
 @media(max-width:768px){
   .menu-toggle { display:flex; }
   .nav-list {
-    position:absolute; top:65px; right:20px; width:220px; background:#111;
+    position:absolute; top:65px; right:20px; width:220px;
+    background:#111;
     flex-direction:column; max-height:0; overflow:hidden;
-    transition:max-height 0.35s ease;
+    transition:max-height 0.35s ease, background-color 0.4s;
     border-radius:0 0 12px 12px; box-shadow:0 0 30px rgba(179,107,0,.6);
   }
   .nav-list.active { max-height:500px; }
@@ -106,11 +108,13 @@ footer { background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px
 /* ================= DARK/LIGHT MODE ================= */
 body.light-mode { background:#f2f2f2; color:#111; }
 body.light-mode .navbar { background:rgba(255,255,255,0.95); }
+body.light-mode .nav-list { background:#fff; }
 body.light-mode .nav-list a { color:#ff8c00; text-shadow:none; }
 body.light-mode .nav-list a:hover { color:#ff6a00; text-shadow:none; }
 body.light-mode .hero-header { background:linear-gradient(135deg,#f2f2f2,#e0e0e0); }
 body.light-mode .service-card { background:#fff; color:#111; box-shadow:0 0 15px rgba(255,140,0,0.4),0 0 30px rgba(255,106,0,0.2); }
 body.light-mode footer { background:#f2f2f2; color:#111; text-shadow:none; }
+body.light-mode .mode-toggle { color:#ffb84d; }
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){ .hero-header h1{font-size:2.4em;} }
@@ -126,7 +130,7 @@ body.light-mode footer { background:#f2f2f2; color:#111; text-shadow:none; }
     <span>Str8 Flight</span>
     <img src="https://str8flight.github.io/belize-flag.png" class="flag" alt="Belize Flag">
   </div>
-  <div style="display:flex;align-items:center;">
+  <div style="display:flex;align-items:center;gap:12px;">
     <i class="fas fa-sun mode-toggle" id="modeToggle"></i>
     <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
   </div>
@@ -179,12 +183,14 @@ modeToggle.onclick = () => {
   } else {
     modeToggle.classList.replace('fa-moon','fa-sun');
   }
-  // Save preference
   localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
 };
 
 // Load saved theme
-if(localStorage.getItem('theme')==='light'){ document.body.classList.add('light-mode'); modeToggle.classList.replace('fa-sun','fa-moon'); }
+if(localStorage.getItem('theme')==='light'){ 
+  document.body.classList.add('light-mode'); 
+  modeToggle.classList.replace('fa-sun','fa-moon'); 
+}
 
 // Particle animation
 const particleContainer = document.getElementById('particles');
