@@ -11,6 +11,10 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393"
+     crossorigin="anonymous"></script>
+
 <style>
 /* ===== GLOBAL ===== */
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -38,7 +42,6 @@ body.light .navbar { background:rgba(255,255,255,0.9); }
 body.light .nav-list a { color:#b36b00; text-shadow:none; }
 .nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
 
-/* MOBILE NAV */
 .menu-toggle { display:none; flex-direction:column; cursor:pointer; }
 .menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; }
 
@@ -95,16 +98,12 @@ body.light .hero-header { background:linear-gradient(135deg,#fff,#ddd); }
 iframe { width:100%; height:260px; border:none; border-radius:12px; }
 .video-title { margin-top:10px; text-align:center; font-weight:700; text-shadow:0 0 5px #b36b00; }
 
-/* FOOTER */
-footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; transition: background 0.3s, color 0.3s; }
-body.light footer { background:#f4f4f4; color:#111; }
-
-/* LIGHT MODE */
-body.light { background:#f4f4f4; color:#111; }
 body.light .column { background:#eee; }
 body.light .video-card { background:#fff; box-shadow:0 0 18px #b36b00; }
 
-/* RESPONSIVE */
+footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; transition: background 0.3s, color 0.3s; }
+body.light footer { background:#f4f4f4; color:#111; }
+
 @media(max-width:1024px){ .page-container { flex-direction:column; } }
 @media(max-width:768px){ iframe { height:200px; } }
 </style>
@@ -112,7 +111,6 @@ body.light .video-card { background:#fff; box-shadow:0 0 18px #b36b00; }
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
     <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
@@ -132,7 +130,6 @@ body.light .video-card { background:#fff; box-shadow:0 0 18px #b36b00; }
   </ul>
 </nav>
 
-<!-- HERO -->
 <header class="hero-header">
   <div class="particles" id="particles"></div>
   <div class="hero-content">
@@ -141,7 +138,19 @@ body.light .video-card { background:#fff; box-shadow:0 0 18px #b36b00; }
   </div>
 </header>
 
-<!-- PAGE CONTENT -->
+<!-- ADSENSE BANNER -->
+<div style="max-width:728px;margin:20px auto;text-align:center;">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-1435942574271393"
+       data-ad-slot="1234567890"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
 <div class="page-container">
   <div class="column left" id="about">
     <h2>About</h2>
@@ -153,10 +162,14 @@ body.light .video-card { background:#fff; box-shadow:0 0 18px #b36b00; }
   <div class="column center">
     <h2 class="section-title">Featured Music Videos</h2>
     <div class="videos" id="videos">
+      <!-- LIVE video will prepend here -->
       <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc"></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w"></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ"></iframe><div class="video-title">Denton - Furious (RAW)</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/8E9zA7Bq1js"></iframe><div class="video-title">Quarantine - Cleon x Denton</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/QdFS99yYcDE"></iframe><div class="video-title">Denton - Wiser</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/pmSFR_ohjJk"></iframe><div class="video-title">Denton - PARRAT</div></div>
+      <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0"></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
     </div>
   </div>
 </div>
@@ -164,22 +177,20 @@ body.light .video-card { background:#fff; box-shadow:0 0 18px #b36b00; }
 <footer>&copy; 2025 Str8 Flight Entertainment • Belize</footer>
 
 <script>
-/* MOBILE NAV */
-document.getElementById('menuBtn').onclick = () => {
-  document.querySelector('.nav-list').classList.toggle('active');
-};
+// Mobile nav
+document.getElementById('menuBtn').onclick = () => { document.querySelector('.nav-list').classList.toggle('active'); };
 
-/* PARTICLES */
+// Particles
 const particles = document.getElementById('particles');
 for(let i=0;i<70;i++){
-  const dot = document.createElement('span');
-  dot.style.left = Math.random()*100+'%';
-  dot.style.animationDuration = (6 + Math.random()*10)+'s';
-  dot.style.animationDelay = Math.random()*5+'s';
+  const dot=document.createElement('span');
+  dot.style.left=Math.random()*100+'%';
+  dot.style.animationDuration=(6+Math.random()*10)+'s';
+  dot.style.animationDelay=Math.random()*5+'s';
   particles.appendChild(dot);
 }
 
-/* LIGHT/DARK MODE */
+// Light/Dark Mode with localStorage
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 const darkIcon = 'fas fa-moon';
@@ -187,25 +198,48 @@ const lightIcon = 'fas fa-sun';
 
 function setTheme(isLight){
   if(isLight){
-    body.classList.add('light');
-    body.classList.remove('dark');
-    themeToggle.className = lightIcon;
+    body.classList.add('light'); body.classList.remove('dark'); themeToggle.className = lightIcon;
     localStorage.setItem('theme','light');
   }else{
-    body.classList.add('dark');
-    body.classList.remove('light');
-    themeToggle.className = darkIcon;
+    body.classList.add('dark'); body.classList.remove('light'); themeToggle.className = darkIcon;
     localStorage.setItem('theme','dark');
   }
 }
 
-// On toggle click
 themeToggle.onclick = () => setTheme(!body.classList.contains('light'));
+setTheme(localStorage.getItem('theme')==='light');
 
-// Load theme from localStorage
-const savedTheme = localStorage.getItem('theme');
-setTheme(savedTheme === 'light');
+// LIVE YouTube Check
+const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA";
+const videosContainer = document.getElementById('videos');
+
+function checkLive() {
+  fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
+    .then(r => r.json())
+    .then(d => {
+      const existingLive = document.getElementById('live-card');
+      if(existingLive) existingLive.remove();
+      if(d.live && d.videoId){
+        const liveFrame = document.createElement('iframe');
+        liveFrame.src=`https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
+        liveFrame.width="100%"; liveFrame.height="260px"; liveFrame.style.border="none"; liveFrame.style.borderRadius="12px";
+
+        const liveDiv = document.createElement('div');
+        liveDiv.className='video-card'; liveDiv.id='live-card';
+        liveDiv.appendChild(liveFrame);
+
+        const liveTitle = document.createElement('div');
+        liveTitle.className='video-title'; liveTitle.innerText="LIVE NOW 🔴";
+        liveDiv.appendChild(liveTitle);
+
+        videosContainer.prepend(liveDiv);
+      }
+    })
+    .catch(err => console.error("Error checking live:",err));
+}
+
+checkLive();
+setInterval(checkLive,30000);
 </script>
-
 </body>
 </html>
