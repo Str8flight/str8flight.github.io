@@ -6,93 +6,211 @@
 <title>Services | Str8 Flight Entertainment</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-:root{
-  --bg:#0b0b0b;
-  --bg-alt:#1a1a1a;
-  --text:#ffffff;
-  --accent:#b36b00;
-}
-body.light{
-  --bg:#f4f4f4;
-  --bg-alt:#ffffff;
-  --text:#111111;
+/* ===== THEME VARIABLES ===== */
+:root {
+  --bg: #0b0b0b;
+  --bg-alt: #1a1a1a;
+  --text: #fff;
+  --accent: #b36b00;
+  --accent-hover: #ff9c3b;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Roboto';background:var(--bg);color:var(--text);transition:0.3s;}
+body.light {
+  --bg: #f4f4f4;
+  --bg-alt: #ffffff;
+  --text: #111;
+}
 
-.navbar{
-  position:fixed;top:0;width:100%;padding:15px 20px;
-  display:flex;justify-content:space-between;align-items:center;
+/* RESET */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family:'Roboto',sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+  overflow-x:hidden;
+}
+a { text-decoration:none; color:inherit; }
+
+/* NAV */
+.navbar {
+  position:fixed; top:0; left:0; width:100%;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:15px 20px;
   background:rgba(0,0,0,0.8);
+  backdrop-filter:blur(6px);
+  z-index:1000;
 }
-.logo{display:flex;align-items:center;gap:10px;}
-.logo img{width:50px;}
-.logo span{font-weight:700;color:var(--text);}
-.theme-toggle{cursor:pointer;color:var(--accent);}
+body.light .navbar { background:rgba(255,255,255,0.9); }
 
-.hero{
-  padding:120px 20px 60px;text-align:center;
+.logo {
+  display:flex; align-items:center; gap:10px;
 }
-.hero h1{
-  font-family:'Montserrat';font-size:3em;color:var(--accent);
+.logo img { width:50px; }
+.logo span {
+  font-weight:700;
+  font-size:1.2em;
+  color:var(--text);
 }
 
-.services{
-  max-width:1100px;margin:40px auto;
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;padding:0 20px;
+.menu-toggle {
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
 }
-.service-card{
+.menu-toggle span {
+  width:25px; height:3px;
+  background:var(--accent);
+  margin:4px 0;
+}
+
+.nav-list {
+  list-style:none;
+  display:flex;
+  gap:24px;
+  align-items:center;
+}
+.nav-list a {
+  color:var(--accent);
+  font-weight:700;
+  transition:.3s;
+}
+.nav-list a:hover { color:var(--accent-hover); }
+
+/* Toggle */
+.theme-btn {
+  background:none;
+  border:none;
+  font-size:1.2em;
+  color:var(--accent);
+  cursor:pointer;
+  margin-left:12px;
+}
+
+/* MOBILE NAV */
+@media(max-width:768px){
+  .menu-toggle { display:flex; }
+  .nav-list {
+    position:absolute; top:60px; right:0;
+    background:var(--bg-alt);
+    flex-direction:column;
+    width:220px;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+    border-radius:0 0 12px 12px;
+  }
+  .nav-list.active { max-height:500px; }
+  .nav-list li { border-bottom:1px solid var(--accent); }
+  .nav-list a { padding:12px 20px; display:block; }
+}
+
+/* HERO */
+.hero-section {
+  padding:120px 20px 60px;
+  text-align:center;
+  background:linear-gradient(135deg,var(--bg),var(--bg-alt));
+}
+.hero-section h1 {
+  font-family:'Montserrat',sans-serif;
+  font-size:2.8em;
+  color:var(--accent);
+}
+.hero-section p { margin-top:8px; }
+
+/* SERVICES GRID */
+.services-container {
+  max-width:1100px;
+  margin:40px auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+  padding:0 20px;
+}
+.service-card {
   background:var(--bg-alt);
-  padding:25px;border-radius:16px;
-  box-shadow:0 0 20px rgba(179,107,0,0.3);
+  padding:25px;
+  border-radius:16px;
+  box-shadow:0 0 18px rgba(179,107,0,0.4);
+  text-align:center;
+  transition:.3s;
 }
-.service-card h3{color:var(--accent);margin-bottom:10px;}
+.service-card:hover {
+  box-shadow:0 0 30px var(--accent), 0 0 50px var(--accent-hover);
+}
+.service-card h3 { color:var(--accent); margin-bottom:12px; }
+.service-card p { line-height:1.6; }
 
-footer{text-align:center;padding:20px;color:var(--accent);}
+/* FOOTER */
+footer {
+  text-align:center;
+  padding:25px;
+  color:var(--accent);
+}
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
-    <img src="https://str8flight.github.io/str8flight-logo.png">
+    <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
     <span>Str8 Flight</span>
   </div>
-  <div class="theme-toggle" id="themeToggle">🌙</div>
+
+  <div class="menu-toggle" id="menuBtn">
+    <span></span><span></span><span></span>
+  </div>
+
+  <ul class="nav-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><button id="themeBtn" class="theme-btn">🌙</button></li>
+  </ul>
 </nav>
 
-<section class="hero">
+<!-- HERO -->
+<section class="hero-section">
   <h1>Our Services</h1>
-  <p>Entertainment • Promotion • Branding</p>
+  <p>Supporting music, media & culture</p>
 </section>
 
-<section class="services">
+<!-- SERVICES -->
+<div class="services-container">
   <div class="service-card">
     <h3>Music Promotion</h3>
     <p>Promoting Caribbean and global talent across digital platforms.</p>
   </div>
   <div class="service-card">
     <h3>Live Events</h3>
-    <p>Hosting live shows, DJ sessions, and cultural events.</p>
+    <p>Hosting live shows, DJ sessions, and community events.</p>
   </div>
   <div class="service-card">
     <h3>Content Creation</h3>
     <p>High-quality visuals, videos, and branding services.</p>
   </div>
-</section>
+</div>
 
 <footer>&copy; 2025 Str8 Flight Entertainment • Belize</footer>
 
 <script>
-if(localStorage.theme==="light") document.body.classList.add('light');
-themeToggle.onclick=()=>{
+/* MOBILE MENU */
+const mobileBtn = document.getElementById('menuBtn');
+const navList = document.querySelector('.nav-list');
+mobileBtn.onclick = () => navList.classList.toggle('active');
+
+/* THEME TOGGLE */
+if(localStorage.theme === "light") document.body.classList.add('light');
+
+themeBtn.onclick = () => {
   document.body.classList.toggle('light');
-  localStorage.theme=document.body.classList.contains('light')?'light':'dark';
+  localStorage.theme = document.body.classList.contains('light') ? "light" : "dark";
 };
 </script>
 
