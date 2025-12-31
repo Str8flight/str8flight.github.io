@@ -10,7 +10,7 @@
 <style>
 /* ================= GLOBAL ================= */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Roboto', sans-serif; line-height:1.7; overflow-x:hidden; transition: background 0.4s, color 0.4s; }
+body { font-family:'Roboto', sans-serif; line-height:1.7; overflow-x:hidden; transition: background 0.4s, color 0.4s;}
 body.light { background:#f4f4f4; color:#111; }
 body.dark { background:#0b0b0b; color:#fff; }
 a { text-decoration:none; transition: color 0.3s; }
@@ -20,64 +20,53 @@ a { text-decoration:none; transition: color 0.3s; }
   position: fixed; top:0; width:100%; z-index:1000;
   display:flex; justify-content:space-between; align-items:center;
   padding:15px 20px; background:rgba(0,0,0,0.85); backdrop-filter:blur(5px);
-  transition: background 0.4s;
+  box-shadow:0 0 20px rgba(179,107,0,0.3);
+  transition: background 0.4s, box-shadow 0.4s;
 }
-body.light .navbar { background: rgba(255,255,255,0.85); }
+body.light .navbar { background: rgba(255,255,255,0.85); box-shadow:0 0 20px rgba(179,107,0,0.1); }
 
-.navbar .logo-flag {
-  display:flex; align-items:center; gap:12px;
-}
-
-.navbar .logo { display:flex; align-items:center; gap:10px; }
+.navbar .logo { display:flex; align-items:center; gap:10px; z-index:2; }
 .navbar .logo img { width:50px; }
-.navbar .logo span { font-family:'Montserrat', sans-serif; font-weight:700; font-size:1.2em; }
-body.light .navbar .logo span { color:#b36b00; }
-body.dark .navbar .logo span { color:#b36b00; }
+.navbar .logo span { font-family:'Montserrat', sans-serif; font-weight:700; font-size:1.3em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 6px #b36b00;}
+body.light .navbar .logo span { color:#b36b00; background:none; -webkit-text-fill-color:unset; text-shadow:none; }
 
-.flag-toggle { display:flex; align-items:center; gap:8px; }
+.navbar .flag-toggle { display:flex; align-items:center; gap:12px; z-index:2; }
 .flag-toggle img.flag { width:26px; height:auto; }
 .flag-toggle i.mode-toggle { cursor:pointer; font-size:1.4em; transition: color 0.4s; }
 body.light .mode-toggle { color:#111; }
 body.dark .mode-toggle { color:#ff9c3b; }
 
-.navbar .menu-toggle { display:none; flex-direction:column; cursor:pointer; gap:4px; }
+.navbar .menu-toggle { display:none; flex-direction:column; cursor:pointer; gap:4px; z-index:2; }
 .navbar .menu-toggle div { width:25px; height:3px; background:#b36b00; transition:0.3s; }
 
-.nav-list { display:flex; gap:25px; list-style:none; }
-.nav-list a { color:#b36b00; font-weight:700; transition:0.3s; }
-body.light .nav-list a { color:#b36b00; }
-body.dark .nav-list a { color:#b36b00; }
-.nav-list a:hover { color:#ff9c3b; }
+.nav-list { display:flex; gap:25px; list-style:none; z-index:2; }
+.nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:.3s; }
+.nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
+body.light .nav-list a { color:#b36b00; text-shadow:none; }
 
-/* Hamburger Mobile */
+/* MOBILE HAMBURGER */
 @media(max-width:768px){
   .navbar .menu-toggle { display:flex; }
   .nav-list {
-    position:absolute; top:60px; right:0; width:220px;
-    background:#0b0b0b; flex-direction:column; gap:0; overflow:hidden;
-    max-height:0; transition:max-height 0.3s ease-in; border-radius:0 0 10px 10px;
+    position:absolute; top:60px; right:0; width:220px; background:#0b0b0b;
+    flex-direction:column; gap:0; overflow:hidden; max-height:0; transition:max-height 0.4s ease-in, background 0.4s;
+    border-radius:0 0 12px 12px; box-shadow:0 0 30px rgba(179,107,0,.6);
   }
   body.light .nav-list { background:#f4f4f4; }
   .nav-list.active { max-height:600px; }
-  .nav-list li { border-bottom:1px solid #b36b00; }
-  body.light .nav-list li { border-bottom:1px solid #b36b00; }
+  .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
+  body.light .nav-list li { border-bottom:1px solid rgba(179,107,0,.3); }
   .nav-list li a { padding:12px 20px; display:block; }
 }
 
 /* ================= HERO ================= */
 .hero-header {
-  position:relative; height:50vh; text-align:center;
-  display:flex; flex-direction:column; justify-content:center; align-items:center;
-  overflow:hidden; background:linear-gradient(135deg,#0b0b0b,#1a1a1a);
+  position:relative; height:50vh; text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center;
+  overflow:hidden; background:linear-gradient(135deg,#0b0b0b,#1a1a1a); transition: background 0.4s;
 }
 body.light .hero-header { background:linear-gradient(135deg,#fff,#eee); }
 
-.hero-header h1 {
-  font-family:'Montserrat',sans-serif; font-size:3em;
-  background:linear-gradient(90deg,#b36b00,#ff9c3b);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  text-shadow:0 0 10px #b36b00; animation:fadeInDown 1.2s ease forwards;
-}
+.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 10px #b36b00; animation:fadeInDown 1.2s ease forwards;}
 .hero-header p { margin-top:15px; font-size:1.2em; opacity:0; animation:fadeInUp 1.5s ease forwards; animation-delay:0.3s; }
 
 @keyframes fadeInDown {0%{opacity:0;transform:translateY(-30px);}100%{opacity:1;transform:translateY(0);}}
@@ -119,15 +108,14 @@ body.light footer { background:#f4f4f4; color:#b36b00; text-shadow:none; box-sha
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="logo-flag">
-    <div class="logo">
-      <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
-      <span>Str8 Flight</span>
-    </div>
-    <div class="flag-toggle">
-      <img src="https://str8flight.github.io/belize-flag.png" class="flag" alt="Belize Flag">
-      <i class="fas fa-sun mode-toggle" id="modeToggle"></i>
-    </div>
+  <div class="logo">
+    <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
+    <span>Str8 Flight</span>
+  </div>
+
+  <div class="flag-toggle">
+    <img src="https://str8flight.github.io/belize-flag.png" class="flag" alt="Belize Flag">
+    <i class="fas fa-sun mode-toggle" id="modeToggle"></i>
   </div>
 
   <div class="menu-toggle" id="hamburger"><div></div><div></div><div></div></div>
