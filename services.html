@@ -4,110 +4,225 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Services | Str8 Flight Entertainment</title>
+
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 /* ===== GLOBAL ===== */
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Roboto',sans-serif; line-height:1.7; overflow-x:hidden; transition: background 0.4s, color 0.4s;}
-body.light{background:#f4f4f4;color:#111;}
-body.dark{background:#0b0b0b;color:#fff;}
-a{text-decoration:none;transition:color 0.3s;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Roboto',sans-serif;background:#0b0b0b;color:#fff;overflow-x:hidden;transition:.3s}
+body.light{background:#f4f4f4;color:#111}
+a{text-decoration:none;color:inherit}
 
 /* ===== NAVBAR ===== */
-.navbar{display:flex;justify-content:space-between;align-items:center; padding:15px 20px; position:fixed;top:0;width:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(5px);z-index:1000; box-shadow:0 0 20px rgba(179,107,0,0.3); transition: background 0.4s;}
-body.light .navbar{background:rgba(255,255,255,0.85); box-shadow:0 0 20px rgba(179,107,0,0.1);}
-.logo img{width:50px;}
-.logo span{font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.3em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
-body.light .logo span{color:#b36b00; background:none; -webkit-text-fill-color:unset;}
-.nav-list{display:flex; gap:25px; list-style:none;}
-.nav-list a{color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:0.3s;}
-.nav-list a:hover{color:#ff9c3b; text-shadow:0 0 12px #ff9c3b;}
-body.light .nav-list a{color:#b36b00; text-shadow:none;}
-.menu-toggle{display:none; flex-direction:column; cursor:pointer; gap:4px;}
-.menu-toggle div{width:25px; height:3px; background:#b36b00; transition:0.3s;}
-@media(max-width:768px){.menu-toggle{display:flex;} .nav-list{position:absolute; top:60px; right:0; width:220px; background:#0b0b0b; flex-direction:column; max-height:0; overflow:hidden; transition:max-height 0.4s ease-in; border-radius:0 0 12px 12px;} body.light .nav-list{background:#f4f4f4;} .nav-list.active{max-height:600px;} .nav-list li{border-bottom:1px solid rgba(179,107,0,.4);} body.light .nav-list li{border-bottom:1px solid rgba(179,107,0,.3);} .nav-list li a{padding:12px 20px; display:block;}}
+.navbar{
+position:fixed;top:0;width:100%;z-index:1000;
+display:flex;justify-content:space-between;align-items:center;
+padding:15px 24px;background:rgba(0,0,0,.75);backdrop-filter:blur(8px)
+}
+body.light .navbar{background:rgba(255,255,255,.9)}
+
+.logo{display:flex;align-items:center;gap:10px}
+.logo img{height:42px}
+.logo span{
+font-family:'Montserrat',sans-serif;font-size:1.4em;
+background:linear-gradient(90deg,#b36b00,#ff9c3b);
+-webkit-background-clip:text;-webkit-text-fill-color:transparent
+}
+.flag{height:26px}
+#theme-toggle{cursor:pointer;font-size:1.3em;margin-left:8px}
+
+.nav-list{list-style:none;display:flex;gap:24px}
+.nav-list a{color:#b36b00;font-weight:700}
+
+.menu-toggle{display:none;flex-direction:column;cursor:pointer}
+.menu-toggle span{width:26px;height:3px;background:#b36b00;margin:4px 0}
+
+@media(max-width:768px){
+.menu-toggle{display:flex}
+.nav-list{
+position:absolute;top:65px;right:20px;width:220px;
+background:#111;flex-direction:column;
+max-height:0;overflow:hidden;border-radius:12px;
+transition:.3s
+}
+body.light .nav-list{background:#fff}
+.nav-list.active{max-height:600px}
+.nav-list li a{padding:14px 20px;display:block}
+}
 
 /* ===== HERO ===== */
-.hero-header{position:relative; text-align:center; padding:100px 20px 50px; background:linear-gradient(135deg,#0b0b0b,#1a1a1a); overflow:hidden; transition: background 0.4s;}
-body.light .hero-header{background:linear-gradient(135deg,#fff,#eee);}
-.hero-header h1{font-family:'Montserrat',sans-serif; font-size:3em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 10px #b36b00;}
-.hero-header p{margin-top:15px; font-size:1.2em;}
+.hero{
+padding:110px 20px 50px;text-align:center;
+background:linear-gradient(135deg,#0b0b0b,#161616);
+transition:.3s
+}
+body.light .hero{background:linear-gradient(135deg,#fff,#ddd)}
+.hero h1{
+font-family:'Montserrat',sans-serif;
+font-size:3em;color:#b36b00;
+text-shadow:0 0 14px #b36b00
+}
+.hero p{font-size:1.2em;max-width:900px;margin:15px auto 0}
 
-/* ===== SERVICES CARDS ===== */
-.services-container{max-width:1200px; margin:50px auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; padding:0 20px;}
-.service-card{background:#1a1a1a; padding:30px; border-radius:16px; box-shadow:0 0 15px rgba(179,107,0,0.5),0 0 30px rgba(138,76,0,0.3); text-align:center; transition:transform 0.3s ease, box-shadow 0.3s ease; opacity:0; transform:translateY(30px);}
-body.light .service-card{background:#fff; color:#111; box-shadow:0 0 15px rgba(179,107,0,0.3),0 0 30px rgba(138,76,0,0.2);}
-.service-card.visible{opacity:1; transform:translateY(0); transition:1s ease;}
-.service-card:hover{transform:translateY(-10px); box-shadow:0 0 25px #b36b00,0 0 50px #ff9c3b;}
-.service-card h3{color:#b36b00; margin-bottom:15px; font-size:1.8em; text-shadow:0 0 10px #b36b00;}
-body.light .service-card h3{color:#b36b00; text-shadow:none;}
-.service-card p{color:#e0e0e0; line-height:1.6;}
-body.light .service-card p{color:#111;}
+/* ===== SERVICES ===== */
+.services{
+max-width:1400px;margin:50px auto;
+padding:0 20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px
+}
+.service-card{
+background:#141414;padding:30px;
+border-radius:18px;
+box-shadow:0 0 25px rgba(179,107,0,.4);
+transition:.3s
+}
+.service-card:hover{
+transform:translateY(-6px);
+box-shadow:0 0 35px #b36b00
+}
+body.light .service-card{background:#fff}
+
+.service-card i{
+font-size:2.8em;color:#b36b00;
+margin-bottom:20px
+}
+.service-card h3{
+font-family:'Montserrat',sans-serif;
+margin-bottom:12px
+}
+.service-card p{line-height:1.6}
+
+/* ===== CTA ===== */
+.cta{
+margin:70px 20px;text-align:center;
+padding:50px 20px;border-radius:20px;
+background:linear-gradient(135deg,#1a1a1a,#0b0b0b);
+box-shadow:0 0 35px rgba(179,107,0,.5)
+}
+body.light .cta{
+background:linear-gradient(135deg,#fff,#eee)
+}
+.cta h2{
+font-family:'Montserrat',sans-serif;
+color:#b36b00;margin-bottom:15px
+}
+.cta a{
+display:inline-block;margin-top:20px;
+padding:14px 32px;border-radius:30px;
+background:#b36b00;color:#fff;
+font-weight:700;transition:.3s
+}
+.cta a:hover{background:#ff9c3b}
 
 /* ===== FOOTER ===== */
-footer{text-align:center; padding:25px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); color:#b36b00; background:#0b0b0b;}
-body.light footer{background:#f4f4f4; color:#b36b00; box-shadow:0 -3px 8px rgba(179,107,0,0.2);}
-
+footer{
+text-align:center;padding:30px;
+background:#0b0b0b;color:#b36b00
+}
+body.light footer{background:#f4f4f4;color:#111}
 </style>
 </head>
+
 <body class="dark">
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="logo"><img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo"><span>Str8 Flight</span></div>
-  <div class="menu-toggle" id="hamburger"><div></div><div></div><div></div></div>
+  <div class="logo">
+    <img src="https://str8flight.github.io/str8flight-logo.png">
+    <span>STR8 FLIGHT</span>
+    <img src="https://str8flight.github.io/belize-flag.png" class="flag">
+    <i class="fas fa-sun" id="theme-toggle"></i>
+  </div>
+
+  <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
+
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
-    <li><a href="#services">Services</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#videos">Videos</a></li>
+    <li><a href="services.html">Services</a></li>
     <li><a href="contact.html">Contact</a></li>
-    <li><a href="privacy.html">Privacy</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
-<header class="hero-header">
+<section class="hero">
   <h1>Our Services</h1>
-  <p>Explore all the professional services we offer</p>
-</header>
+  <p>Professional music, media, and creative services rooted in Belizean culture and global sound.</p>
+</section>
 
 <!-- SERVICES -->
-<div class="services-container">
-  <div class="service-card"><h3>Dub Plate</h3><p>Custom dub plates for artists, DJs, and events. High-quality recordings with unique vocal drops.</p></div>
-  <div class="service-card"><h3>Mixing & Mastering</h3><p>Professional mixing and mastering to make your tracks shine across all platforms.</p></div>
-  <div class="service-card"><h3>Studio Recording</h3><p>Full-featured recording studio with experienced engineers.</p></div>
-  <div class="service-card"><h3>Vocal Recording & Editing</h3><p>Professional vocal tracking, tuning, and layering services.</p></div>
-  <div class="service-card"><h3>Songwriting & Arrangement</h3><p>Assist artists in crafting lyrics, melodies, and song structures.</p></div>
-  <div class="service-card"><h3>Artist Development & Coaching</h3><p>Branding, performance, and music marketing guidance for artists.</p></div>
-</div>
+<section class="services">
+  <div class="service-card">
+    <i class="fas fa-microphone"></i>
+    <h3>Music Recording</h3>
+    <p>Professional vocal and instrumental recording for artists, groups, and independent creatives.</p>
+  </div>
 
-<!-- FOOTER -->
-<footer>&copy; <span id="year"></span> Str8 Flight Entertainment • Belize</footer>
+  <div class="service-card">
+    <i class="fas fa-sliders-h"></i>
+    <h3>Mixing & Mastering</h3>
+    <p>Industry-quality mixing and mastering to bring clarity, punch, and balance to your tracks.</p>
+  </div>
+
+  <div class="service-card">
+    <i class="fas fa-video"></i>
+    <h3>Music Video Production</h3>
+    <p>Creative direction, filming, and editing for high-impact visuals that match your sound.</p>
+  </div>
+
+  <div class="service-card">
+    <i class="fas fa-users"></i>
+    <h3>Artist Development</h3>
+    <p>Guidance in branding, sound development, performance preparation, and release strategy.</p>
+  </div>
+
+  <div class="service-card">
+    <i class="fas fa-bullhorn"></i>
+    <h3>Promotion & Distribution</h3>
+    <p>Support with digital releases, YouTube content, marketing strategies, and audience growth.</p>
+  </div>
+
+  <div class="service-card">
+    <i class="fas fa-handshake"></i>
+    <h3>Events & Collaborations</h3>
+    <p>Live events, showcases, community engagement, and collaborative creative projects.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready to Work With Us?</h2>
+  <p>Let’s build something powerful together.</p>
+  <a href="contact.html">Contact Str8 Flight</a>
+</section>
+
+<footer>© <span id="year"></span> Str8 Flight Entertainment • Belize</footer>
 
 <script>
-// Hamburger toggle
-document.getElementById('hamburger').addEventListener('click',()=>{document.querySelector('.nav-list').classList.toggle('active');});
+/* YEAR */
+document.getElementById('year').textContent=new Date().getFullYear();
 
-// Scroll reveal for services
-const cards=document.querySelectorAll('.service-card');
-const revealCards = ()=>{ const trigger=window.innerHeight*0.85; cards.forEach(card=>{ if(card.getBoundingClientRect().top<trigger) card.classList.add('visible'); }); };
-window.addEventListener('scroll',revealCards); revealCards();
+/* MOBILE MENU */
+menuBtn.onclick=()=>document.querySelector('.nav-list').classList.toggle('active');
 
-// Dark/Light mode persistency
-if(localStorage.theme==="light"){ document.body.classList.add('light'); document.body.classList.remove('dark'); }
-else{ document.body.classList.add('dark'); document.body.classList.remove('light'); }
-
-document.body.addEventListener('click', e=>{
-  if(e.target.classList.contains('mode-toggle')){
-    document.body.classList.toggle('light');
-    document.body.classList.toggle('dark');
-    localStorage.theme=document.body.classList.contains('light')?"light":"dark";
-  }
-});
-
-// Dynamic year
-document.getElementById('year').textContent = new Date().getFullYear();
+/* THEME */
+const toggle=document.getElementById('theme-toggle');
+function setTheme(t){
+document.body.className=t;
+toggle.className=t==='light'?'fas fa-sun':'fas fa-moon';
+localStorage.setItem('theme',t);
+}
+toggle.onclick=()=>setTheme(document.body.classList.contains('light')?'dark':'light');
+setTheme(localStorage.getItem('theme')||'dark');
 </script>
+
 </body>
 </html>
