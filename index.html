@@ -8,12 +8,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
 <style>
+/* THEME VARIABLES */
+:root {
+  --bg-color: #0b0b0b;
+  --text-color: #fff;
+  --accent-color: #b36b00;
+  --accent-hover: #ff9c3b;
+  --particle-color: #b36b00;
+  --video-bg: #0f0f0f;
+  --column-bg: #141414;
+}
+
 /* RESET */
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
   font-family:'Roboto',sans-serif;
-  background:#0b0b0b;
-  color:#fff;
+  background: var(--bg-color);
+  color: var(--text-color);
   overflow-x:hidden;
 }
 
@@ -30,79 +41,36 @@ body {
   background:rgba(0,0,0,0.75);
   backdrop-filter:blur(8px);
 }
-
-.logo {
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
+.logo { display:flex; align-items:center; gap:10px; }
 .logo img { height:42px; }
-
 .logo span {
   font-family:'Montserrat',sans-serif;
   font-size:1.4em;
-  background:linear-gradient(90deg,#b36b00,#ff9c3b);
+  background:linear-gradient(90deg,var(--accent-color),var(--accent-hover));
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-
 .flag { height:26px; }
-
-/* LIVE Badge */
-.live-badge {
-  background:#ff2b2b;
-  color:#fff;
-  font-weight:700;
-  font-size:0.9em;
-  padding:4px 10px;
-  border-radius:12px;
-  margin-left:12px;
-  box-shadow:0 0 8px #ff2b2b;
-  animation:pulse 1.4s infinite;
-  display:none; /* hidden by default */
-  text-align:center;
-}
-
-.menu-toggle {
-  display:none;
-  flex-direction:column;
-  cursor:pointer;
-}
-
-.menu-toggle span {
-  width:26px;
-  height:3px;
-  background:#b36b00;
-  margin:4px 0;
-}
-
-.nav-list {
-  list-style:none;
-  display:flex;
-  gap:24px;
-}
-
+.menu-toggle { display:none; flex-direction:column; cursor:pointer; }
+.menu-toggle span { width:26px; height:3px; background:var(--accent-color); margin:4px 0; }
+.nav-list { list-style:none; display:flex; gap:24px; }
 .nav-list a {
-  color:#b36b00;
+  color: var(--accent-color);
   font-weight:700;
-  text-shadow:0 0 6px #b36b00;
+  text-shadow:0 0 6px var(--accent-color);
   transition:.3s;
 }
-
 .nav-list a:hover {
-  color:#ff9c3b;
-  text-shadow:0 0 12px #ff9c3b;
+  color: var(--accent-hover);
+  text-shadow:0 0 12px var(--accent-hover);
 }
 
 /* MOBILE NAV */
 @media(max-width:768px){
   .menu-toggle { display:flex; }
-
   .nav-list {
     position:absolute;
-    top:65px;
-    right:20px;
+    top:65px; right:20px;
     width:220px;
     background:#111;
     flex-direction:column;
@@ -112,39 +80,48 @@ body {
     border-radius:0 0 12px 12px;
     box-shadow:0 0 30px rgba(179,107,0,.6);
   }
-
   .nav-list.active { max-height:500px; }
-
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
+  .nav-list a { padding:14px 20px; display:block; }
+}
 
-  .nav-list a {
-    padding:14px 20px;
-    display:block;
-  }
+/* THEME TOGGLE BUTTON */
+.theme-toggle {
+  position:fixed;
+  top:15px;
+  right:80px;
+  z-index:1100;
+}
+#themeBtn {
+  background:none;
+  border:2px solid var(--accent-color);
+  color: var(--accent-color);
+  padding:6px 12px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:1.1em;
+}
+#themeBtn:hover {
+  background: var(--accent-color);
+  color:#0b0b0b;
 }
 
 /* HERO */
 .hero-header {
   position:relative;
-  padding:150px 20px 90px;
+  padding:130px 20px 60px;
   text-align:center;
-  background:linear-gradient(135deg,#0b0b0b,#161616);
+  background:linear-gradient(135deg,var(--bg-color),#161616);
   overflow:hidden;
 }
-
-.hero-content {
-  position:relative;
-  z-index:3;
-}
-
+.hero-content { position:relative; z-index:3; }
 .hero-header h1 {
   font-family:'Montserrat',sans-serif;
-  font-size:3em;
+  font-size:2.8em;
   margin-bottom:10px;
-  text-shadow:0 0 14px #b36b00;
+  text-shadow:0 0 14px var(--accent-color);
   animation:fadeDown 1.2s ease forwards;
 }
-
 .hero-header p {
   font-size:1.2em;
   animation:fadeUp 1.4s ease forwards;
@@ -157,27 +134,28 @@ body {
   z-index:1;
   pointer-events:none;
 }
-
 .particles span {
   position:absolute;
   width:6px;
   height:6px;
-  background:#b36b00;
+  background: var(--particle-color);
   border-radius:50%;
   opacity:.7;
   animation:floatUp linear infinite;
-  filter:drop-shadow(0 0 6px #b36b00);
+  filter:drop-shadow(0 0 6px var(--accent-color));
 }
 
 /* LIVE STREAM */
 #live-stream {
-  margin:60px auto 0;
-  padding:40px;
-  background:#141414;
+  display:none;
+  margin:40px auto 0;
+  padding:30px;
+  background: var(--column-bg);
   border-radius:20px;
   box-shadow:0 0 35px rgba(179,107,0,.7);
   text-align:center;
 }
+#live-stream.show { display:block; animation:fadeUp .8s ease; }
 
 .live-header {
   display:flex;
@@ -186,7 +164,6 @@ body {
   gap:12px;
   margin-bottom:20px;
 }
-
 .live-dot {
   width:14px;
   height:14px;
@@ -194,31 +171,27 @@ body {
   border-radius:50%;
   animation:pulse 1.4s infinite;
 }
-
 .live-header h2 {
-  color:#b36b00;
-  text-shadow:0 0 10px #b36b00;
+  color:var(--accent-color);
+  text-shadow:0 0 10px var(--accent-color);
 }
-
 .live-player {
   position:relative;
   padding-bottom:56.25%;
   height:0;
 }
-
 .live-player iframe {
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
   border-radius:14px;
-  box-shadow:0 0 25px #b36b00;
+  box-shadow:0 0 25px var(--accent-color);
 }
-
 .live-text {
   margin-top:15px;
   font-weight:700;
-  color:#ff9c3b;
+  color: var(--accent-hover);
 }
 
 /* PAGE LAYOUT */
@@ -229,86 +202,44 @@ body {
   display:flex;
   gap:50px;
 }
-
-.column {
-  background:#141414;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 0 25px rgba(179,107,0,.4);
-}
-
-.column:hover {
-  box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00;
-}
-
-.left { flex:1; }
-.center { flex:3; }
+.column { background: var(--column-bg); padding:30px; border-radius:18px; box-shadow:0 0 25px rgba(179,107,0,.4); }
+.column:hover { box-shadow:0 0 35px var(--accent-color),0 0 60px #8a4c00; }
+.left { flex:1; } .center { flex:3; }
 
 /* VIDEOS */
-.section-title {
-  text-align:center;
-  font-size:2.2em;
-  margin-bottom:30px;
-  color:#b36b00;
-  text-shadow:0 0 10px #b36b00;
-}
-
-.videos {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
-}
-
-.video-card {
-  background:#0f0f0f;
-  padding:18px;
-  border-radius:16px;
-  box-shadow:0 0 18px #b36b00;
-}
-
-iframe {
-  width:100%;
-  height:260px;
-  border:none;
-  border-radius:12px;
-}
+.section-title { text-align:center; font-size:2.2em; margin-bottom:30px; color:var(--accent-color); text-shadow:0 0 10px var(--accent-color); }
+.videos { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
+.video-card { background: var(--video-bg); padding:18px; border-radius:16px; box-shadow:0 0 18px var(--accent-color); }
+iframe { width:100%; height:260px; border:none; border-radius:12px; }
+.video-title { margin-top:10px; text-align:center; font-weight:700; text-shadow:0 0 5px var(--accent-color); }
 
 /* FOOTER */
-footer {
-  text-align:center;
-  padding:30px;
-  color:#b36b00;
-  background:#0b0b0b;
-  margin-top:70px;
-}
+footer { text-align:center; padding:30px; color:var(--accent-color); background: var(--bg-color); margin-top:70px; }
 
-@keyframes pulse {
-  0% { box-shadow:0 0 0 0 rgba(255,0,0,.7); }
-  70% { box-shadow:0 0 0 18px rgba(255,0,0,0); }
-  100% { box-shadow:0 0 0 0 rgba(255,0,0,0); }
-}
+/* ANIMATIONS */
+@keyframes pulse { 0% { box-shadow:0 0 0 0 rgba(255,0,0,.7); } 70% { box-shadow:0 0 0 18px rgba(255,0,0,0); } 100% { box-shadow:0 0 0 0 rgba(255,0,0,0); } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeDown { from { opacity:0; transform:translateY(-30px); } to { opacity:1; transform:translateY(0); } }
 
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(20px); }
-  to { opacity:1; transform:translateY(0); }
-}
-
-@keyframes fadeDown {
-  from { opacity:0; transform:translateY(-30px); }
-  to { opacity:1; transform:translateY(0); }
+/* RESPONSIVE */
+@media(max-width:1024px){ .page-container { flex-direction:column; } }
+@media(max-width:768px){
+  iframe { height:200px; }
+  .hero-header { padding:100px 20px 50px; }
+  .hero-header h1 { font-size:2.2em; }
+  .hero-header p { font-size:1em; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav class="navbar">
   <div class="logo">
     <img src="str8flight-logo.png">
     <span>STR8 FLIGHT</span>
     <img src="belize-flag.png" class="flag">
-    <!-- LIVE Badge -->
-    <div class="live-badge" id="liveBadge">LIVE</div>
   </div>
 
   <div class="menu-toggle" id="menuBtn">
@@ -324,6 +255,12 @@ footer {
   </ul>
 </nav>
 
+<!-- THEME TOGGLE -->
+<div class="theme-toggle">
+  <button id="themeBtn">🌙</button>
+</div>
+
+<!-- HERO -->
 <header class="hero-header">
   <div class="particles" id="particles"></div>
   <div class="hero-content">
@@ -332,11 +269,13 @@ footer {
   </div>
 </header>
 
+<!-- PAGE CONTENT -->
 <div class="page-container">
 
   <div class="column left" id="about">
     <h2>About</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by Denton Barrow and brothers.</p>
+    <p>We focus on music production, artist development, and community engagement through workshops and events.</p>
   </div>
 
   <div class="column center">
@@ -348,18 +287,12 @@ footer {
         <h2>LIVE NOW</h2>
       </div>
       <div class="live-player">
-        <iframe
-          id="liveIframe"
-          src="https://www.youtube.com/embed/live_stream?channel=UCp2UwspaBTvuEDMe9kx3aoA"
-          allow="autoplay; encrypted-media"
-          allowfullscreen>
-        </iframe>
+        <iframe id="liveFrame" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
       <div class="live-text">We are live on YouTube — tap in!</div>
     </section>
 
     <h2 class="section-title">Featured Music Videos</h2>
-
     <div class="videos" id="videos">
       <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc"></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w"></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
@@ -374,16 +307,16 @@ footer {
 </div>
 
 <footer>
-  © 2025 Str8 Flight Entertainment • Belize
+  &copy; 2025 Str8 Flight Entertainment • Belize
 </footer>
 
 <script>
-/* mobile nav */
+/* MOBILE NAV */
 document.getElementById('menuBtn').onclick = () => {
   document.querySelector('.nav-list').classList.toggle('active');
 };
 
-/* particles */
+/* PARTICLES */
 const particles = document.getElementById('particles');
 for(let i=0;i<70;i++){
   const dot = document.createElement('span');
@@ -393,30 +326,71 @@ for(let i=0;i<70;i++){
   particles.appendChild(dot);
 }
 
-/* LIVE badge + auto-hide */
+/* LIVE CHECK */
 const liveSection = document.getElementById('live-stream');
-const liveBadge = document.getElementById('liveBadge');
-const liveIframe = document.getElementById('liveIframe');
+const liveIframe = document.getElementById('liveFrame');
+const liveBadge = document.querySelector('.live-header');
 
-// Auto-hide live section after short delay if iframe fails to load live
-liveIframe.addEventListener('load', () => {
-  setTimeout(() => {
-    try {
-      // If iframe has zero height or no content, hide live section
-      if(!liveIframe.contentWindow || liveIframe.clientHeight === 0){
-        liveSection.style.display = 'none';
-        liveBadge.style.display = 'none';
-      } else {
-        liveSection.style.display = 'block';
-        liveBadge.style.display = 'flex';
-      }
-    } catch(e){
-      // On cross-origin error, keep live visible
+fetch('https://str8flight-live-api.vercel.app/api/checkLive')
+  .then(res => res.json())
+  .then(data => {
+    if (data.live) {
+      liveIframe.src = `https://www.youtube.com/embed/${data.videoId}?autoplay=1`;
       liveSection.style.display = 'block';
       liveBadge.style.display = 'flex';
+    } else {
+      liveSection.style.display = 'none';
     }
-  }, 1000);
-});
+  });
+
+/* DARK / LIGHT MODE */
+const themeBtn = document.getElementById('themeBtn');
+const darkTheme = {
+  '--bg-color':'#0b0b0b',
+  '--text-color':'#fff',
+  '--accent-color':'#b36b00',
+  '--accent-hover':'#ff9c3b',
+  '--particle-color':'#b36b00',
+  '--video-bg':'#0f0f0f',
+  '--column-bg':'#141414'
+};
+const lightTheme = {
+  '--bg-color':'#f5f5f5',
+  '--text-color':'#111',
+  '--accent-color':'#ff6f00',
+  '--accent-hover':'#ffa500',
+  '--particle-color':'#ff6f00',
+  '--video-bg':'#fff',
+  '--column-bg':'#eee'
+};
+
+function setTheme(theme) {
+  for (let key in theme) {
+    document.documentElement.style.setProperty(key, theme[key]);
+  }
+}
+
+themeBtn.onclick = () => {
+  const current = localStorage.getItem('theme') || 'dark';
+  if(current === 'dark'){
+    setTheme(lightTheme);
+    localStorage.setItem('theme','light');
+    themeBtn.textContent = '🌙';
+  } else {
+    setTheme(darkTheme);
+    localStorage.setItem('theme','dark');
+    themeBtn.textContent = '☀️';
+  }
+};
+
+const savedTheme = localStorage.getItem('theme') || 'dark';
+if(savedTheme === 'dark'){
+  setTheme(darkTheme);
+  themeBtn.textContent = '🌙';
+}else{
+  setTheme(lightTheme);
+  themeBtn.textContent = '☀️';
+}
 </script>
 
 </body>
