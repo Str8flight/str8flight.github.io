@@ -5,134 +5,113 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Privacy | Str8 Flight Entertainment</title>
 
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ================= THEME VARIABLES ================= */
-:root{
-  --bg:#0b0b0b;
-  --bg-alt:#1a1a1a;
-  --text:#ffffff;
-  --accent:#b36b00;
-  --accent-hover:#ff9c3b;
-}
-
-body.light{
-  --bg:#f5f5f5;
-  --bg-alt:#ffffff;
-  --text:#111111;
-}
-
 /* ================= GLOBAL ================= */
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:'Roboto',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.7;
-  overflow-x:hidden;
-  transition:0.3s;
-}
-a{text-decoration:none;color:inherit;}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Roboto',sans-serif; line-height:1.7; overflow-x:hidden; transition: background 0.4s, color 0.4s; }
+body.light { background:#f4f4f4; color:#111; }
+body.dark { background:#0b0b0b; color:#fff; }
+a { text-decoration:none; transition: color 0.3s; }
 
 /* ================= NAVBAR ================= */
-.navbar{
-  position:fixed;top:0;width:100%;z-index:100;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:15px 20px;
-  background:rgba(0,0,0,0.8);
-  backdrop-filter:blur(6px);
+.navbar {
+  position: fixed; top:0; width:100%; z-index:1000;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:15px 20px; background:rgba(0,0,0,0.85); backdrop-filter:blur(5px);
+  box-shadow:0 0 20px rgba(179,107,0,0.3);
+  transition: background 0.4s, box-shadow 0.4s;
 }
-body.light .navbar{background:rgba(255,255,255,0.9);}
+body.light .navbar { background: rgba(255,255,255,0.85); box-shadow:0 0 20px rgba(179,107,0,0.1); }
 
-.logo{
-  display:flex;align-items:center;gap:10px;
+/* LOGO + FLAG WRAPPER */
+.logo-wrapper {
+  display:flex; align-items:center; gap:10px;
 }
-.logo img{width:50px;}
-.logo span{
-  color:var(--text);
-  font-weight:700;
-  font-size:1.1em;
-}
+.logo-wrapper .logo { display:flex; align-items:center; gap:8px; }
+.logo-wrapper .logo img { width:50px; }
+.logo-wrapper .logo span { font-family:'Montserrat', sans-serif; font-weight:700; font-size:1.3em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 6px #b36b00; }
+body.light .logo-wrapper .logo span { color:#b36b00; background:none; -webkit-text-fill-color:unset; text-shadow:none; }
 
-/* TOGGLE */
-.theme-toggle{
-  cursor:pointer;
-  font-size:1.2em;
-  color:var(--accent);
-}
+.flag-toggle { display:flex; align-items:center; gap:12px; }
+.flag-toggle img.flag { width:26px; height:auto; }
+.flag-toggle i.mode-toggle { cursor:pointer; font-size:1.4em; transition: color 0.4s; }
+body.light .mode-toggle { color:#111; }
+body.dark .mode-toggle { color:#ff9c3b; }
 
-/* MENU */
-.menu-toggle{display:none;flex-direction:column;cursor:pointer;}
-.menu-toggle span{background:var(--accent);height:3px;width:25px;margin:4px 0;}
-.nav-list{list-style:none;display:flex;gap:25px;}
-.nav-list a{color:var(--accent);font-weight:700;}
-.nav-list a:hover{color:var(--accent-hover);}
+/* MENU & LINKS */
+.navbar .menu-toggle { display:none; flex-direction:column; cursor:pointer; gap:4px; z-index:2; }
+.navbar .menu-toggle div { width:25px; height:3px; background:#b36b00; transition:0.3s; }
 
+.nav-list { display:flex; gap:25px; list-style:none; z-index:2; }
+.nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:.3s; }
+.nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
+body.light .nav-list a { color:#b36b00; text-shadow:none; }
+
+/* MOBILE HAMBURGER */
 @media(max-width:768px){
-  .menu-toggle{display:flex;}
-  .nav-list{
-    position:absolute;top:65px;right:0;
-    background:var(--bg-alt);
-    flex-direction:column;
-    max-height:0;overflow:hidden;
-    width:220px;
-    transition:0.3s;
+  .navbar .menu-toggle { display:flex; }
+  .nav-list {
+    position:absolute; top:60px; right:0; width:220px; background:#0b0b0b;
+    flex-direction:column; gap:0; overflow:hidden; max-height:0; transition:max-height 0.4s ease-in, background 0.4s;
+    border-radius:0 0 12px 12px; box-shadow:0 0 30px rgba(179,107,0,.6);
   }
-  .nav-list.active{max-height:500px;}
-  .nav-list li{border-bottom:1px solid var(--accent);}
-  .nav-list a{padding:12px 20px;display:block;}
+  body.light .nav-list { background:#f4f4f4; }
+  .nav-list.active { max-height:600px; }
+  .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
+  body.light .nav-list li { border-bottom:1px solid rgba(179,107,0,.3); }
+  .nav-list li a { padding:12px 20px; display:block; }
 }
 
 /* ================= HERO ================= */
 .hero-header{
-  text-align:center;
-  padding:120px 20px 50px;
-  background:linear-gradient(135deg,var(--bg),var(--bg-alt));
+  text-align:center; padding:150px 20px 60px;
+  background:linear-gradient(135deg,#0b0b0b,#1a1a1a); transition: background 0.4s;
 }
-.hero-header h1{
-  font-family:'Montserrat',sans-serif;
-  font-size:3em;
-  color:var(--accent);
-}
-.hero-header p{max-width:600px;margin:10px auto;}
+body.light .hero-header{ background:linear-gradient(135deg,#fff,#eee); }
+.hero-header h1{ font-family:'Montserrat',sans-serif; font-size:3em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 10px #b36b00; }
+.hero-header p{ margin-top:15px; font-size:1.2em; }
 
-/* ================= CONTENT ================= */
+/* ================= PRIVACY CONTENT ================= */
 .privacy-container{
-  max-width:900px;
-  margin:40px auto;
-  padding:30px;
-  background:var(--bg-alt);
-  border-radius:16px;
-  box-shadow:0 0 20px rgba(179,107,0,0.4);
+  max-width:900px; margin:40px auto; padding:30px;
+  background:#1a1a1a; border-radius:16px; box-shadow:0 0 20px rgba(179,107,0,0.4);
+  transition: background 0.4s, color 0.4s;
 }
-.privacy-container h2{color:var(--accent);margin:20px 0 10px;}
+body.light .privacy-container{ background:#fff; color:#111; }
+.privacy-container h2{ color:#b36b00; margin:20px 0 10px; }
+.privacy-container p{ margin-bottom:15px; line-height:1.6; }
 
 /* ================= FOOTER ================= */
-footer{
-  text-align:center;
-  padding:20px;
-  color:var(--accent);
-}
+footer{ background:#0b0b0b; color:#b36b00; text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; transition: background 0.4s, color 0.4s; }
+body.light footer{ background:#f4f4f4; color:#b36b00; text-shadow:none; }
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:768px){ .hero-header h1{ font-size:2.4em; } }
 </style>
 </head>
 
-<body>
+<body class="dark">
 
+<!-- NAVBAR -->
 <nav class="navbar">
-  <div class="logo">
-    <img src="https://str8flight.github.io/str8flight-logo.png">
-    <span>Str8 Flight</span>
+  <div class="logo-wrapper">
+    <div class="logo">
+      <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
+      <span>Str8 Flight</span>
+    </div>
+    <div class="flag-toggle">
+      <img src="https://str8flight.github.io/belize-flag.png" class="flag" alt="Belize Flag">
+      <i class="fas fa-sun mode-toggle" id="modeToggle"></i>
+    </div>
   </div>
 
-  <div class="theme-toggle" id="themeToggle">
-    <i class="fas fa-moon"></i>
-  </div>
-
-  <div class="menu-toggle" id="mobileMenu">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="menu-toggle" id="hamburger"><div></div><div></div><div></div></div>
 
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
@@ -142,11 +121,13 @@ footer{
   </ul>
 </nav>
 
+<!-- HERO -->
 <header class="hero-header">
   <h1>Privacy Policy</h1>
   <p>Your privacy matters to us</p>
 </header>
 
+<!-- PRIVACY CONTENT -->
 <div class="privacy-container">
   <h2>Data Collection</h2>
   <p>We may collect personal information when you contact us.</p>
@@ -166,19 +147,23 @@ footer{
 </footer>
 
 <script>
-/* MOBILE MENU */
-mobileMenu.onclick=()=>document.querySelector('.nav-list').classList.toggle('active');
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.querySelector('.nav-list');
+hamburger.addEventListener('click',()=>{ navLinks.classList.toggle('active'); });
 
-/* THEME TOGGLE */
-const toggle=document.getElementById('themeToggle');
-const body=document.body;
+// Persistant Dark/Light Mode
+const modeToggle = document.getElementById('modeToggle');
+const bodyEl = document.body;
+const savedTheme = localStorage.getItem('theme');
+if(savedTheme==='light'){ bodyEl.classList.add('light'); bodyEl.classList.remove('dark'); } 
+else{ bodyEl.classList.add('dark'); bodyEl.classList.remove('light'); }
 
-if(localStorage.theme==="light") body.classList.add('light');
-
-toggle.onclick=()=>{
-  body.classList.toggle('light');
-  localStorage.theme=body.classList.contains('light')?'light':'dark';
-};
+modeToggle.addEventListener('click',()=>{
+  bodyEl.classList.toggle('light');
+  bodyEl.classList.toggle('dark');
+  localStorage.setItem('theme', bodyEl.classList.contains('light')?'light':'dark');
+});
 </script>
 
 </body>
