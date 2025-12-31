@@ -3,113 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Str8 Flight Entertainment | Belize Music & Culture</title>
-
-<!-- Google Fonts -->
+<title>Str8 Flight Entertainment</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393" crossorigin="anonymous"></script>
-
 <style>
-/* ===== GLOBAL ===== */
+/* ================= GLOBAL ================= */
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Roboto',sans-serif; background:#0b0b0b; color:#fff; overflow-x:hidden; transition: background 0.3s, color 0.3s; }
-a { text-decoration:none; }
-.hidden { display:none; }
+body { font-family:'Roboto', sans-serif; line-height:1.7; overflow-x:hidden; transition: background 0.4s, color 0.4s;}
+body.light { background:#f4f4f4; color:#111; }
+body.dark { background:#0b0b0b; color:#fff; }
+a { text-decoration:none; transition: color 0.3s; }
 
-/* ===== NAVBAR ===== */
+/* ================= NAVBAR ================= */
 .navbar {
-  position:fixed; top:0; left:0; width:100%; z-index:1000;
+  position: fixed; top:0; width:100%; z-index:1000;
   display:flex; justify-content:space-between; align-items:center;
-  padding:15px 24px; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px);
-  transition: background 0.3s;
+  padding:15px 20px; background:rgba(0,0,0,0.85); backdrop-filter:blur(5px);
+  box-shadow:0 0 20px rgba(179,107,0,0.3);
+  transition: background 0.4s, box-shadow 0.4s;
 }
-body.light .navbar { background:rgba(255,255,255,0.9); }
+body.light .navbar { background: rgba(255,255,255,0.85); box-shadow:0 0 20px rgba(179,107,0,0.1); }
 
-.logo { display:flex; align-items:center; gap:10px; }
-.logo img { height:42px; }
-.logo span { font-family:'Montserrat',sans-serif; font-size:1.4em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; transition: color 0.3s; }
-.flag { height:26px; }
+.logo-wrapper { display:flex; align-items:center; gap:10px; }
+.logo-wrapper .logo { display:flex; align-items:center; gap:8px; }
+.logo-wrapper .logo img { width:50px; }
+.logo-wrapper .logo span { font-family:'Montserrat', sans-serif; font-weight:700; font-size:1.3em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 6px #b36b00;}
+body.light .logo-wrapper .logo span { color:#b36b00; background:none; -webkit-text-fill-color:unset; text-shadow:none; }
 
-.nav-list { list-style:none; display:flex; gap:24px; transition: background 0.3s; }
+.flag-toggle { display:flex; align-items:center; gap:12px; }
+.flag-toggle img.flag { width:26px; height:auto; }
+.flag-toggle i.mode-toggle { cursor:pointer; font-size:1.4em; transition: color 0.4s; }
+body.light .mode-toggle { color:#111; }
+body.dark .mode-toggle { color:#ff9c3b; }
+
+.navbar .menu-toggle { display:none; flex-direction:column; cursor:pointer; gap:4px; z-index:2; }
+.navbar .menu-toggle div { width:25px; height:3px; background:#b36b00; transition:0.3s; }
+
+.nav-list { display:flex; gap:25px; list-style:none; z-index:2; }
 .nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:.3s; }
-body.light .nav-list a { color:#b36b00; text-shadow:none; }
 .nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
-
-/* MOBILE NAV */
-.menu-toggle { display:none; flex-direction:column; cursor:pointer; }
-.menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; }
+body.light .nav-list a { color:#b36b00; text-shadow:none; }
 
 @media(max-width:768px){
-  .menu-toggle { display:flex; }
+  .navbar .menu-toggle { display:flex; }
   .nav-list {
-    position:absolute; top:65px; right:20px; width:220px; background:#111; flex-direction:column;
-    max-height:0; overflow:hidden; transition:max-height .35s ease, background 0.3s;
+    position:absolute; top:60px; right:0; width:220px; background:#0b0b0b;
+    flex-direction:column; gap:0; overflow:hidden; max-height:0; transition:max-height 0.4s ease-in, background 0.4s;
     border-radius:0 0 12px 12px; box-shadow:0 0 30px rgba(179,107,0,.6);
   }
-  body.light .nav-list { background:#fff; }
+  body.light .nav-list { background:#f4f4f4; }
   .nav-list.active { max-height:600px; }
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
-  body.light .nav-list li { border-bottom:1px solid #b36b00; }
-  .nav-list li a { padding:14px 20px; display:block; }
+  body.light .nav-list li { border-bottom:1px solid rgba(179,107,0,.3); }
+  .nav-list li a { padding:12px 20px; display:block; }
 }
 
-/* LIGHT/DARK TOGGLE */
-#theme-toggle { cursor:pointer; font-size:1.3em; margin-left:10px; transition: color 0.3s; }
-body.light #theme-toggle { color:#111; }
-body.dark #theme-toggle { color:#ff9c3b; }
-
-/* HERO */
+/* ================= HERO ================= */
 .hero-header {
-  position:relative; padding:120px 20px 40px; text-align:center;
-  background:linear-gradient(135deg,#0b0b0b,#161616); overflow:hidden; transition: background 0.3s;
+  position:relative; height:50vh; text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center;
+  overflow:hidden; background:linear-gradient(135deg,#0b0b0b,#1a1a1a); transition: background 0.4s;
 }
-body.light .hero-header { background:linear-gradient(135deg,#fff,#ddd); }
-.hero-content { position:relative; z-index:3; }
-.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; margin-bottom:10px; text-shadow:0 0 14px #b36b00; animation:fadeDown 1.2s ease forwards; }
-.hero-header p { font-size:1.2em; animation:fadeUp 1.4s ease forwards; }
+body.light .hero-header { background:linear-gradient(135deg,#fff,#eee); }
 
-@keyframes fadeDown { from {opacity:0;transform:translateY(-30px);} to {opacity:1;transform:translateY(0);} }
-@keyframes fadeUp { from {opacity:0;transform:translateY(30px);} to {opacity:1;transform:translateY(0);} }
+.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; background:linear-gradient(90deg,#b36b00,#ff9c3b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; text-shadow:0 0 10px #b36b00; animation:fadeInDown 1.2s ease forwards;}
+.hero-header p { margin-top:15px; font-size:1.2em; opacity:0; animation:fadeInUp 1.5s ease forwards; animation-delay:0.3s; }
 
-/* PARTICLES */
-.particles { position:absolute; inset:0; z-index:1; pointer-events:none; }
-.particles span { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:.7; animation:floatUp linear infinite; filter:drop-shadow(0 0 6px #b36b00); }
-@keyframes floatUp { from { transform:translateY(100vh); opacity:.8; } to { transform:translateY(-120vh); opacity:0; } }
+@keyframes fadeInDown {0%{opacity:0;transform:translateY(-30px);}100%{opacity:1;transform:translateY(0);}}
+@keyframes fadeInUp {0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
 
-/* PAGE LAYOUT */
-.page-container { max-width:1400px; margin:20px auto; padding:0 20px; display:flex; gap:50px; transition: color 0.3s; }
-.column { background:#141414; padding:30px; border-radius:18px; box-shadow:0 0 25px rgba(179,107,0,.4); transition: background 0.3s, box-shadow 0.3s; }
-.column:hover { box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00; }
-.left { flex:1; } .center { flex:3; }
-.column h2 { color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00; }
-.column p { margin-bottom:15px; }
-.section-title { text-align:center; font-size:2.2em; margin-bottom:30px; color:#b36b00; text-shadow:0 0 10px #b36b00; }
+#particles { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden; }
+#particles div { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:0.6; animation:moveParticles 10s linear infinite; }
+@keyframes moveParticles { 0%{transform:translateY(0) translateX(0);opacity:0.6;} 50%{opacity:1;} 100%{transform:translateY(-1200px) translateX(400px);opacity:0.2;} }
 
-/* VIDEOS */
-.videos { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
-.video-card { background:#0f0f0f; padding:18px; border-radius:16px; box-shadow:0 0 18px #b36b00; transition:.3s; }
-.video-card:hover { box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00; }
-iframe { width:100%; height:260px; border:none; border-radius:12px; }
-.video-title { margin-top:10px; text-align:center; font-weight:700; text-shadow:0 0 5px #b36b00; }
+/* ================= SERVICES CARDS ================= */
+.services-container {
+  max-width:1200px; margin:50px auto; display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; padding:0 20px;
+}
+.service-card {
+  background:#1a1a1a; padding:30px; border-radius:16px;
+  box-shadow:0 0 15px rgba(179,107,0,0.5),0 0 30px rgba(138,76,0,0.3);
+  text-align:center; transition:transform 0.3s ease, box-shadow 0.3s ease;
+  opacity:0; transform:translateY(30px);
+}
+body.light .service-card { background:#fff; color:#111; box-shadow:0 0 15px rgba(179,107,0,0.3),0 0 30px rgba(138,76,0,0.2);}
+.service-card.visible { opacity:1; transform:translateY(0); transition:1s ease; }
+.service-card:hover { transform:translateY(-10px); box-shadow:0 0 25px #b36b00,0 0 50px #ff9c3b; }
+.service-card h3 { color:#b36b00; margin-bottom:15px; font-size:1.8em; text-shadow:0 0 10px #b36b00; }
+body.light .service-card h3 { color:#b36b00; text-shadow:none; }
+.service-card p { color:#e0e0e0; line-height:1.6; }
+body.light .service-card p { color:#111; }
 
-/* FOOTER */
-footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; transition: background 0.3s, color 0.3s; }
-body.light footer { background:#f4f4f4; color:#111; }
-
-/* LIGHT MODE */
-body.light { background:#f4f4f4; color:#111; }
-body.light .column { background:#eee; }
-body.light .video-card { background:#fff; box-shadow:0 0 18px #b36b00; }
-
-/* RESPONSIVE */
-@media(max-width:1024px){ .page-container { flex-direction:column; } }
-@media(max-width:768px){ iframe { height:200px; } }
-
+/* ================= FOOTER ================= */
+footer { text-align:center; padding:25px 10px; font-size:0.9em; box-shadow:0 -3px 8px rgba(179,107,0,0.3); text-shadow:0 0 4px #b36b00; color:#b36b00; background:#0b0b0b; }
+body.light footer { background:#f4f4f4; color:#b36b00; text-shadow:none; box-shadow:0 -3px 8px rgba(179,107,0,0.2); }
 </style>
 </head>
 
@@ -117,138 +105,129 @@ body.light .video-card { background:#fff; box-shadow:0 0 18px #b36b00; }
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="logo">
-    <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
-    <span>STR8 FLIGHT</span>
-    <img src="https://str8flight.github.io/belize-flag.png" class="flag">
-    <i class="fas fa-sun" id="theme-toggle"></i>
+  <div class="logo-wrapper">
+    <div class="logo">
+      <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
+      <span>Str8 Flight</span>
+    </div>
+    <div class="flag-toggle">
+      <img src="https://str8flight.github.io/belize-flag.png" class="flag" alt="Belize Flag">
+      <i class="fas fa-sun mode-toggle" id="modeToggle"></i>
+    </div>
   </div>
 
-  <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
+  <div class="menu-toggle" id="hamburger"><div></div><div></div><div></div></div>
 
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#videos">Videos</a></li>
-    <li><a href="services.html">Services</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="contact.html">Contact</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <header class="hero-header">
-  <div class="particles" id="particles"></div>
-  <div class="hero-content">
-    <h1>Str8 Flight Entertainment</h1>
-    <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
-  </div>
+  <div id="particles"></div>
+  <h1>Str8 Flight Entertainment</h1>
+  <p>Professional music production & studio services to elevate your sound</p>
 </header>
 
-<!-- PAGE CONTENT -->
-<div class="page-container">
-  <div class="column left" id="about">
-    <h2>About</h2>
-    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
-    <p>The Barrow brothers are actively involved in music production, recording, creative direction, and artist development.</p>
-    <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations.</p>
+<!-- SERVICES CARDS -->
+<div class="services-container" id="services">
+  <div class="service-card">
+    <h3>Dub Plate</h3>
+    <p>Custom dub plates for artists, DJs, and events. High-quality recordings with unique vocal drops and professional sound mastering.</p>
   </div>
-
-  <div class="column center">
-    <h2 class="section-title">Featured Music Videos</h2>
-    <div class="videos" id="videos">
-      <!-- LIVE video dynamically injected here -->
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc"></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w"></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/cXzqzTYxbsQ"></iframe><div class="video-title">Denton - Furious (RAW)</div></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/8E9zA7Bq1js"></iframe><div class="video-title">Quarantine - Cleon x Denton</div></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/QdFS99yYcDE"></iframe><div class="video-title">Denton - Wiser</div></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/pmSFR_ohjJk"></iframe><div class="video-title">Denton - PARRAT</div></div>
-      <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0"></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
-    </div>
+  <div class="service-card">
+    <h3>Mixing & Mastering</h3>
+    <p>Polish your tracks with professional mixing and mastering. Ensure your music sounds clear, balanced, and ready for release across all platforms.</p>
+  </div>
+  <div class="service-card">
+    <h3>Studio Recording</h3>
+    <p>Access a full-featured recording studio with experienced engineers. Capture vocals and instruments with top-quality equipment.</p>
+  </div>
+  <div class="service-card">
+    <h3>Vocal Recording & Editing</h3>
+    <p>Professional vocal tracking, tuning, and layering to make your voice shine in every project.</p>
+  </div>
+  <div class="service-card">
+    <h3>Songwriting & Arrangement</h3>
+    <p>Assist artists in crafting lyrics, melodies, and song structures for a polished final product.</p>
+  </div>
+  <div class="service-card">
+    <h3>Artist Development & Coaching</h3>
+    <p>Guidance on branding, performance, and music marketing to help you grow as an artist.</p>
+  </div>
+  <div class="service-card">
+    <h3>Live Session Recording</h3>
+    <p>Record live instruments or band sessions in the studio for high-quality audio capture.</p>
+  </div>
+  <div class="service-card">
+    <h3>Promotional Content Creation</h3>
+    <p>Short videos, teasers, and social media content for your releases to engage your audience.</p>
+  </div>
+  <div class="service-card">
+    <h3>Custom Dubplates & Vinyl Cuts</h3>
+    <p>Personalized tracks for DJs and events. Make your music unique and memorable.</p>
+  </div>
+  <div class="service-card">
+    <h3>Podcast & Voiceover Recording</h3>
+    <p>Professional audio production for podcasts, commercials, and voiceover work.</p>
+  </div>
+  <div class="service-card">
+    <h3>Remote Collaboration Services</h3>
+    <p>Work with our studio online from anywhere in the world to produce music seamlessly.</p>
   </div>
 </div>
 
-<footer>&copy; 2025 Str8 Flight Entertainment • Belize</footer>
+<!-- FOOTER -->
+<footer>
+  &copy; <span id="year"></span> Str8 Flight Entertainment • Belize
+</footer>
 
 <script>
-/* MOBILE NAV */
-document.getElementById('menuBtn').onclick = () => {
-  document.querySelector('.nav-list').classList.toggle('active');
+// Hamburger toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.querySelector('.nav-list');
+hamburger.addEventListener('click',()=>{ navLinks.classList.toggle('active'); });
+
+// Particle animation
+const particleContainer = document.getElementById('particles');
+for(let i=0;i<60;i++){
+  const div=document.createElement('div');
+  div.style.left=Math.random()*100+'%';
+  div.style.top=Math.random()*100+'%';
+  div.style.width=2+Math.random()*4+'px';
+  div.style.height=2+Math.random()*4+'px';
+  div.style.animationDuration=5+Math.random()*10+'s';
+  particleContainer.appendChild(div);
+}
+
+// Scroll reveal animation
+const cards=document.querySelectorAll('.service-card');
+const revealCards = () => {
+  const trigger=window.innerHeight*0.85;
+  cards.forEach(card=>{
+    if(card.getBoundingClientRect().top<trigger) card.classList.add('visible');
+  });
 };
+window.addEventListener('scroll',revealCards);
+revealCards();
 
-/* PARTICLES */
-const particles = document.getElementById('particles');
-for(let i=0;i<70;i++){
-  const dot = document.createElement('span');
-  dot.style.left = Math.random()*100+'%';
-  dot.style.animationDuration = (6 + Math.random()*10)+'s';
-  dot.style.animationDelay = Math.random()*5+'s';
-  particles.appendChild(dot);
-}
+// Dark/Light mode persistency
+const modeToggle = document.getElementById('modeToggle');
+if(localStorage.theme==="light"){ document.body.classList.add('light'); document.body.classList.remove('dark'); }
+else{ document.body.classList.add('dark'); document.body.classList.remove('light'); }
 
-/* LIGHT/DARK MODE */
-const themeToggle = document.getElementById('theme-toggle');
-const bodyEl = document.body;
+modeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  document.body.classList.toggle('dark');
+  localStorage.theme = document.body.classList.contains('light') ? "light" : "dark";
+});
 
-function setTheme(isLight){
-  if(isLight){
-    bodyEl.classList.add('light');
-    bodyEl.classList.remove('dark');
-    themeToggle.className = 'fas fa-sun';
-    localStorage.setItem('theme','light');
-  }else{
-    bodyEl.classList.add('dark');
-    bodyEl.classList.remove('light');
-    themeToggle.className = 'fas fa-moon';
-    localStorage.setItem('theme','dark');
-  }
-}
-
-themeToggle.onclick = () => { setTheme(!bodyEl.classList.contains('light')); };
-
-// Persistent theme across pages
-const savedTheme = localStorage.getItem('theme');
-setTheme(savedTheme==='light');
-
-/* YOUTUBE LIVE CHECK */
-const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA";
-const videosContainer = document.getElementById('videos');
-
-function checkLive() {
-  fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
-    .then(r => r.json())
-    .then(d => {
-      const existingLive = document.getElementById('live-card');
-      if(existingLive) existingLive.remove();
-
-      if (d.live && d.videoId) {
-        const liveFrame = document.createElement('iframe');
-        liveFrame.src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
-        liveFrame.width = "100%";
-        liveFrame.height = "260px";
-        liveFrame.style.border = "none";
-        liveFrame.style.borderRadius = "12px";
-
-        const liveDiv = document.createElement('div');
-        liveDiv.className = 'video-card';
-        liveDiv.id = 'live-card';
-        liveDiv.appendChild(liveFrame);
-
-        const liveTitle = document.createElement('div');
-        liveTitle.className = 'video-title';
-        liveTitle.innerText = "LIVE NOW 🔴";
-        liveDiv.appendChild(liveTitle);
-
-        videosContainer.prepend(liveDiv);
-      }
-    })
-    .catch(err => console.error("Error checking live status:", err));
-}
-
-// Initial live check
-checkLive();
-// Refresh every 30s
-setInterval(checkLive, 30000);
+// Footer year update
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 </body>
