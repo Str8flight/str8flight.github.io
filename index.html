@@ -15,7 +15,7 @@ body {
   background:#0b0b0b;
   color:#fff;
   overflow-x:hidden;
-  transition: background 0.3s, color 0.3s;
+  transition: background 0.4s, color 0.4s;
 }
 
 /* NAV */
@@ -30,7 +30,7 @@ body {
   padding:15px 24px;
   background:rgba(0,0,0,0.75);
   backdrop-filter:blur(8px);
-  transition: background 0.3s;
+  transition: background 0.4s;
 }
 
 .logo {
@@ -40,23 +40,18 @@ body {
 }
 
 .logo img { height:42px; }
-
 .logo span {
   font-family:'Montserrat',sans-serif;
   font-size:1.4em;
   background:linear-gradient(90deg,#b36b00,#ff9c3b);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-  transition: color 0.3s;
 }
 
-.flag { height:26px; }
-
 .menu-toggle {
-  display:flex;
+  display:none;
   flex-direction:column;
   cursor:pointer;
-  margin-left:10px;
 }
 
 .menu-toggle span {
@@ -64,30 +59,28 @@ body {
   height:3px;
   background:#b36b00;
   margin:4px 0;
-  transition: background 0.3s;
+  transition: 0.3s;
 }
 
-/* Light/Dark toggle */
 #theme-toggle {
-  margin-left:12px;
-  font-size:1.2em;
+  margin-left:10px;
   cursor:pointer;
-  color:#b36b00;
+  font-size:1.3em;
   transition: color 0.3s;
 }
 
-/* NAV LINKS */
 .nav-list {
   list-style:none;
   display:flex;
   gap:24px;
+  align-items:center;
 }
 
 .nav-list a {
   color:#b36b00;
   font-weight:700;
   text-shadow:0 0 6px #b36b00;
-  transition:.3s, color 0.3s;
+  transition:.3s;
 }
 
 .nav-list a:hover {
@@ -95,53 +88,29 @@ body {
   text-shadow:0 0 12px #ff9c3b;
 }
 
-/* MOBILE NAV - FUTURISTIC */
+/* MOBILE NAV */
 @media(max-width:768px){
+  .menu-toggle { display:flex; }
+
   .nav-list {
     position:absolute;
     top:65px;
     right:20px;
     width:220px;
+    background:#111;
     flex-direction:column;
     max-height:0;
     overflow:hidden;
-    transition:max-height .35s ease, background .3s;
+    transition:max-height .35s ease;
     border-radius:0 0 12px 12px;
-    box-shadow:0 0 40px rgba(179,107,0,.6);
-    background: linear-gradient(145deg, rgba(20,20,20,0.95), rgba(40,40,40,0.95));
-    backdrop-filter: blur(10px);
+    box-shadow:0 0 30px rgba(179,107,0,.6);
   }
+
   .nav-list.active { max-height:500px; }
 
   .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
 
-  .nav-list a {
-    padding:14px 20px;
-    display:block;
-    font-weight:700;
-    text-shadow:0 0 4px #b36b00;
-    transition:.3s, transform .2s;
-    color:#b36b00;
-  }
-  .nav-list a:hover {
-    color:#ff9c3b;
-    text-shadow:0 0 12px #ff9c3b;
-    transform:translateX(6px);
-  }
-
-  /* LIGHT MODE */
-  body.light .nav-list {
-    background: linear-gradient(145deg, rgba(245,245,245,0.95), rgba(230,230,230,0.95));
-    box-shadow: 0 0 30px rgba(255,156,59,.6);
-  }
-  body.light .nav-list a {
-    color:#222;
-    text-shadow:none;
-  }
-  body.light .nav-list a:hover {
-    color:#ff9c3b;
-    text-shadow:0 0 6px #ff9c3b;
-  }
+  .nav-list a { padding:14px 20px; display:block; }
 }
 
 /* HERO */
@@ -151,12 +120,11 @@ body {
   text-align:center;
   background:linear-gradient(135deg,#0b0b0b,#161616);
   overflow:hidden;
+  transition: background 0.4s;
 }
 
-.hero-content {
-  position:relative;
-  z-index:3;
-}
+/* IMPORTANT FIX */
+.hero-content { position:relative; z-index:3; }
 
 .hero-header h1 {
   font-family:'Montserrat',sans-serif;
@@ -195,8 +163,8 @@ body {
   to { transform:translateY(-120vh); opacity:0; }
 }
 
-@keyframes fadeDown { from { opacity:0; transform:translateY(-30px);} to { opacity:1; transform:translateY(0);} }
-@keyframes fadeUp { from { opacity:0; transform:translateY(30px);} to { opacity:1; transform:translateY(0);} }
+@keyframes fadeDown { from { opacity:0; transform:translateY(-30px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
 
 /* PAGE LAYOUT */
 .page-container {
@@ -212,6 +180,7 @@ body {
   padding:30px;
   border-radius:18px;
   box-shadow:0 0 25px rgba(179,107,0,.4);
+  transition: background 0.4s, color 0.4s, box-shadow 0.4s;
 }
 
 .column:hover {
@@ -221,12 +190,7 @@ body {
 .left { flex:1; }
 .center { flex:3; }
 
-.column h2 {
-  color:#b36b00;
-  margin-bottom:15px;
-  text-shadow:0 0 8px #b36b00;
-}
-
+.column h2 { color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00; }
 .column p { margin-bottom:15px; }
 
 /* VIDEOS */
@@ -263,16 +227,7 @@ iframe {
   border-radius:12px;
 }
 
-.video-title {
-  margin-top:10px;
-  text-align:center;
-  font-weight:700;
-  text-shadow:0 0 5px #b36b00;
-}
-
-/* LIVE VIDEO SECTION */
-#live-stream { display:none; margin-bottom:30px; }
-#live-stream.show { display:block; }
+.video-title { margin-top:10px; text-align:center; font-weight:700; text-shadow:0 0 5px #b36b00; }
 
 /* FOOTER */
 footer {
@@ -281,7 +236,30 @@ footer {
   color:#b36b00;
   background:#0b0b0b;
   margin-top:70px;
+  transition: background 0.4s, color 0.4s;
 }
+
+/* LIGHT MODE */
+body.light {
+  background:#f5f5f5;
+  color:#222;
+}
+
+body.light .column {
+  background:#fff;
+  box-shadow:0 0 25px rgba(179,107,0,.4);
+}
+
+body.light .column:hover {
+  box-shadow:0 0 35px #b36b00,0 0 60px #ff9c3b;
+}
+
+body.light footer { background:#eaeaea; color:#222; }
+body.light .hero-header { background:linear-gradient(135deg,#fff,#eee); }
+body.light .hero-header h1,
+body.light .hero-header p { color:#b36b00; }
+body.light .nav-list a { color:#222; }
+body.light .nav-list a:hover { color:#ff9c3b; }
 
 /* RESPONSIVE */
 @media(max-width:1024px){ .page-container { flex-direction:column; } }
@@ -293,14 +271,14 @@ footer {
 
 <nav class="navbar">
   <div class="logo">
-    <img src="str8flight-logo.png" alt="Logo">
-    <span id="header-text">STR8 FLIGHT</span>
-    <img src="belize-flag.png" class="flag" alt="Belize Flag">
-    <i class="fas fa-sun" id="theme-toggle"></i>
+    <img src="str8flight-logo.png">
+    <span id="logoText">STR8 FLIGHT</span>
+    <img src="belize-flag.png" class="flag">
   </div>
 
-  <div class="menu-toggle" id="menuBtn">
-    <span></span><span></span><span></span>
+  <div style="display:flex; align-items:center;">
+    <i class="fas fa-sun" id="theme-toggle"></i>
+    <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
   </div>
 
   <ul class="nav-list">
@@ -321,7 +299,6 @@ footer {
 </header>
 
 <div class="page-container">
-
   <div class="column left" id="about">
     <h2>About</h2>
     <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
@@ -331,12 +308,6 @@ footer {
 
   <div class="column center">
     <h2 class="section-title">Featured Music Videos</h2>
-
-    <div id="live-stream">
-      <iframe id="liveFrame" src="" allowfullscreen></iframe>
-      <div class="video-title">Live Now</div>
-    </div>
-
     <div class="videos" id="videos">
       <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc"></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w"></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
@@ -347,7 +318,6 @@ footer {
       <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0"></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
     </div>
   </div>
-
 </div>
 
 <footer>
@@ -355,22 +325,12 @@ footer {
 </footer>
 
 <script>
-// MOBILE MENU TOGGLE
+/* mobile nav */
 document.getElementById('menuBtn').onclick = () => {
   document.querySelector('.nav-list').classList.toggle('active');
 };
 
-// PARTICLES
-const particles = document.getElementById('particles');
-for(let i=0;i<70;i++){
-  const dot = document.createElement('span');
-  dot.style.left = Math.random()*100+'%';
-  dot.style.animationDuration = (6 + Math.random()*10)+'s';
-  dot.style.animationDelay = Math.random()*5+'s';
-  particles.appendChild(dot);
-}
-
-// LIGHT/DARK TOGGLE
+/* theme toggle */
 const themeToggle = document.getElementById('theme-toggle');
 themeToggle.onclick = () => {
   document.body.classList.toggle('light');
@@ -383,23 +343,38 @@ themeToggle.onclick = () => {
   }
 };
 
-// RETAIN THEME ON REFRESH
-if(localStorage.getItem('theme') === 'light'){
+/* set theme on load */
+if(localStorage.getItem('theme')==='light'){
   document.body.classList.add('light');
-  themeToggle.className = 'fas fa-moon';
+  themeToggle.className='fas fa-moon';
 } else {
   document.body.classList.remove('light');
-  themeToggle.className = 'fas fa-sun';
+  themeToggle.className='fas fa-sun';
 }
 
-// YOUTUBE LIVE CHECK
+/* particles */
+const particles = document.getElementById('particles');
+for(let i=0;i<70;i++){
+  const dot = document.createElement('span');
+  dot.style.left = Math.random()*100+'%';
+  dot.style.animationDuration = (6 + Math.random()*10)+'s';
+  dot.style.animationDelay = Math.random()*5+'s';
+  particles.appendChild(dot);
+}
+
+/* YouTube Live Check (Vercel Serverless API) */
 const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA";
 fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
 .then(r=>r.json())
 .then(d=>{
   if(d.live && d.videoId){
-    document.getElementById('liveFrame').src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
-    document.getElementById('live-stream').classList.add('show');
+    const liveFrame=document.createElement('iframe');
+    liveFrame.src=`https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
+    liveFrame.width='100%';
+    liveFrame.height='260';
+    liveFrame.style.border='none';
+    liveFrame.style.borderRadius='12px';
+    document.querySelector('.videos').prepend(liveFrame);
   }
 });
 </script>
