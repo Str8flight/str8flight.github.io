@@ -4,90 +4,209 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact | Str8 Flight Entertainment</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+/* ===== THEME VARIABLES ===== */
+:root{
+  --bg-color:#0b0b0b;
+  --text-color:#fff;
+  --accent-color:#b36b00;
+  --accent-hover:#ff9c3b;
+  --card-bg:#1a1a1a;
+}
+
 /* ================= GLOBAL ================= */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Roboto',sans-serif; background:#0b0b0b; color:#fff; line-height:1.7; overflow-x:hidden; }
-a { text-decoration:none; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Roboto',sans-serif;
+  background:var(--bg-color);
+  color:var(--text-color);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+a{text-decoration:none}
 
 /* ================= NAVBAR ================= */
-.navbar {
-  position: fixed; top:0; width:100%; z-index:100;
-  display:flex; justify-content: space-between; align-items: center;
-  padding: 15px 20px; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+.navbar{
+  position:fixed;top:0;width:100%;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 20px;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(5px);
 }
-.navbar .logo { display:flex; align-items:center; gap:10px; }
-.navbar .logo img { width:50px; height:auto; }
-.menu-toggle { display:none; flex-direction: column; cursor:pointer; }
-.menu-toggle span { background:#b36b00; height:3px; width:25px; margin:4px 0; transition:0.3s; }
-.nav-list { list-style:none; display:flex; gap:25px; }
-.nav-list li a { color:#b36b00; font-weight:700; transition:0.3s; }
-.nav-list li a:hover { color:#ff9c3b; }
+.logo{display:flex;align-items:center;gap:10px}
+.logo img{width:50px}
+
+.menu-toggle{display:none;flex-direction:column;cursor:pointer}
+.menu-toggle span{
+  background:var(--accent-color);
+  height:3px;width:25px;margin:4px 0;
+}
+
+.nav-list{
+  list-style:none;
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
+.nav-list li a{
+  color:var(--accent-color);
+  font-weight:700;
+  transition:.3s;
+}
+.nav-list li a:hover{color:var(--accent-hover)}
+
+.theme-btn{
+  background:none;
+  border:none;
+  font-size:1.2em;
+  cursor:pointer;
+  color:var(--accent-color);
+}
 
 /* MOBILE NAV */
 @media(max-width:768px){
-  .menu-toggle { display:flex; }
-  .nav-list {
-    position:absolute; top:65px; right:0; width:200px; background:#1a1a1a;
-    flex-direction: column; gap:0; overflow:hidden; max-height:0; transition:max-height 0.3s ease-in;
+  .menu-toggle{display:flex}
+  .nav-list{
+    position:absolute;top:65px;right:0;width:220px;
+    background:var(--bg-color);
+    flex-direction:column;
+    max-height:0;
+    overflow:hidden;
+    transition:.3s;
     border-radius:0 0 10px 10px;
+    box-shadow:0 0 15px var(--accent-color);
   }
-  .nav-list.active { max-height:500px; }
-  .nav-list li { border-bottom:1px solid #b36b00; }
-  .nav-list li a { padding:12px 20px; display:block; }
+  .nav-list.active{max-height:500px}
+  .nav-list li{border-bottom:1px solid var(--accent-color)}
+  .nav-list li a{padding:12px 20px;display:block}
 }
 
 /* ================= HERO ================= */
-.hero-header {
-  text-align:center; padding:120px 20px 60px;
-  background:linear-gradient(135deg,#0b0b0b,#1a1a1a);
-  position:relative; overflow:hidden;
+.hero-header{
+  text-align:center;
+  padding:120px 20px 60px;
+  background:linear-gradient(135deg,var(--bg-color),#1a1a1a);
+  position:relative;
+  overflow:hidden;
 }
-.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; color:#b36b00; margin-bottom:10px; opacity:0; animation:fadeInDown 1.2s forwards; }
-.hero-header p { font-size:1.2em; color:#fff; opacity:0; animation:fadeInUp 1.5s forwards; animation-delay:0.3s; }
-@keyframes fadeInDown {0%{opacity:0;transform:translateY(-30px);}100%{opacity:1;transform:translateY(0);}}
-@keyframes fadeInUp {0%{opacity:0;transform:translateY(30px);}100%{opacity:1;transform:translateY(0);}}
+.hero-header h1{
+  font-family:'Montserrat',sans-serif;
+  font-size:3em;
+  color:var(--accent-color);
+  opacity:0;
+  animation:fadeInDown 1.2s forwards;
+}
+.hero-header p{
+  font-size:1.2em;
+  opacity:0;
+  animation:fadeInUp 1.5s forwards;
+  animation-delay:.3s;
+}
+
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-30px)}to{opacity:1}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1}}
 
 /* ================= PARTICLES ================= */
-.particles { position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden; }
-.particles div { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:0.6; animation:moveParticles 10s linear infinite; }
-@keyframes moveParticles { 0%{transform:translateY(0) translateX(0);opacity:0.6;} 50%{opacity:1;} 100%{transform:translateY(-1200px) translateX(400px);opacity:0.2;} }
+.particles{
+  position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;
+}
+.particles div{
+  position:absolute;width:6px;height:6px;
+  background:var(--accent-color);
+  border-radius:50%;
+  opacity:.6;
+  animation:moveParticles 10s linear infinite;
+}
+@keyframes moveParticles{
+  0%{transform:translateY(0)}
+  100%{transform:translateY(-1200px) translateX(400px);opacity:.2}
+}
 
 /* ================= CONTACT FORM ================= */
-.contact-form-container {
-  max-width:700px; margin:40px auto; background:#1a1a1a; padding:30px; border-radius:16px;
-  box-shadow:0 0 20px #b36b00; opacity:0; transform:translateY(30px); transition:1s ease;
+.contact-form-container{
+  max-width:700px;
+  margin:40px auto;
+  background:var(--card-bg);
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 0 20px var(--accent-color);
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s ease;
 }
-.contact-form-container.visible { opacity:1; transform:translateY(0); }
-.contact-form-container h2 { text-align:center; margin-bottom:25px; color:#b36b00; text-shadow:0 0 8px #b36b00; }
-.contact-form-container form { display:flex; flex-direction:column; gap:20px; }
-.contact-form-container input, .contact-form-container textarea { padding:12px; border-radius:10px; border:none; font-size:1em; width:100%; }
-.contact-form-container button { padding:12px; border-radius:10px; border:none; background:#b36b00; color:#fff; font-weight:700; cursor:pointer; transition:0.3s; }
-.contact-form-container button:hover { background:#ff9c3b; }
+.contact-form-container.visible{opacity:1;transform:translateY(0)}
+.contact-form-container h2{
+  text-align:center;
+  margin-bottom:25px;
+  color:var(--accent-color);
+}
+.contact-form-container form{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.contact-form-container input,
+.contact-form-container textarea{
+  padding:12px;
+  border-radius:10px;
+  border:none;
+}
+.contact-form-container button{
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  background:var(--accent-color);
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+.contact-form-container button:hover{background:var(--accent-hover)}
 
-/* ================= SOCIAL LINKS ================= */
-.social-links { text-align:center; margin-top:40px; opacity:0; transform:translateY(30px); transition:1s ease; }
-.social-links.visible { opacity:1; transform:translateY(0); }
-.social-links h3 { margin-bottom:15px; color:#b36b00; }
-.social-links a { margin:0 15px; font-size:2em; color:#b36b00; transition:0.3s; }
-.social-links a:hover { color:#ff9c3b; transform:scale(1.2); }
+/* ================= SOCIAL ================= */
+.social-links{
+  text-align:center;
+  margin-top:40px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s ease;
+}
+.social-links.visible{opacity:1;transform:translateY(0)}
+.social-links h3{margin-bottom:15px;color:var(--accent-color)}
+.social-links a{
+  margin:0 15px;
+  font-size:2em;
+  color:var(--accent-color);
+}
+.social-links a:hover{color:var(--accent-hover);transform:scale(1.2)}
 
 /* ================= FOOTER ================= */
-footer { text-align:center; padding:20px; background:#0b0b0b; color:#b36b00; margin-top:50px; }
-
-/* ================= RESPONSIVE ================= */
-@media(max-width:768px){ .hero-header h1{font-size:2.4em;} .social-links a{font-size:1.8em;} }
+footer{
+  text-align:center;
+  padding:20px;
+  background:var(--bg-color);
+  color:var(--accent-color);
+  margin-top:50px;
+}
 </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
+<!-- NAV -->
 <nav class="navbar">
-  <div class="logo"><img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo"><span>Str8 Flight</span></div>
-  <div class="menu-toggle" id="mobile-menu"><span></span><span></span><span></span></div>
+  <div class="logo">
+    <img src="https://str8flight.github.io/str8flight-logo.png">
+    <span>Str8 Flight</span>
+  </div>
+
+  <div class="menu-toggle" id="mobile-menu">
+    <span></span><span></span><span></span>
+  </div>
+
   <ul class="nav-list">
     <li><a href="index.html">Home</a></li>
     <li><a href="index.html#about">About</a></li>
@@ -95,6 +214,7 @@ footer { text-align:center; padding:20px; background:#0b0b0b; color:#b36b00; mar
     <li><a href="services.html">Services</a></li>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="privacy.html">Privacy</a></li>
+    <li><button id="themeBtn" class="theme-btn">🌙</button></li>
   </ul>
 </nav>
 
@@ -105,7 +225,7 @@ footer { text-align:center; padding:20px; background:#0b0b0b; color:#b36b00; mar
   <p>Get in touch with Str8 Flight Entertainment</p>
 </header>
 
-<!-- CONTACT FORM -->
+<!-- FORM -->
 <div class="contact-form-container" id="form-container">
   <h2>Get in Touch</h2>
   <form action="https://formspree.io/f/b0dd08cede75446a922d2a3c42bf75dd" method="POST">
@@ -116,7 +236,7 @@ footer { text-align:center; padding:20px; background:#0b0b0b; color:#b36b00; mar
   </form>
 </div>
 
-<!-- SOCIAL LINKS -->
+<!-- SOCIAL -->
 <div class="social-links" id="social-container">
   <h3>Follow Us</h3>
   <a href="https://www.instagram.com/str8flightentertainment/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -130,24 +250,44 @@ footer { text-align:center; padding:20px; background:#0b0b0b; color:#b36b00; mar
 </footer>
 
 <script>
-// Hamburger toggle
+// Mobile nav
 const mobileMenu=document.getElementById('mobile-menu');
 const navList=document.querySelector('.nav-list');
-mobileMenu.addEventListener('click',()=>{navList.classList.toggle('active');});
+mobileMenu.onclick=()=>navList.classList.toggle('active');
 
 // Particles
-const particleContainer=document.getElementById('particles');
-for(let i=0;i<60;i++){const div=document.createElement('div');div.style.left=Math.random()*100+'%';div.style.top=Math.random()*100+'%';div.style.width=2+Math.random()*4+'px';div.style.height=2+Math.random()*4+'px';div.style.animationDuration=5+Math.random()*10+'s';particleContainer.appendChild(div);}
+const p=document.getElementById('particles');
+for(let i=0;i<60;i++){
+  const d=document.createElement('div');
+  d.style.left=Math.random()*100+'%';
+  d.style.width=2+Math.random()*4+'px';
+  d.style.height=d.style.width;
+  d.style.animationDuration=5+Math.random()*10+'s';
+  p.appendChild(d);
+}
 
-// Reveal scroll
-const formContainer=document.getElementById('form-container');
-const socialContainer=document.getElementById('social-container');
+// Reveal
+const form=document.getElementById('form-container');
+const social=document.getElementById('social-container');
 const reveal=()=>{
-  const trigger=window.innerHeight*0.85;
-  if(formContainer.getBoundingClientRect().top<trigger) formContainer.classList.add('visible');
-  if(socialContainer.getBoundingClientRect().top<trigger) socialContainer.classList.add('visible');
+  const t=window.innerHeight*0.85;
+  if(form.getBoundingClientRect().top<t)form.classList.add('visible');
+  if(social.getBoundingClientRect().top<t)social.classList.add('visible');
 };
-window.addEventListener('scroll',reveal); reveal();
+window.addEventListener('scroll',reveal);reveal();
+
+// THEME
+const themeBtn=document.getElementById('themeBtn');
+const dark={'--bg-color':'#0b0b0b','--text-color':'#fff','--accent-color':'#b36b00','--accent-hover':'#ff9c3b','--card-bg':'#1a1a1a'};
+const light={'--bg-color':'#f5f5f5','--text-color':'#111','--accent-color':'#ff6f00','--accent-hover':'#ffa500','--card-bg':'#eee'};
+function setTheme(t){for(let k in t){document.documentElement.style.setProperty(k,t[k]);}}
+function applyTheme(){
+  const m=localStorage.getItem('theme')||'dark';
+  if(m==='dark'){setTheme(dark);themeBtn.textContent='🌙'}
+  else{setTheme(light);themeBtn.textContent='☀️'}
+}
+themeBtn.onclick=()=>{localStorage.setItem('theme',(localStorage.getItem('theme')||'dark')==='dark'?'light':'dark');applyTheme();}
+applyTheme();
 </script>
 
 </body>
