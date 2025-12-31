@@ -12,34 +12,35 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <!-- AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393"
-crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393" crossorigin="anonymous"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Roboto',sans-serif;background:#0b0b0b;color:#fff;overflow-x:hidden;transition:.3s}
+body{font-family:'Roboto',sans-serif;background:#0b0b0b;color:#fff;transition:.3s;overflow-x:hidden}
 body.light{background:#f4f4f4;color:#111}
 a{text-decoration:none}
 
-/* NAV */
+/* NAVBAR */
 .navbar{
 position:fixed;top:0;width:100%;z-index:1000;
 display:flex;justify-content:space-between;align-items:center;
 padding:15px 24px;background:rgba(0,0,0,.75);backdrop-filter:blur(8px)
 }
 body.light .navbar{background:rgba(255,255,255,.9)}
+
 .logo{display:flex;align-items:center;gap:10px}
 .logo img{height:42px}
 .logo span{
-font-family:'Montserrat';font-size:1.4em;
+font-family:'Montserrat',sans-serif;font-size:1.4em;
 background:linear-gradient(90deg,#b36b00,#ff9c3b);
 -webkit-background-clip:text;-webkit-text-fill-color:transparent
 }
 .flag{height:26px}
-#theme-toggle{cursor:pointer;font-size:1.3em;margin-left:8px}
+#theme-toggle{cursor:pointer;font-size:1.3em}
 
 .nav-list{list-style:none;display:flex;gap:24px}
 .nav-list a{color:#b36b00;font-weight:700}
+
 .menu-toggle{display:none;flex-direction:column;cursor:pointer}
 .menu-toggle span{width:26px;height:3px;background:#b36b00;margin:4px 0}
 
@@ -47,8 +48,8 @@ background:linear-gradient(90deg,#b36b00,#ff9c3b);
 .menu-toggle{display:flex}
 .nav-list{
 position:absolute;top:65px;right:20px;width:220px;
-background:#111;flex-direction:column;overflow:hidden;
-max-height:0;border-radius:12px;transition:.3s
+background:#111;flex-direction:column;
+max-height:0;overflow:hidden;border-radius:12px;transition:.3s
 }
 body.light .nav-list{background:#fff}
 .nav-list.active{max-height:600px}
@@ -56,48 +57,42 @@ body.light .nav-list{background:#fff}
 }
 
 /* HERO */
-.hero-header{
-padding:100px 20px 40px;text-align:center;
-background:linear-gradient(135deg,#0b0b0b,#161616);
-position:relative;overflow:hidden
+.hero{
+padding:110px 20px 40px;text-align:center;
+background:linear-gradient(135deg,#0b0b0b,#161616)
 }
-body.light .hero-header{background:linear-gradient(135deg,#fff,#ddd)}
-.hero-header h1{font-size:3em;text-shadow:0 0 14px #b36b00}
-.hero-header p{font-size:1.2em}
+body.light .hero{background:linear-gradient(135deg,#fff,#ddd)}
+.hero h1{
+font-family:'Montserrat',sans-serif;
+font-size:3em;color:#b36b00;
+text-shadow:0 0 14px #b36b00
+}
+.hero p{font-size:1.2em;max-width:900px;margin:15px auto}
 
-/* PARTICLES */
-.particles{position:absolute;inset:0;pointer-events:none}
-.particles span{
-position:absolute;width:6px;height:6px;
-background:#b36b00;border-radius:50%;
-opacity:.7;animation:floatUp linear infinite
-}
-@keyframes floatUp{
-from{transform:translateY(100vh)}
-to{transform:translateY(-120vh);opacity:0}
-}
-
-/* PAGE */
+/* CONTENT */
 .page-container{
-max-width:1400px;margin:20px auto 70px;
-padding:0 20px;display:flex;gap:50px
+max-width:1400px;margin:40px auto 80px;
+padding:0 20px;display:flex;gap:40px
 }
-@media(max-width:1024px){.page-container{flex-direction:column}}
-
 .column{
 background:#141414;padding:30px;border-radius:18px;
 box-shadow:0 0 25px rgba(179,107,0,.4)
 }
-body.light .column{background:#eee}
-.left{flex:1}.center{flex:3}
-.column h2{color:#b36b00;margin-bottom:15px}
+body.light .column{background:#fff}
+.left{flex:1}
+.center{flex:3}
 
-.section-title{
-text-align:center;font-size:2.2em;
-margin-bottom:30px;color:#b36b00
+.column h2{
+color:#b36b00;margin-bottom:15px;
+text-shadow:0 0 8px #b36b00
 }
+.column p{margin-bottom:14px;line-height:1.7}
 
 /* VIDEOS */
+.section-title{
+text-align:center;font-size:2.2em;margin-bottom:30px;
+color:#b36b00;text-shadow:0 0 10px #b36b00
+}
 .videos{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
@@ -117,11 +112,14 @@ text-align:center;padding:30px;
 background:#0b0b0b;color:#b36b00
 }
 body.light footer{background:#f4f4f4;color:#111}
+
+@media(max-width:1024px){.page-container{flex-direction:column}}
 </style>
 </head>
 
 <body class="dark">
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
     <img src="https://str8flight.github.io/str8flight-logo.png">
@@ -141,41 +139,39 @@ body.light footer{background:#f4f4f4;color:#111}
   </ul>
 </nav>
 
-<header class="hero-header">
-<div class="particles" id="particles"></div>
-<h1>Str8 Flight Entertainment</h1>
-<p>Belize-based platform promoting original music & Caribbean creativity.</p>
-</header>
+<!-- HERO -->
+<section class="hero">
+  <h1>Str8 Flight Entertainment</h1>
+  <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
+</section>
 
+<!-- CONTENT -->
 <div class="page-container">
-<div class="column left" id="about">
-<h2>About</h2>
-<p>Founded by <strong>Denton, Cleon & Fenton Barrow</strong>, Str8 Flight Entertainment is a Belize-based music and media platform.</p>
-<p>Focused on production, artist development, and community engagement.</p>
-</div>
 
-<div class="column center">
-<h2 class="section-title">Featured Music Videos</h2>
-<div class="videos" id="videos"></div>
-</div>
+  <!-- ABOUT (RESTORED FULLY) -->
+  <div class="column left" id="about">
+    <h2>About</h2>
+    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
+    <p>The Barrow brothers are actively involved in music production, recording, creative direction, and artist development.</p>
+    <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations.</p>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="column center">
+    <h2 class="section-title" id="videos">Featured Music Videos</h2>
+    <div class="videos" id="videos-container"></div>
+  </div>
+
 </div>
 
 <footer>© <span id="year"></span> Str8 Flight Entertainment • Belize</footer>
 
 <script>
-/* AUTO YEAR */
+/* YEAR */
 document.getElementById('year').textContent=new Date().getFullYear();
 
 /* MENU */
 menuBtn.onclick=()=>document.querySelector('.nav-list').classList.toggle('active');
-
-/* PARTICLES */
-for(let i=0;i<70;i++){
-let s=document.createElement('span');
-s.style.left=Math.random()*100+'%';
-s.style.animationDuration=(6+Math.random()*10)+'s';
-particles.appendChild(s);
-}
 
 /* THEME */
 const toggle=document.getElementById('theme-toggle');
@@ -187,8 +183,8 @@ localStorage.setItem('theme',t);
 toggle.onclick=()=>setTheme(document.body.classList.contains('light')?'dark':'light');
 setTheme(localStorage.getItem('theme')||'dark');
 
-/* VIDEOS */
-const list=[
+/* VIDEOS (7) */
+const videos=[
 ["0QwKo-mssxc","Perry da Artist - Bad Freak"],
 ["pInxfriRH_w","Mr. Program - Rise-in-Glory"],
 ["cXzqzTYxbsQ","Denton - Furious (RAW)"],
@@ -197,11 +193,13 @@ const list=[
 ["pmSFR_ohjJk","Denton - PARRAT"],
 ["WTW5qQPIgX0","Cocono Bwai - Wielo Wielo"]
 ];
-list.forEach(v=>{
-let d=document.createElement('div');
+
+const vc=document.getElementById('videos-container');
+videos.forEach(v=>{
+const d=document.createElement('div');
 d.className='video-card';
 d.innerHTML=`<iframe src="https://www.youtube.com/embed/${v[0]}"></iframe><div class="video-title">${v[1]}</div>`;
-videos.appendChild(d);
+vc.appendChild(d);
 });
 </script>
 
