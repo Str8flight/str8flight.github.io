@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
 
 <style>
-/* ================= GLOBAL ================= */
+/* RESET */
 * { margin:0; padding:0; box-sizing:border-box; }
 body {
   font-family:'Roboto',sans-serif;
@@ -17,97 +17,210 @@ body {
   overflow-x:hidden;
   transition: background 0.3s, color 0.3s;
 }
-a { text-decoration:none; }
 
-/* ================= NAVBAR ================= */
+/* LIGHT MODE */
+body.light-mode {
+  background: #f8f8f8;
+  color: #111;
+}
+
+/* NAVBAR */
 .navbar {
-  position:fixed; top:0; width:100%; z-index:1000;
-  display:flex; justify-content:space-between; align-items:center;
-  padding:15px 24px; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px);
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 24px;
+  background:rgba(0,0,0,0.75);
+  backdrop-filter:blur(8px);
   transition: background 0.3s;
 }
-.logo { display:flex; align-items:center; gap:10px; }
+
+body.light-mode .navbar { background: rgba(255,255,255,0.85); }
+
+.logo {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
 .logo img { height:42px; }
+
 .logo span {
-  font-family:'Montserrat',sans-serif; font-size:1.4em;
+  font-family:'Montserrat',sans-serif;
+  font-size:1.4em;
   background:linear-gradient(90deg,#b36b00,#ff9c3b);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-.menu-toggle { display:none; flex-direction:column; cursor:pointer; }
-.menu-toggle span { width:26px; height:3px; background:#b36b00; margin:4px 0; transition:0.3s; }
-.nav-list { list-style:none; display:flex; gap:24px; }
-.nav-list a { color:#b36b00; font-weight:700; text-shadow:0 0 6px #b36b00; transition:.3s; }
-.nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
 
-/* ================= MOBILE NAV ================= */
-@media(max-width:768px){
-  .menu-toggle { display:flex; }
-  .nav-list {
-    position:absolute; top:65px; right:20px; width:220px;
-    background:#111; flex-direction:column; max-height:0; overflow:hidden; transition:max-height .35s ease;
-    border-radius:0 0 12px 12px; box-shadow:0 0 30px rgba(179,107,0,.6);
-  }
-  .nav-list.active { max-height:500px; }
-  .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
-  .nav-list a { padding:14px 20px; display:block; }
+.menu-toggle {
+  display:none;
+  flex-direction:column;
+  justify-content:space-between;
+  width:26px;
+  height:18px;
+  cursor:pointer;
 }
 
-/* ================= HERO ================= */
-.hero-header { position:relative; padding:150px 20px 90px; text-align:center; background:linear-gradient(135deg,#0b0b0b,#161616); overflow:hidden; transition: background 0.3s;}
+.menu-toggle span {
+  width:100%;
+  height:3px;
+  background:#b36b00;
+  transition:0.3s;
+}
+
+body.light-mode .menu-toggle span { background:#ff9c3b; }
+
+.nav-list {
+  list-style:none;
+  display:flex;
+  gap:24px;
+}
+
+.nav-list a {
+  color:#b36b00;
+  font-weight:700;
+  text-shadow:0 0 6px #b36b00;
+  transition:.3s;
+}
+
+.nav-list a:hover { color:#ff9c3b; text-shadow:0 0 12px #ff9c3b; }
+
+body.light-mode .nav-list a { color:#333; text-shadow:none; }
+body.light-mode .nav-list a:hover { color:#b36b00; }
+
+/* MOBILE NAV */
+@media(max-width:768px){
+  .menu-toggle { display:flex; }
+
+  .nav-list {
+    position:absolute;
+    top:65px;
+    right:20px;
+    width:220px;
+    background:#111;
+    flex-direction:column;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease;
+    border-radius:0 0 12px 12px;
+    box-shadow:0 0 30px rgba(179,107,0,.6);
+  }
+
+  .nav-list.active { max-height:500px; }
+
+  .nav-list li { border-bottom:1px solid rgba(179,107,0,.4); }
+  .nav-list a { padding:14px 20px; display:block; }
+  body.light-mode .nav-list { background:#f0f0f0; }
+  body.light-mode .nav-list li { border-bottom:1px solid #ff9c3b; }
+}
+
+/* HERO */
+.hero-header {
+  position:relative;
+  padding:150px 20px 90px;
+  text-align:center;
+  background:linear-gradient(135deg,#0b0b0b,#161616);
+  overflow:hidden;
+  transition: background 0.3s;
+}
+
+body.light-mode .hero-header { background: linear-gradient(135deg,#fff,#eee); }
+
 .hero-content { position:relative; z-index:3; }
-.hero-header h1 { font-family:'Montserrat',sans-serif; font-size:3em; margin-bottom:10px; text-shadow:0 0 14px #b36b00; animation:fadeDown 1.2s ease forwards; }
-.hero-header p { font-size:1.2em; animation:fadeUp 1.4s ease forwards; }
 
-/* ================= PARTICLES ================= */
-.particles { position:absolute; inset:0; z-index:1; pointer-events:none; }
-.particles span { position:absolute; width:6px; height:6px; background:#b36b00; border-radius:50%; opacity:.7; animation:floatUp linear infinite; filter:drop-shadow(0 0 6px #b36b00); transition: background 0.3s; }
+.hero-header h1 {
+  font-family:'Montserrat',sans-serif;
+  font-size:3em;
+  margin-bottom:10px;
+  text-shadow:0 0 14px #b36b00;
+  animation:fadeDown 1.2s ease forwards;
+}
 
-/* ================= PAGE CONTENT ================= */
-.page-container { max-width:1400px; margin:70px auto; padding:0 20px; display:flex; gap:50px; flex-wrap:wrap; }
-.column { background:#141414; padding:30px; border-radius:18px; box-shadow:0 0 25px rgba(179,107,0,.4); flex:1; min-width:280px; transition: background 0.3s, box-shadow 0.3s;}
+.hero-header p {
+  font-size:1.2em;
+  animation:fadeUp 1.4s ease forwards;
+}
+
+/* PARTICLES */
+.particles {
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+}
+
+.particles span {
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:#b36b00;
+  border-radius:50%;
+  opacity:.7;
+  animation:floatUp linear infinite;
+  filter:drop-shadow(0 0 6px #b36b00);
+}
+
+body.light-mode .particles span { background:#ff9c3b; filter:drop-shadow(0 0 6px #ff9c3b); }
+
+@keyframes floatUp {
+  from { transform:translateY(100vh); opacity:.8; }
+  to { transform:translateY(-120vh); opacity:0; }
+}
+
+@keyframes fadeDown { from { opacity:0; transform:translateY(-30px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+
+/* PAGE LAYOUT */
+.page-container { max-width:1400px; margin:70px auto; padding:0 20px; display:flex; gap:50px; }
+
+.column { background:#141414; padding:30px; border-radius:18px; box-shadow:0 0 25px rgba(179,107,0,.4); transition:.3s; }
 .column:hover { box-shadow:0 0 35px #b36b00,0 0 60px #8a4c00; }
+
+body.light-mode .column { background:#fff; color:#111; box-shadow:0 0 20px #ff9c3b; }
+
+.left { flex:1; }
+.center { flex:3; }
+
 .column h2 { color:#b36b00; margin-bottom:15px; text-shadow:0 0 8px #b36b00; }
+body.light-mode .column h2 { color:#b36b00; text-shadow:none; }
+
 .column p { margin-bottom:15px; }
 
-/* ================= VIDEOS ================= */
+/* VIDEOS */
 .section-title { text-align:center; font-size:2.2em; margin-bottom:30px; color:#b36b00; text-shadow:0 0 10px #b36b00; }
+body.light-mode .section-title { color:#b36b00; text-shadow:none; }
+
 .videos { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:30px; }
-.video-card { background:#0f0f0f; padding:18px; border-radius:16px; box-shadow:0 0 18px #b36b00; transition:.3s, background 0.3s;}
+
+.video-card { background:#0f0f0f; padding:18px; border-radius:16px; box-shadow:0 0 18px #b36b00; transition:.3s; }
 .video-card:hover { box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00; }
+body.light-mode .video-card { background:#fff; box-shadow:0 0 20px #ff9c3b; color:#111; }
+
 iframe { width:100%; height:260px; border:none; border-radius:12px; }
 
-/* ================= LIVE STREAM ================= */
-#live-stream { display:none; text-align:center; margin:40px 0; }
-#live-stream.show { animation:fadeInUp 1s forwards; }
-@keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+.video-title { margin-top:10px; text-align:center; font-weight:700; text-shadow:0 0 5px #b36b00; }
+body.light-mode .video-title { text-shadow:none; color:#111; }
 
-/* ================= FOOTER ================= */
-footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; transition: background 0.3s; }
+/* FOOTER */
+footer { text-align:center; padding:30px; color:#b36b00; background:#0b0b0b; margin-top:70px; transition: background 0.3s, color 0.3s; }
+body.light-mode footer { background:#f8f8f8; color:#333; }
 
-/* ================= RESPONSIVE ================= */
+/* RESPONSIVE */
 @media(max-width:1024px){ .page-container { flex-direction:column; } }
 @media(max-width:768px){ iframe { height:200px; } }
-
-/* ================= LIGHT MODE ================= */
-body.light-mode { background:#f5f5f5; color:#111; }
-body.light-mode .navbar { background:rgba(255,255,255,0.9);}
-body.light-mode .nav-list a { color:#b36b00; text-shadow:none; }
-body.light-mode .nav-list a:hover { color:#ff9c3b; text-shadow:none; }
-body.light-mode .hero-header { background:linear-gradient(135deg,#fff,#e0e0e0); }
-body.light-mode .column { background:#fff; box-shadow:0 0 25px rgba(179,107,0,.2);}
-body.light-mode .video-card { background:#f0f0f0; box-shadow:0 0 18px #b36b00;}
-body.light-mode footer { background:#f5f5f5; color:#b36b00;}
-body.light-mode .particles span { background:#b36b00; filter:drop-shadow(0 0 4px #b36b00); }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
-    <img src="str8flight-logo.png">
+    <img src="str8flight-logo.png" alt="Logo">
     <span>STR8 FLIGHT</span>
     <img src="belize-flag.png" class="flag">
   </div>
@@ -121,11 +234,8 @@ body.light-mode .particles span { background:#b36b00; filter:drop-shadow(0 0 4px
     <li><a href="services.html">Services</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-
-  <button id="theme-toggle" style="padding:6px 12px; border:none; border-radius:8px; cursor:pointer;">Toggle Light/Dark</button>
 </nav>
 
-<!-- HERO -->
 <header class="hero-header">
   <div class="particles" id="particles"></div>
   <div class="hero-content">
@@ -134,23 +244,22 @@ body.light-mode .particles span { background:#b36b00; filter:drop-shadow(0 0 4px
   </div>
 </header>
 
-<!-- LIVE STREAM -->
-<div id="live-stream">
-  <h2>Now Live!</h2>
-  <iframe id="liveFrame" width="100%" height="360"></iframe>
+<div style="text-align:center;margin:20px;">
+  <button id="themeToggle" style="padding:10px 20px;border:none;border-radius:8px;cursor:pointer;background:#b36b00;color:#fff;font-weight:700;">Toggle Light/Dark Mode</button>
 </div>
 
-<!-- PAGE CONTENT -->
 <div class="page-container">
+
   <div class="column left" id="about">
     <h2>About</h2>
-    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with <strong>Cleon</strong> and <strong>Fenton Barrow</strong>.</p>
+    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
     <p>The Barrow brothers are actively involved in music production, recording, creative direction, and artist development.</p>
     <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations.</p>
   </div>
 
   <div class="column center">
     <h2 class="section-title">Featured Music Videos</h2>
+
     <div class="videos" id="videos">
       <div class="video-card"><iframe src="https://www.youtube.com/embed/0QwKo-mssxc"></iframe><div class="video-title">Perry da Artist - Bad Freak</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pInxfriRH_w"></iframe><div class="video-title">Mr. Program - Rise-in-Glory</div></div>
@@ -160,6 +269,13 @@ body.light-mode .particles span { background:#b36b00; filter:drop-shadow(0 0 4px
       <div class="video-card"><iframe src="https://www.youtube.com/embed/pmSFR_ohjJk"></iframe><div class="video-title">Denton - PARRAT</div></div>
       <div class="video-card"><iframe src="https://www.youtube.com/embed/WTW5qQPIgX0"></iframe><div class="video-title">Cocono Bwai - Wielo Wielo</div></div>
     </div>
+
+    <!-- LIVE STREAM -->
+    <div id="live-stream" style="margin-top:30px; display:none;">
+      <h2 style="color:#b36b00;text-align:center;">Live Now</h2>
+      <iframe id="liveFrame" width="100%" height="320" frameborder="0" allowfullscreen></iframe>
+    </div>
+
   </div>
 </div>
 
@@ -168,12 +284,12 @@ body.light-mode .particles span { background:#b36b00; filter:drop-shadow(0 0 4px
 </footer>
 
 <script>
-/* ================= MOBILE NAV ================= */
+/* mobile nav */
 document.getElementById('menuBtn').onclick = () => {
   document.querySelector('.nav-list').classList.toggle('active');
 };
 
-/* ================= PARTICLES ================= */
+/* particles */
 const particles = document.getElementById('particles');
 for(let i=0;i<70;i++){
   const dot = document.createElement('span');
@@ -183,27 +299,20 @@ for(let i=0;i<70;i++){
   particles.appendChild(dot);
 }
 
-/* ================= YOUTUBE LIVE CHECK ================= */
-const CHANNEL_ID = "UCp2UwspaBTvuEDMe9kx3aoA"; 
+/* LIGHT/DARK TOGGLE */
+const themeBtn = document.getElementById('themeToggle');
+themeBtn.onclick = () => { document.body.classList.toggle('light-mode'); };
+
+/* YOUTUBE LIVE CHECK */
+const CHANNEL_ID="UCp2UwspaBTvuEDMe9kx3aoA"; // your channel
 fetch(`https://str8flight-live-api.vercel.app/api/live?channelId=${CHANNEL_ID}`)
-  .then(res => res.json())
-  .then(data => {
-    if(data.live && data.videoId){
-      document.getElementById('liveFrame').src = `https://www.youtube.com/embed/${data.videoId}?autoplay=1`;
-      document.getElementById('live-stream').style.display = 'block';
-    }
-  })
-  .catch(err => console.error("Live check error:", err));
-
-/* ================= LIGHT/DARK TOGGLE ================= */
-const themeBtn = document.getElementById('theme-toggle');
-const currentTheme = localStorage.getItem('theme');
-if(currentTheme==='light') document.body.classList.add('light-mode');
-
-themeBtn.onclick = () => {
-  document.body.classList.toggle('light-mode');
-  localStorage.setItem('theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
-};
+.then(r=>r.json())
+.then(d=>{
+  if(d.live && d.videoId){
+    document.getElementById('liveFrame').src = `https://www.youtube.com/embed/${d.videoId}?autoplay=1`;
+    document.getElementById('live-stream').style.display = 'block';
+  }
+});
 </script>
 
 </body>
