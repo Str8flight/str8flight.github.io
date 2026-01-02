@@ -11,6 +11,9 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1435942574271393" crossorigin="anonymous"></script>
+
 <style>
 /* ===== GLOBAL ===== */
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -26,15 +29,18 @@ padding:15px 24px;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);
 transition:.3s;
 }
 body.light .navbar{background:rgba(255,255,255,0.9);}
+
 .logo{display:flex;align-items:center;gap:10px;}
 .logo img{height:42px;}
 .logo span{font-family:'Montserrat',sans-serif;font-size:1.4em;background:linear-gradient(90deg,#b36b00,#ff9c3b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .flag{height:26px;}
 #theme-toggle{cursor:pointer;font-size:1.3em;}
+
 .nav-list{list-style:none;display:flex;gap:24px;}
 .nav-list a{color:#b36b00;font-weight:700;}
 .menu-toggle{display:none;flex-direction:column;cursor:pointer;}
 .menu-toggle span{width:26px;height:3px;background:#b36b00;margin:4px 0;}
+
 @media(max-width:768px){
   .menu-toggle{display:flex;}
   .nav-list{
@@ -48,81 +54,91 @@ body.light .navbar{background:rgba(255,255,255,0.9);}
 
 /* ===== HERO ===== */
 .hero-header{
-  position:relative;padding:100px 20px 40px;text-align:center;
-  background:linear-gradient(135deg,#0b0b0b,#161616);overflow:hidden;
-  transition:.3s;
+  position:relative;padding:100px 20px 40px;text-align:center;background:linear-gradient(135deg,#0b0b0b,#161616);overflow:hidden;transition:.3s;
 }
 body.light .hero-header{background:linear-gradient(135deg,#fff,#ddd);}
 .hero-header h1{font-family:'Montserrat',sans-serif;font-size:3em;margin-bottom:10px;text-shadow:0 0 14px #b36b00;}
 .hero-header p{font-size:1.2em;max-width:900px;margin:15px auto;}
 
 /* ===== PARTICLES ===== */
-.particles{position:absolute;inset:0;pointer-events:none;}
-.particles span{position:absolute;width:6px;height:6px;background:#b36b00;border-radius:50%;opacity:.7;animation:floatUp linear infinite;}
-@keyframes floatUp{from{transform:translateY(100vh);}to{transform:translateY(-120vh);}}
+.particles{position:absolute;inset:0;z-index:1;pointer-events:none;}
+.particles span{position:absolute;width:6px;height:6px;background:#b36b00;border-radius:50%;opacity:.7;animation:floatUp linear infinite;filter:drop-shadow(0 0 6px #b36b00);}
+@keyframes floatUp{from{transform:translateY(100vh);opacity:.8;}to{transform:translateY(-120vh);opacity:0;}}
 
 /* ===== NEW RELEASE ===== */
 .new-release{
-max-width:1400px;
-margin:30px auto;
-padding:30px 20px;
-text-align:center;
-background:linear-gradient(135deg,#111,#0b0b0b);
-border-radius:22px;
-box-shadow:0 0 35px rgba(255,156,59,.6);
+  max-width:1400px;
+  margin:30px auto;
+  padding:30px 20px;
+  text-align:center;
+  background:linear-gradient(135deg,#111,#0b0b0b);
+  border-radius:22px;
+  box-shadow:0 0 35px rgba(255,156,59,.6);
 }
 .new-release h2{
-font-size:2.3em;
-margin-bottom:20px;
-color:#ff9c3b;
-text-shadow:0 0 15px #ff9c3b;
+  font-size:2.3em;
+  margin-bottom:20px;
+  color:#ff9c3b;
+  text-shadow:0 0 15px #ff9c3b;
 }
 .new-release-card{
-max-width:820px;
-margin:0 auto;
-background:#0f0f0f;
-padding:20px;
-border-radius:18px;
-box-shadow:0 0 25px #b36b00;
+  max-width:820px;
+  margin:0 auto;
+  background:#0f0f0f;
+  padding:20px;
+  border-radius:18px;
+  box-shadow:0 0 25px #b36b00;
 }
 .new-release-card iframe{
-width:100%;
-height:360px;
-border-radius:14px;
+  width:100%;
+  height:360px;
+  border-radius:14px;
 }
 .new-release-title{
-margin-top:14px;
-font-weight:700;
+  margin-top:14px;
+  font-weight:700;
 }
 body.light .new-release-card{background:#fff;color:#111;}
 @media(max-width:768px){
-.new-release-card iframe{height:220px;}
+  .new-release-card iframe{height:220px;}
 }
 
 /* ===== LIVE SECTION ===== */
-.live-section{max-width:1400px;margin:30px auto;padding:20px;display:none;}
-.live-section h2{color:#ff3b3b;margin-bottom:15px;}
-#live-videos .video-card iframe{height:320px;border-radius:16px;}
-body.light .live-section{background:#fff;color:#111;}
+.live-section{
+  max-width:1400px;
+  margin:30px auto;
+  padding:20px;
+  background:linear-gradient(135deg,#161616,#0b0b0b);
+  border-radius:20px;
+  box-shadow:0 0 35px rgba(179,107,0,.6);
+  display:none; /* hidden by default */
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.live-section h2{color:#ff3b3b;font-size:2em;margin-bottom:15px;text-shadow:0 0 15px #ff3b3b,0 0 25px #b36b00;}
+#live-videos .video-card iframe{height:320px;border-radius:16px;box-shadow:0 0 15px #ff3b3b inset;}
 @media(max-width:768px){
-#live-videos .video-card iframe{height:200px;}
+  #live-videos .video-card iframe{height:200px;}
 }
 
 /* ===== PAGE CONTENT ===== */
-.page-container{max-width:1400px;margin:40px auto;padding:0 20px;display:flex;gap:40px;}
-.column{background:#141414;padding:30px;border-radius:18px;}
-body.light .column{background:#fff;color:#111;}
-.left{flex:1;}
-.center{flex:3;}
+.page-container{max-width:1400px;margin:40px auto 70px auto;padding:0 20px;display:flex;gap:40px;}
+.column{background:#141414;padding:30px;border-radius:18px;box-shadow:0 0 25px rgba(179,107,0,.4);}
+body.light .column{background:#fff;}
+.left{flex:1;} .center{flex:3;}
 .column h2{color:#b36b00;margin-bottom:15px;text-shadow:0 0 8px #b36b00;}
 .section-title{text-align:center;font-size:2.2em;margin-bottom:30px;color:#b36b00;text-shadow:0 0 10px #b36b00;}
+
+/* VIDEOS */
 .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
-.video-card{background:#0f0f0f;padding:18px;border-radius:16px;}
-body.light .video-card{background:#fff;color:#111;}
-iframe{width:100%;border:none;border-radius:12px;}
+.video-card{background:#0f0f0f;padding:18px;border-radius:16px;box-shadow:0 0 18px #b36b00;transition:.3s;}
+.video-card:hover{box-shadow:0 0 30px #b36b00,0 0 50px #8a4c00;}
+body.light .video-card{background:#fff;}
+iframe{width:100%;height:260px;border:none;border-radius:12px;}
 .video-title{text-align:center;margin-top:10px;font-weight:700;}
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{text-align:center;padding:30px;background:#0b0b0b;color:#b36b00;margin-top:70px;}
 body.light footer{background:#f4f4f4;color:#111;}
 @media(max-width:1024px){.page-container{flex-direction:column;}}
@@ -134,72 +150,74 @@ body.light footer{background:#f4f4f4;color:#111;}
 
 <!-- NAVBAR -->
 <nav class="navbar">
-<div class="logo">
-<img src="https://str8flight.github.io/str8flight-logo.png">
-<span>STR8 FLIGHT</span>
-<img src="https://str8flight.github.io/belize-flag.png" class="flag">
-<i class="fas fa-sun" id="theme-toggle"></i>
-</div>
-<div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
-<ul class="nav-list">
-<li><a href="index.html">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#videos">Videos</a></li>
-<li><a href="services.html">Services</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
+  <div class="logo">
+    <img src="https://str8flight.github.io/str8flight-logo.png" alt="Logo">
+    <span>STR8 FLIGHT</span>
+    <img src="https://str8flight.github.io/belize-flag.png" class="flag" alt="Belize Flag">
+    <i class="fas fa-sun" id="theme-toggle"></i>
+  </div>
+  <div class="menu-toggle" id="menuBtn"><span></span><span></span><span></span></div>
+  <ul class="nav-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
 <header class="hero-header">
-<div class="particles" id="particles"></div>
-<h1>Str8 Flight Entertainment</h1>
-<p>Belize-based platform promoting original music and Caribbean creativity.</p>
+  <div class="particles" id="particles"></div>
+  <div class="hero-content">
+    <h1>Str8 Flight Entertainment</h1>
+    <p>Belize-based platform promoting original music, independent artists, and Caribbean creativity.</p>
+  </div>
 </header>
 
 <!-- NEW RELEASE -->
 <section class="new-release">
-<h2>🔥 New Release</h2>
-<div class="new-release-card" id="latest-video">
-<p>Loading latest release…</p>
-</div>
+  <h2>🔥 New Release</h2>
+  <div class="new-release-card" id="latest-video">
+    <p>Loading latest release…</p>
+  </div>
 </section>
 
 <!-- LIVE SECTION -->
 <div class="live-section" id="live-container">
-<h2>LIVE NOW 🔴</h2>
-<div class="videos" id="live-videos"></div>
+  <h2>LIVE NOW 🔴</h2>
+  <div class="videos" id="live-videos"></div>
 </div>
 
 <!-- PAGE CONTENT -->
 <div class="page-container">
 
-<!-- ABOUT -->
-<div class="column left" id="about">
-<h2>About</h2>
-<p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
-<p>The Barrow brothers are actively involved in music production, recording, creative direction, and artist development.</p>
-<p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations.</p>
-</div>
+  <!-- ABOUT -->
+  <div class="column left" id="about">
+    <h2>About</h2>
+    <p>Str8 Flight Entertainment is a Belize-based music and media platform founded by <strong>Denton Barrow</strong> along with his brothers <strong>Cleon Barrow</strong> and <strong>Fenton Barrow</strong>.</p>
+    <p>The Barrow brothers are actively involved in music production, recording, creative direction, and artist development.</p>
+    <p>Str8 Flight Entertainment also engages with local communities through events, workshops, and collaborations.</p>
+  </div>
 
-<!-- FEATURED VIDEOS -->
-<div class="column center">
-<h2 class="section-title" id="videos">Featured Music Videos</h2>
-<div class="videos" id="videos-container"></div>
-</div>
+  <!-- VIDEOS -->
+  <div class="column center">
+    <h2 class="section-title" id="videos">Featured Music Videos</h2>
+    <div class="videos" id="videos-container"></div>
+  </div>
 
 </div>
 
 <footer>© <span id="year"></span> Str8 Flight Entertainment • Belize</footer>
 
 <script>
-// Year
+// YEAR
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Mobile menu toggle
+// Mobile menu
 menuBtn.onclick = () => document.querySelector('.nav-list').classList.toggle('active');
 
-// Dark/Light mode toggle
+// Dark/Light mode
 const toggle = document.getElementById('theme-toggle');
 function setTheme(t){
   document.body.className = t;
@@ -209,7 +227,7 @@ function setTheme(t){
 toggle.onclick = () => setTheme(document.body.classList.contains('light')?'dark':'light');
 setTheme(localStorage.getItem('theme') || 'dark');
 
-// Particles effect
+// PARTICLES
 const particlesContainer = document.getElementById('particles');
 for(let i=0;i<70;i++){
   const dot = document.createElement('span');
@@ -219,7 +237,7 @@ for(let i=0;i<70;i++){
   particlesContainer.appendChild(dot);
 }
 
-// Featured Videos
+// FEATURED VIDEOS
 const videosContainer = document.getElementById('videos-container');
 const videosList = [
   ["0QwKo-mssxc","Perry da Artist - Bad Freak"],
@@ -228,7 +246,7 @@ const videosList = [
   ["8E9zA7Bq1js","Quarantine - Cleon x Denton"],
   ["QdFS99yYcDE","Denton - Wiser"],
   ["pmSFR_ohjJk","Denton - PARRAT"],
-  ["WTW5qQPIx0","Cocono Bwai - Wielo Wielo"]
+  ["WTW5qQPIgX0","Cocono Bwai - Wielo Wielo"]
 ];
 videosList.forEach(v=>{
   const div = document.createElement('div');
@@ -238,21 +256,7 @@ videosList.forEach(v=>{
   videosContainer.appendChild(div);
 });
 
-// Load latest video from Vercel API
-const latestVideoContainer = document.getElementById('latest-video');
-fetch('https://str8flight-live-api.vercel.app/api/latestvideo')
-.then(r => r.json())
-.then(d => {
-  latestVideoContainer.innerHTML = `
-    <iframe src="https://www.youtube.com/embed/${d.videoId}" allowfullscreen></iframe>
-    <div class="new-release-title">${d.title}</div>
-  `;
-}).catch(e=>{
-  latestVideoContainer.innerHTML = "<p>Failed to load latest video.</p>";
-  console.error(e);
-});
-
-// Live section polling
+// LIVE detection (your existing checkLive.js logic)
 const CHANNEL_ID = "UCp2UwspaBTvuEDMe9kx3aoA";
 function checkLive() {
   fetch(`https://str8flight-live-api.vercel.app/api/checkLive?channelId=${CHANNEL_ID}`)
@@ -271,10 +275,26 @@ function checkLive() {
       } else {
         liveSection.style.display = 'none';
       }
-    }).catch(console.error);
+    }).catch(e=>console.error(e));
 }
 checkLive();
 setInterval(checkLive,10000);
+
+// LATEST VIDEO
+document.addEventListener('DOMContentLoaded', () => {
+  const latestVideo = document.getElementById('latest-video');
+  fetch('https://str8flight-live-api.vercel.app/api/latestvideo')
+    .then(res => res.json())
+    .then(data => {
+      latestVideo.innerHTML = `
+        <iframe src="https://www.youtube.com/embed/${data.videoId}" allowfullscreen></iframe>
+        <div class="new-release-title">${data.title}</div>`;
+    })
+    .catch(err => {
+      console.error('Failed to load latest video:', err);
+      latestVideo.innerHTML = `<p>Unable to load latest video.</p>`;
+    });
+});
 </script>
 
 </body>
